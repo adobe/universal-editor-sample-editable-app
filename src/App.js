@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import logo from "./images/wknd-logo-dk.svg";
