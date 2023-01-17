@@ -1,0 +1,20 @@
+.article-item {
+  list-style: none;
+  column-gap: 30px;
+  padding: 10px;
+  display: flex;
+  border-bottom: 1px solid #eee;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .article-item-image {
+    max-width: 350px;
+    max-height: 350px;
+  }
+
+  .article-content{
+    align-self: flex-end;
+  }
+}
