@@ -18,7 +18,7 @@ import Title from './Title';
     return (
       <div className="Home">
         <Link to={`/article`}>
-          <p>Go to Content Services Sample</p>
+          <p>Go to Content Services Sample!</p>
         </Link>
         <Card/>
         <hr/>
