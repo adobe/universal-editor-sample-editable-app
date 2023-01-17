@@ -21,7 +21,7 @@ const Card = () => (
         <Title itemID="urn:aemconnection:/content/wknd/us/en/magazine/western-australia/jcr:content/root/container/container/title" itemProp="jcr:title" itemType="text"/>
         <div className="card-text"><Text itemID="urn:aemconnection:/content/wknd/us/en/magazine/ski-touring/jcr:content/root/container/container/contentfragment/par1/text" itemProp="text" itemType="richtext"/></div>
         <Link to={`/articles`}>
-          <button>Show More!</button>
+          <button>Show More</button>
         </Link>
       </div>
     </article>
