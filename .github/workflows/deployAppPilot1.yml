@@ -1,5 +1,5 @@
-# Flow for deploying the app to https://ue-remote-app.adobe.net
-name: Deploy to https://ue-remote-app.adobe.net
+# Flow for deploying the app to https://ue-remote-app-pilot1.adobe.net
+name: Deploy to https://ue-remote-app-pilot1.adobe.net
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy to https://ue-remote-app.adobe.net
+      - name: Deploy to https://ue-remote-app-pilot1.adobe.net
         uses: nwtgck/actions-netlify@v1.2.3
         with:
           publish-dir: './build'
@@ -23,5 +23,5 @@ jobs:
           overwrites-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_PILOT1_SITE_ID }}
         timeout-minutes: 1
