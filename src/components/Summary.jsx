@@ -8,17 +8,12 @@ it.
 */
 import React from 'react';
 import image from '../images/footer.jpeg';
-import Text from './Text';
-import Title from './Title';
+import Container from './Container';
 
 const Summary = () => (
     <div className="card">
-      <div>
-      <Title itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/title" itemProp="jcr:title" itemType="text"/>
-      <Text itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/text_359993709" itemProp="text" itemType="richtext"/>
-      <Text itemID="urn:aemconnection:/content/wknd/us/en/faqs/jcr:content/root/container/container/text" itemProp="text" itemType="richtext" />
-      </div>
-      <img src={image} alt="footer" />
+        <Container itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/container" itemType="container" />
+        <img src={image} alt="footer" />
     </div>
 );
 
