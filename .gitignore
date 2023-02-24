@@ -39,3 +39,4 @@ bin/
 lib/
 yalc.lock
 .idea/
+.next/

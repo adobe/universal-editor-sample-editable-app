@@ -1,104 +1,215 @@
-# Universal Editor Sample App
+# Adobe Sparkle
 
-## Prerequisites 
+Thank you for your interest in Adobe’s products and services! The images in this demo website are from [Adobe Stock](https://stock.adobe.com/) and are Third Party Material as defined in the Demo Asset Additional Terms at [https://www.adobe.com/legal/terms.html](https://www.adobe.com/legal/terms.html).  If you want to use an Adobe Stock image for other purposes beyond viewing this demo website, such as featuring it on a website, or in marketing materials, you can purchase a license on [Adobe Stock](https://stock.adobe.com/).
 
-- AEMCS instance is available
-- WKND project is installed on the instance
-- CORS enabled on AEM instance for the app
-- For local development with editor, ensure app is using *https*
-
-
-## Setup
-
-- Include [.npmrc](https://github.com/comanV/react-sample-app/blob/prod/.npmrc)
-
-- Install dependencies - ```yarn```
-
-_Note: If facing issues with artifacts, ensure [artifact is accessible](https://artifactory.corp.adobe.com/ui/native/npm-aem-sites-release/@aem-sites/) and if yes, ensure you are authenticated._
-
-```npm login --registry=https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/ --always-auth```
-
-
-## Working with the editor
-
-- [Include package](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/src/index.js#L3) to enable communication between the app and the editor
-
-- Add the AEM instance to be communicated with as a [meta property](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/public/index.html#L8)
-
-The syntax to be followed is -
-
+By default the app will connect to https://publish-p81252-e700817.adobeaemcloud.com. If you wish to connect to another AEM instance you can do so by setting the following query parameters:
 ```
-name="urn:auecon:<name_of_the_mapping" content="<type_of_system>:<system_url>"
+?authorHost=https://author-p81252-e700817.adobeaemcloud.com
+&publishHost=https://publish-p81252-e700817.adobeaemcloud.com
+&endpoint=graphql/execute.json/sample-wknd-app/homepage
 ```
 
-In this app, we are editing content on an AEM instance -
+>Note that for an author host to work, you must first login to the AEM environment within another tab.
+
+If connecting to the author host and publish host fails, the app will fallback to: https://publish-p81252-e700817.adobeaemcloud.com.
+
+## Content Fragment Structure
+
+### *Pages*
+Pages contain an array of Panels
+
+### *Panels*
+Panels contain an array called layers, within you can have image layers, text layers, or shoppable moments.
+
+Panels also have a background, this can contain an image, video or just a solid color.
+
+Panels also have a dark-mode setting, an ID and an active menu item. (this should match the ID of a menu item, this will control which one isn't clickable & is active on the current panel.)
+
+> IDs are important to add as they are the best way to apply animations to something, additionally they are needed for menu navigation
+
+Finally panels also have an animation JSON object that contains two properties: `timelineAnimationSettings` that contains a few options, and `timelineAnimations`, an array that contains slightly altered GSAP animation objects.
+
+### *Image Layer / Background Layer*
+Image layers contain an image, along with some style options like the anchor point or the fit setting.
+```JSONC
+"altText": {
+  "plaintext": "rocks1"
+},
+"id": "rocks1", // ID for the <img />
+"layerId": "layer-rocks1",  // ID for the layer
+"basePosition": "bottom-left",
+"fit": "contain",
+"overflow": false,  // allows image to overflow over the panel
+"forceLoad": false  // won't allow image to be lazy loaded
 ```
-<meta name="urn:auecon:aemconnection" content="aem:https://author-p48068-e243163.adobeaemcloud.com">
+> Using layerID is usually more intuitive for creating animations, because the image layer will have the same dimensions as the panel.
+
+> Any panel images beyond the first on a page are set to lazy load, this can be overwritten.
+
+### *Text Layer*
+Text layers have two ways to place text. In a column or on the left or right side. Menus can also be put inside the L/R content arrays.
+
+Each text layer can have `text items` in all three content arrays at the same time (column, left, right).
+
+```JSONC
+// example text item
+"type": "h3",
+"id": null,
+"content": {
+  "plaintext": "get in gear"
+},
+"styles": [
+  "yellowBox",
+  "uppercase"
+]
+```
+The text layer has a few settings options. `textPosition` and `noPadding` only applies to the column
+```JSONC
+// text layer options
+"id": "layer-button",
+"textPosition": "bottom-center",
+"noPadding": true,
 ```
 
-- Now the fields to be made editable can be instrumented. Multiple samples can be seen across the app.
-
-For eg: [here](https://ue-remote-app-prod.adobe.net/articles/article:aloha-spirits-in-northern-norway), we would like to make the `title` field within the article content fragment editable. For this -
-
-- [Instrument the content fragment](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/src/components/ArticleDetail.jsx#L65). For this, ensure following props are added to the corresponding element - 
-
-    - `itemscope`
-    - `itemtype`: Since this is a CF, you can provide the value `reference`
-    - `itemid`: Path to the corresponding CF on AEM. This should also inform the editor of which system the data comes from _(eg: "urn:aemconnection:<path_to_node>" ) where aemconnection is the name given to the mapping on the meta tag_ 
-
-- [Instrument the field to be edited](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/src/components/ArticleDetail.jsx#L66). Props to be added - 
-
-    - `itemtype`: Type of the field to be edited.For eg `text`
-    - `itemprop`: When within a CF, name of the field in the CF to be edited
 
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [https://localhost:3000](https://localhost:3000) to view it in your browser.
+This is a next js app that will render panels that allow for [animation timelines](https://greensock.com/docs/v3/GSAP/Timeline) powered by [GSAP](https://greensock.com/gsap/). The app is setup to work entirely on the client-side with the ability to specify your own author publish URLs along with a custom endpoint. As long as you are using the correct Content Fragments and graphql call.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get started install all dependencies
+```
+npm i
+```
 
-### `yarn build`
+Afterward you can run the app with:
+```
+npm run dev
+```
 
-Builds the app for production to the `build` folder.
-Utilize a gulp task to bundle all the JS and CSS files in the static build folder into the single main `index.html` file.
-This is useful for having the `index.html` bundle file automatically deployed on `https://ue-remote-app.adobe.net` when pushing new changes on the `main` branch.
+Without any queryparams our app will default to the following fallback URL: https://publish-p81252-e700817.adobeaemcloud.com
+<!-- ```json
+"authorHost": "https://author-p81252-e700817.adobeaemcloud.com"
+"publishHost": "https://publish-p81252-e700817.adobeaemcloud.com/"
+"endpoint": "sample-wknd-app/homepage"
+``` -->
 
-This command is executed automatically before each commit by the `pre-commit` script.
+To use custom URLs simply set these queryparams with your URL, if there are any missing parameters the default will be used in its place.
 
-## Automatic deployment flow
+example URL: http://localhost:3000/?authorHost=https://author-pYOUR-eHOST.adobeaemcloud.com&publishHost=https://publish-pYOUR-eHOST.adobeaemcloud.com&endpoint=graphql/execute.json/GRAPHQL/ENDPOINT
 
-The application uses the husky package (https://www.npmjs.com/package/husky), for adding a pre-commit script, located in the  `.husky` folder.
-The `pre-commit` script will be run before each commit. It will build the project and will add the build bundle from `build/index.html` to the commit.
-We expose this bundle to GitHub. This is happening due to the usage of internal artifactory packages (we cannot build the project on a deployment environment).
+## Host priority
 
-The flow is that we build the application locally and deploy the bundle through GitHub workflow to https://ue-remote-app.adobe.net, on each PR merged to the `main` branch.
+In order for the **author host** to work, you must login as an author within another tab first, otherwise it will not work.
 
-## Manual deployments
+The app will first try to use the author host, if it could not fetch data from it, it will try using the publish host.
 
-### Prerequisites
-Install Netlify CLI
+When both hosts fail to work, the app will fallback to https://publish-p81252-e700817.adobeaemcloud.com. 
 
-`npm install netlify-cli -g`
+## Visual Regression Testing
 
-Set the following environment variables in your terminal settings (for https://ue-remote-app.adobe.net):
+The config files for adjusting the visual regression testing is in the `./tests/visual-regression/` folder. We use [BackstopJS](https://github.com/garris/BackstopJS) to take screenshots of the panels created in out app
 
-`NETLIFY_AUTH_TOKEN = <authentication token>`
+### Running Tests
+Make sure all dev dependencies are installed
+```
+npm i
+```
 
-`NETLIFY_SITE_ID = <site id where to deploy>`
+We did not include the reference images into this git repository. To create a set of reference images run the following command:
 
- ### Deploy commands
-Run in project root:
+```
+npx backstop reference --config=./tests/visual-regression/local.test.config.js
+```
 
-`npm run deploy` - deploy the app at any point to a non-production link, e.g https://62ff59a019923a6f7aec439d--prismatic-panda-c194c0.netlify.app/.
+Once we have a reference run a test with the following command:
+```
+npx backstop test --config=./tests/visual-regression/local.test.config.js
+```
 
-`npm run deploy prod` - deploy the app to the production link https://ue-remote-app.adobe.net (this is usually not needed, the application is automatically deployed on every PR merged to the `main` branch).
- 
-If case of permission issues, run `chmod +x deploy/script.sh` at the root of the project.
+If you want to create/update the reference images with the results of the last test use:
+```
+npx backstop approve --config=./tests/visual-regression/local.test.config.js
+```
 
+### Adjusting Tests
+
+Most of what you will want to adjust can be found in `test.config.js` and `local.test.config.js`. In `test.config.js` you will find global [BackstopJS Settings](https://github.com/garris/BackstopJS#using-backstopjs), most scenario-level settings can also be added here, and they will be used for every scenario including viewports.
+
+> A `Scenario` is the browser instance that is created for the test.
+
+> For help with debugging, you can change the `debugWindow` in `test.config.js` to `true`, this will open the browser as a window so you can see what is going wrong! **Caution! Make sure you have `asyncCaptureLimit` set to `1` so only one browser instance opens at a time.**
+
+`local.test.config.js` has the individual scenario settings and creates them. 
+
+Here you can change base URL & queryparams. Make sure you have the `debugAnim` param set to `instant` to make sure animations happen instantly for the screenshots!
+
+```js
+const baseURL = "http://localhost:3000/";
+
+const queryParams = "?" + new URLSearchParams({
+    debugAnim: "instant",
+    publishHost: "https://publish-p81252-e700817.adobeaemcloud.com",
+    endpoint: "graphql/execute.json/sample-wknd-app/homepage",
+  }).toString();
+```
+
+To add more pages/paths to run the test on, add them to the `pagesToTest` array 
+```js
+const pagesToTest = [
+  "",
+  // "desktop",
+  // "mobile",
+];
+```
+
+With the `selectorToCapture` array you can specify what to capture, in our case we capture every panel in the page, as well as the `.pin-spacer-reference`, created to capture the 2nd half of the last panel. 
+
+You can also use `viewport` and `document`. Document will screenshot the entire page, this can be great for reducing the amount of images, but **it is not recommended with advanced animations!**
+
+The `scenario-builder` function will then create a scenario for every page and default viewport. These scenarios, along with any advanced scenarios you created will then be used by BackstopJS to create screenshots and test them.
+```js
+const selectorsToCapture = [
+  "#intro",
+  "#intro2",
+  "#outdoorPassion",
+  "#intoTheNature",
+  "#intoTheNature2",
+  "#upToTheSky",
+  ".pin-spacer-reference"
+];
+```
+
+> A `.pin-spacer-reference` is created automatically when there are any `.pin-spacers` created by GSAP animations using the [Scrolltrigger Pin feature](https://greensock.com/docs/v3/Plugins/ScrollTrigger), this allows you to easily screenshot the end of a pinned animation!
+
+If you need to create a unique scenario, you can use the `advancedScenarios` array to add them. These are often used for testing click or hover actions. **Remember to have a `postIneractionWait` property that at least as long as any CSS animations that will occur**
+
+```js
+const advancedScenarios = [
+  {
+    label: "mobile-menu",
+    url: baseURL + queryParams,
+    // wait for this long after clicking menu button
+    postInteractionWait: 400,
+    readySelector: "#upToTheSky",
+    selectors: ["viewport"],
+    viewports: [
+      {
+        label: "mobile",
+        width: 540,
+        height: 1200,
+      },
+      {
+        label: "ipad-air",
+        width: 820,
+        height: 1180,
+      },
+    ],
+    clickSelectors: ["#mobile-menu-button"],
+  },
+];
+```
+
+For more information on how BackstopJS configs can be configured check out the [GitHub Page](https://github.com/garris/BackstopJS#using-backstopjs).

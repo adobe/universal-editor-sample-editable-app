@@ -1,0 +1,59 @@
+.layerImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  &.debug {
+    border: 2px solid crimson;
+  }
+
+  &.showOverflow {
+    overflow: visible;
+    .image {
+      z-index: 100;
+    }
+  }
+  &.hideOverflow {
+    overflow: hidden;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.cover .image {
+    object-fit: cover;
+  }
+  &.contain .image {
+    object-fit: contain;
+  }
+  &.fill .image {
+    object-fit: fill;
+  }
+  &.scale-down .image {
+    object-fit: scale-down;
+  }
+  &.none .image {
+    object-fit: none;
+  }
+
+  // prettier-ignore
+  &.top-left .image{object-position: top left;} // prettier-ignore
+  &.top-center .image{object-position: top center;} // prettier-ignore
+  &.top-right .image{object-position: top right;} // prettier-ignore
+  &.center-left .image{object-position: center left;} // prettier-ignore
+  &.center-right .image{object-position: center right;} // prettier-ignore
+  &.bottom-left .image{object-position: bottom left;} // prettier-ignore
+  &.bottom-center .image{object-position: bottom center;} // prettier-ignore
+  &.bottom-right .image{object-position: bottom right;} // prettier-ignore
+}
+
+.overflowImageWrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  &.showOverflow {
+    overflow: visible;
+  }
+}
