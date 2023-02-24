@@ -79,34 +79,10 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.0.1.tgz#b38b444ad3aa5fedbb15f2f746dcd934226a12dd"
   integrity sha512-+u76oB43nOHrF4DDWRLWDCtci7f3QJoEBigemIdIeTi1ODqjx6Tad9NCVnPRwewWlKkVab5PlK8DCtPTyX7S8g==
 
-"@aem-sites/universal-editor-commons@^0.0.29":
-  version "0.0.29"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-commons/-/@aem-sites/universal-editor-commons-0.0.29.tgz#1a9b1deb805aa26fca02be01ee51c95b262d5c53"
-  integrity sha512-ERm9so6TyUOkDxHeO8ktSpqpgFpUJx/tJR1Pywy3Ju01mF6OHfQZyJNg3Xsvl8WJ66EyKoqc8O4UgsHT73rtMA==
-  dependencies:
-    typescript "~4.7.2"
-    uuid "^9.0.0"
-
-"@aem-sites/universal-editor-cors@^0.0.57":
-  version "0.0.57"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-cors/-/@aem-sites/universal-editor-cors-0.0.57.tgz#00f0248a85a953ab93b208a6668868f71c26b04e"
-  integrity sha512-i3zbsEXJT2kWwOCraPsXvMvtvFGRZ/TxgHwnbNvYErXVdvcA77wUK2BrD6q2IadGJ8nVt6ezlyXVPpg4i3GOIQ==
-  dependencies:
-    "@aem-sites/universal-editor-commons" "^0.0.29"
-    "@aem-sites/universal-editor-overlays" "^0.0.55"
-    penpal "^6.2.2"
-    typescript "~4.7.2"
-    zustand "^4.1.5"
-
-"@aem-sites/universal-editor-overlays@^0.0.55":
-  version "0.0.55"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-overlays/-/@aem-sites/universal-editor-overlays-0.0.55.tgz#02cca90308078fa000d5b99b9ba8d4d4309a41a8"
-  integrity sha512-oCeUaWYNtEGEwN/RD1CQadZN09T5qIS75Gkdg58EQNUTi2NskUgOl3UsI4v3wIgPedP4w4pQU/SuNJcKcClIkw==
-  dependencies:
-    "@aem-sites/universal-editor-commons" "^0.0.29"
-    debounce "^1.2.1"
-    typescript "~4.7.2"
-    uuid "^9.0.0"
+"@adobe/universal-editor-cors@^1.0.2":
+  version "1.0.2"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-platform-release/@adobe/universal-editor-cors/-/universal-editor-cors-1.0.2.tgz#9c495c7a22328023c42502a5368483df87e3d96d"
+  integrity sha512-ilw+yrnYXexaJUTrz1QBHf3jCILFheosCtxnd5gkb+4zuEBRzVsWrm50WYKxzHycWhNPTfboQW5MC/Pf1IuLyw==
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
@@ -4349,11 +4325,6 @@ data-urls@^2.0.0:
     abab "^2.0.3"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
-
-debounce@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
-  integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -12394,11 +12365,6 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@~4.7.2:
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
-  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
-
 uid-safe@~2.1.5:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/uid-safe/-/uid-safe-2.1.5.tgz#2b3d5c7240e8fc2e58f8aa269e5ee49c0857bd3a"
@@ -12670,11 +12636,6 @@ uuid@^8.3.0, uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
-
-uuid@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
-  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 v8-compile-cache@^2.0.3:
   version "2.3.0"
@@ -13419,12 +13380,5 @@ zustand@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.1.1.tgz#5a61cc755a002df5f041840a414ae6e9a99ee22b"
   integrity sha512-h4F3WMqsZgvvaE0n3lThx4MM81Ls9xebjvrABNzf5+jb3/03YjNTSgZXeyrvXDArMeV9untvWXRw1tY+ntPYbA==
-  dependencies:
-    use-sync-external-store "1.2.0"
-
-zustand@^4.1.5:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.1.5.tgz#7402b511f5b23ccb0f9ba6d20ae01ec817e16eb6"
-  integrity sha512-PsdRT8Bvq22Yyh1tvpgdHNE7OAeFKqJXUxtJvj1Ixw2B9O2YZ1M34ImQ+xyZah4wZrR4lENMoDUutKPpyXCQ/Q==
   dependencies:
     use-sync-external-store "1.2.0"

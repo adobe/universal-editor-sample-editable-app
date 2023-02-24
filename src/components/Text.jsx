@@ -6,22 +6,17 @@ NOTICE: Adobe permits you to use, modify, and distribute this file in
 accordance with the terms of the Adobe license agreement accompanying
 it.
 */
-import React, { useEffect, useState, useMemo } from 'react';
-import { getEditorContext } from '@aem-sites/universal-editor-cors';
+import React, {useEffect} from 'react';
 import {fetchData} from '../utils/fetchData';
 
 const Text = (props) => {
-  const { itemID, itemProp = "text", itemType, className, data: initialData, isComponent = false } = props;
-  const [isInEditor,setIsInEditor] = useState(false);
-  const editorProps = useMemo(() => isInEditor && {
+  const {itemID, itemProp = "text", itemType, className, data: initialData, isComponent = false} = props;
+  const editorProps = {
     itemID,
     itemProp,
     itemType,
     "data-editor-behavior": isComponent
-  }, [isInEditor, itemID, itemProp, itemType, isComponent]);
-  useEffect(() => {
-    getEditorContext({ isInEditor: setIsInEditor });
-  }, []);
+  };
 
   const [data,setData] = React.useState(initialData || {});
   useEffect(() => {
