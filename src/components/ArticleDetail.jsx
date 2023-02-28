@@ -73,7 +73,7 @@ function ArticleDetailRender({
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"
 					 src={`${REACT_APP_PUBLISH_URI}${featuredImage._path}`} alt={title}/>
-				<div itemProp="main" itemType="richtext">{mapJsonRichText(main.json)}</div>
+				<div itemProp="main" itemType="richtext" itemID={_path}>{mapJsonRichText(main.json)}</div>
 			</div>
 		</div>
 	);
