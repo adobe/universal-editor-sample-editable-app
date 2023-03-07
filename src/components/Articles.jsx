@@ -12,8 +12,7 @@ import {Link} from 'react-router-dom';
 import Error from './Error';
 import Loading from './Loading';
 import "./Articles.scss";
-
-const {REACT_APP_PUBLISH_URI} = process.env;
+import {getPublishHost} from "../utils/fetchData";
 
 const Article = ({_path, title, main, authorFragment, slug}) => {
     const editorProps = {
@@ -29,7 +28,7 @@ const Article = ({_path, title, main, authorFragment, slug}) => {
                     <h3 data-id="title" itemProp="title" itemType="text">{title}</h3>
                 </Link>
                 <img className="article-item-image"
-                     src={`${REACT_APP_PUBLISH_URI}${authorFragment?.profilePicture._path}`}
+                     src={`${getPublishHost()}${authorFragment?.profilePicture._path}`}
                      alt={title} itemProp="profilePicture" itemType="image"/>
                 <p>{`By ${authorFragment.firstName} ${authorFragment.lastName}`}</p>
             </div>

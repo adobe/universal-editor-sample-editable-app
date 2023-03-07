@@ -7,16 +7,19 @@ import AdventureDetail from "./components/AdventureDetail";
 import Articles from "./components/Articles";
 import ArticleDetail from "./components/ArticleDetail";
 import About from "./components/About";
-
-const {REACT_APP_HOST_URI} = process.env;
+import {getAuthorHost} from "./utils/fetchData";
+import { Helmet } from "react-helmet";
 
 function App() {
   useEffect(() => {
-    document.querySelector('meta[name="urn:auecon:aemconnection"]').setAttribute("content", `aem:${REACT_APP_HOST_URI}`);
+    document.querySelector('meta[name="urn:auecon:aemconnection"]').setAttribute("content", `aem:${getAuthorHost()}`);
   });
 
   return (
     <div className="App">
+      <Helmet>
+        <meta name="urn:auecon:aemconnection2" content={`aem:${getAuthorHost()}`} />
+      </Helmet>
       <div className="Home">
         <header>
           <img src={logo} className="logo" alt="WKND Logo" />
