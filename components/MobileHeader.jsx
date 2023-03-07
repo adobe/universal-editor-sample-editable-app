@@ -1,4 +1,4 @@
-import { scrollToId, debounce } from "../utils";
+import { scrollToId } from "./utils";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -28,6 +28,17 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
   const [navLabel, setNavLabel] = useState(mobileNavObj?.menuItems[0].text || "Navigation");
 
   const navItems = mobileNavObj?.menuItems || [];
+
+  // runs passed function if timeout has gone by without being called again.
+  function debounce(func, wait) {
+    let timeout;
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      timeout = setTimeout(func, wait);
+    };
+  }
 
   function findCurrentElement() {
     // searches each nav item for closest.

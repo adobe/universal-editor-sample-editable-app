@@ -139,6 +139,8 @@ $transition: all 0.3s ease-in-out;
     left: 0;
     background: linear-gradient(180deg, transparent 60px, white 60px);
     width: 60%;
+    height: 100%;
+    z-index: 100;
     display: flex;
     flex-direction: column;
     padding: 0 16px;

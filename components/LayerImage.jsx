@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
-const typeLookup = {
-  mobile: "mobile-vertical.webp",
-  desktop: "desktop.webp",
-};
-
 export default function LayerImage({ data, panelNr, host, viewType = "desktop" }) {
   const { image, altText, layerId, id, overflow, basePosition, debug, fit, forceLoad } = data;
+
+  const typeLookup = {
+    mobile: "mobile-vertical.webp",
+    desktop: "desktop.webp",
+  };
 
   const source = `${host}/${
     image?._path.startsWith("/") ? image._path.substring(1) : image._path

@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
-const typeLookup = {
-  mobile: "mobile-vertical.webp",
-  desktop: "desktop.webp",
-};
-
 export default function Background({ backgroundProps, lazy, host, viewType }) {
   const { backgroundContent, altText, color, zIndex } = backgroundProps;
+
+  const typeLookup = {
+    mobile: "mobile-vertical.webp",
+    desktop: "desktop.webp",
+  };
 
   const isVideo = backgroundContent?.format?.includes("video/");
 

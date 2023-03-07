@@ -1,10 +1,20 @@
 import { createContext, useEffect, useState } from "react";
-import { debounce } from "../utils";
 
 export const WindowSizeProvider = createContext(null);
 
 export default function ResizeListener({ children }) {
   const [size, setSize] = useState({ width: null, height: null });
+
+  // runs passed function if timeout has gone by without being called again.
+  function debounce(func, wait) {
+    let timeout;
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      timeout = setTimeout(func, wait);
+    };
+  }
 
   const handleResize = debounce(() => {
     setSize({ width: window.innerWidth, height: window.innerHeight });

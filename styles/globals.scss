@@ -36,12 +36,13 @@ h6 {
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+  Helvetica Neue, sans-serif;
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  overflow-y: auto;
 }
 
 #__next {
@@ -108,7 +109,7 @@ button {
 .panel {
   position: relative;
   width: 100%;
-  height: 100vh;
+  //height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

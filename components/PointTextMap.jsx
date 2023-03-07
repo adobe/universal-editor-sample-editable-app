@@ -9,8 +9,6 @@ export default function PointTextMap({ data }) {
     if (retries > 2) {
       return;
     }
-    
-    // TODO Instead of retries, maybe wait for the image to finish loading to get the naturalWidth eg img.onload = cb
     const el = document.querySelector(data?.imageSelector);
     // if naturalWidth isn't currently present, set a default / forced size, and retry in 100ms
     if (!el || el.naturalWidth === 0) {
@@ -29,19 +27,27 @@ export default function PointTextMap({ data }) {
         {data?.content?.map((item, index) => {
           return (
             <div
-              key={index}
-              className="pointTextItemWrapper"
-              id={item.id}
-              style={{
+                key={index}
+                className="pointTextItemWrapper"
+                id={item.id}
+                style={{
                 left: `calc(${item.x}% + 50%)`,
                 top: `calc(${item.y}% + 50%)`,
               }}
             >
               <div className="textWrapper">
                 <div className="buyText">
-                  <a href={item.link || window.location.href}>Buy for {item.pricetag}</a>
+                  <a href={item.link || window.location.href}>
+                    Buy for {item.pricetag}
+                  </a>
                 </div>
-                <div className="text">{item.text}</div>
+                <div className="text"
+                     itemScope
+                     itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+                     itemProp="text"
+                     itemType="text">
+                  {item.text}
+                </div>
                 <div className="arrow" />
               </div>
               <div className="dot" />
