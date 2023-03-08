@@ -8,7 +8,7 @@ import Articles from "./components/Articles";
 import ArticleDetail from "./components/ArticleDetail";
 import About from "./components/About";
 import {getAuthorHost} from "./utils/fetchData";
-import { Helmet } from "react-helmet";
+import {Helmet} from "react-helmet";
 
 function App() {
   useEffect(() => {
@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Helmet>
-        <meta name="urn:auecon:aemconnection2" content={`aem:${getAuthorHost()}`} />
+        <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
       </Helmet>
       <div className="Home">
         <header>
