@@ -27,14 +27,15 @@ function AdventureItem(props) {
 
   return (
          <li className="adventure-item" itemScope {...editorProps}>
-          <Link to={`/adventure:${props.slug}`}>
-            <img className="adventure-item-image" src={`${getPublishHost()}${props.primaryImage._path}`}
-                alt={props.title} itemProp="primaryImage" itemType="image" />
+          <Link to={`/adventure:${props.slug}${window.location.search}`}>
+              <img className="adventure-item-image" src={`${getPublishHost()}${props.primaryImage._path}`}
+                   alt={props.title} itemProp="primaryImage" itemType="image"/>
           </Link>
-          <div className="adventure-item-length-price">
-              <div className="adventure-item-length" itemProp="tripLength" itemType="text">{props.tripLength}</div>
-              <div className="adventure-item-price">$<span itemProp="price" itemType="text">{props.price}</span></div>
-          </div>
+             <div className="adventure-item-length-price">
+                 <div className="adventure-item-length" itemProp="tripLength" itemType="text">{props.tripLength}</div>
+                 <div className="adventure-item-price">$<span itemProp="price" itemType="text">{props.price}</span>
+                 </div>
+             </div>
           <div className="adventure-item-title" itemProp="title" itemType="text">{props.title}</div>
       </li>
   );

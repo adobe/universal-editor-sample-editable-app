@@ -24,7 +24,7 @@ const Article = ({_path, title, main, authorFragment, slug}) => {
     return (
         <li className="article-item" itemScope {...editorProps}>
             <div>
-                <Link to={`/articles/article:${slug}`}>
+                <Link to={`/articles/article:${slug}${window.location.search}`}>
                     <h3 data-id="title" itemProp="title" itemType="text">{title}</h3>
                 </Link>
                 <img className="article-item-image"
@@ -48,7 +48,7 @@ const Article = ({_path, title, main, authorFragment, slug}) => {
                 neoprene. Knowing it is our last surf before a few days of hard wind, we take full advantage out of
                 every ripple
                 the North Atlantic Ocean sends our way.<br/>
-                <Link to={`/articles/article:${slug}`}>
+                <Link to={`/articles/article:${slug}${window.location.search}`}>
                     Read more in the article
                 </Link>
             </p>
