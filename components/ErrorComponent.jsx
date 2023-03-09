@@ -1,6 +1,6 @@
 const lookupObject = {
   customHost: "Could not fetch data from: URL_HERE",
-  publish: "Fetch failed on fallback publish URL",
+  publish: "Fetch failed on fallback publish URL!!!",
 };
 
 const getMessage = (type, url) => {
