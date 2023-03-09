@@ -11,11 +11,6 @@ import {getAuthorHost} from "./utils/fetchData";
 import {Helmet} from "react-helmet";
 
 function App() {
-  const connectionTag = document.querySelector('meta[name="urn:auecon:aemconnection"]');
-
-  useEffect(() => {
-    connectionTag?.setAttribute("content", `aem:${getAuthorHost()}`);
-  },[connectionTag]);
 
   return (
     <div className="App">
