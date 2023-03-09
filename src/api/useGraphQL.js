@@ -7,47 +7,47 @@ it.
 */
 import {useState, useEffect} from 'react';
 import {getAuthorHost} from "../utils/fetchData";
+
 const {AEMHeadless} = require('@adobe/aem-headless-client-js')
 const {GRAPHQL_ENDPOINT} = process.env;
 
 /**
  * Custom React Hook to perform a GraphQL query
- * @param query - GraphQL query
  * @param path - Persistent query path
  */
-function useGraphQL(query, path) {
-    let [data, setData] = useState(null);
-    let [errorMessage, setErrors] = useState(null);
-    useEffect(() => {
-        function makeRequest() {
-            const sdk = new AEMHeadless({
-                serviceURL: getAuthorHost(),
-                endpoint: GRAPHQL_ENDPOINT,
-            });
-            const request = query ? sdk.runQuery.bind(sdk) : sdk.runPersistedQuery.bind(sdk);
+function useGraphQL(path) {
+	let [data, setData] = useState(null);
+	let [errorMessage, setErrors] = useState(null);
+	useEffect(() => {
+		function makeRequest() {
+			const sdk = new AEMHeadless({
+				serviceURL: getAuthorHost(),
+				endpoint: GRAPHQL_ENDPOINT,
+			});
+			const request = sdk.runPersistedQuery.bind(sdk);
 
-            request(path)
-                .then(({data, errors}) => {
-                    //If there are errors in the response set the error message
-                    if (errors) {
-                        setErrors(mapErrors(errors));
-                    }
-                    //If data in the response set the data as the results
-                    if (data) {
-                        setData(data);
-                    }
-                })
-                .catch((error) => {
-                    setErrors(error);
-                    sessionStorage.removeItem('accessToken');
-                });
-        }
-        makeRequest();
-    }, [query, path]);
+			request(path, {}, {credentials: "include"})
+				.then(({data, errors}) => {
+					//If there are errors in the response set the error message
+					if (errors) {
+						setErrors(mapErrors(errors));
+					}
+					//If data in the response set the data as the results
+					if (data) {
+						setData(data);
+					}
+				})
+				.catch((error) => {
+					setErrors(error);
+					sessionStorage.removeItem('accessToken');
+				});
+		}
+
+		makeRequest();
+	}, [path]);
 
 
-
-    return {data, errorMessage}
+	return {data, errorMessage}
 }
 
 /**
@@ -55,7 +55,7 @@ function useGraphQL(query, path) {
  * @param {*} errors
  */
 function mapErrors(errors) {
-    return errors.map((error) => error.message).join(",");
+	return errors.map((error) => error.message).join(",");
 }
 
 export default useGraphQL;

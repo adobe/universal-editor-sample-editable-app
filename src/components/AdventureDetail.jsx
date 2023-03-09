@@ -25,7 +25,7 @@ function AdventureDetail() {
 	const persistentQuery = `wknd-shared/adventure-by-slug;slug=${adventureSlug}`;
 
 	//Use a custom React Hook to execute the GraphQL query
-	const {data, errorMessage} = useGraphQL('', persistentQuery);
+	const {data, errorMessage} = useGraphQL(persistentQuery);
 
 	//If there is an error with the GraphQL query
 	if (errorMessage) return <Error errorMessage={errorMessage}/>;
