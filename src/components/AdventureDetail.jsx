@@ -109,7 +109,7 @@ function AdventureDetailRender({
 function NoAdventureFound() {
 	return (
 		<div className="adventure-detail">
-			<Link className="adventure-detail-close-button" to={"/"}>
+			<Link className="adventure-detail-close-button" to={`/${window.location.search}`}>
 				<img className="Backbutton-icon" src={backIcon} alt="Return"/>
 			</Link>
 			<Error errorMessage="Missing data, adventure could not be rendered."/>
