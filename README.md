@@ -1,56 +1,27 @@
 # Universal Editor Sample App
 
+## Using the Sample App
+This Sample App is hosted at https://ue-remote-app.adobe.net.
+Per Default the content is retrieved and written back to our Production Demo Environment:
+```
+authorHost=https://author-p7452-e12433.adobeaemcloud.com
+publishHost=https://publish-p7452-e12433.adobeaemcloud.com
+```
+If you'd like to retrieve content from another environment add authorHost & publishHost as query parameters, e.g.
+
+[https://ue-remote-app.adobe.net?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com](https://ue-remote-app.adobe.net?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com)
+
+respectively if run on local dev environment:
+
+[https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com](https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com)
+
+
 ## Prerequisites 
 
 - AEMCS instance is available
 - WKND project is installed on the instance
 - CORS enabled on AEM instance for the app
 - For local development with editor, ensure app is using *https*
-
-
-## Setup
-
-- Include [.npmrc](https://github.com/comanV/react-sample-app/blob/prod/.npmrc)
-
-- Install dependencies - ```yarn```
-
-_Note: If facing issues with artifacts, ensure [artifact is accessible](https://artifactory.corp.adobe.com/ui/native/npm-aem-sites-release/@aem-sites/) and if yes, ensure you are authenticated._
-
-```npm login --registry=https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/ --always-auth```
-
-
-## Working with the editor
-
-- [Include package](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/src/index.js#L3) to enable communication between the app and the editor
-
-- Add the AEM instance to be communicated with as a [meta property](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/public/index.html#L8)
-
-The syntax to be followed is -
-
-```
-name="urn:auecon:<name_of_the_mapping" content="<type_of_system>:<system_url>"
-```
-
-In this app, we are editing content on an AEM instance -
-```
-<meta name="urn:auecon:aemconnection" content="aem:https://author-p48068-e243163.adobeaemcloud.com">
-```
-
-- Now the fields to be made editable can be instrumented. Multiple samples can be seen across the app.
-
-For eg: [here](https://ue-remote-app-prod.adobe.net/articles/article:aloha-spirits-in-northern-norway), we would like to make the `title` field within the article content fragment editable. For this -
-
-- [Instrument the content fragment](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/src/components/ArticleDetail.jsx#L65). For this, ensure following props are added to the corresponding element - 
-
-    - `itemscope`
-    - `itemtype`: Since this is a CF, you can provide the value `reference`
-    - `itemid`: Path to the corresponding CF on AEM. This should also inform the editor of which system the data comes from _(eg: "urn:aemconnection:<path_to_node>" ) where aemconnection is the name given to the mapping on the meta tag_ 
-
-- [Instrument the field to be edited](https://github.com/comanV/react-sample-app/blob/c8eb6ab997a926440493e0bf959dbc734203973a/src/components/ArticleDetail.jsx#L66). Props to be added - 
-
-    - `itemtype`: Type of the field to be edited.For eg `text`
-    - `itemprop`: When within a CF, name of the field in the CF to be edited
-
 
 ## Available Scripts
 

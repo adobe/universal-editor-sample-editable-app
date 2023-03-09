@@ -13,8 +13,7 @@ import Loading from './Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
-
-const {REACT_APP_PUBLISH_URI} = process.env;
+import {getPublishHost} from "../utils/fetchData";
 
 function AdventureDetail() {
 
@@ -92,7 +91,7 @@ function AdventureDetailRender({
 			</div>
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"
-					 src={`${REACT_APP_PUBLISH_URI}${primaryImage._path}`} alt={title} itemType="image"/>
+					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemType="image"/>
 				<div itemProp="description"
 					 itemType="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
 				<h2>Itinerary</h2>

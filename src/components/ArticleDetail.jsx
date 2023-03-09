@@ -13,8 +13,7 @@ import Loading from './Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
-
-const {REACT_APP_PUBLISH_URI} = process.env;
+import {getPublishHost} from "../utils/fetchData";
 
 function ArticleDetail() {
 
@@ -72,7 +71,7 @@ function ArticleDetailRender({
 			</div>
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"
-					 src={`${REACT_APP_PUBLISH_URI}${featuredImage._path}`} alt={title}/>
+					 src={`${getPublishHost()}${featuredImage._path}`} alt={title}/>
 				<div itemProp="main" itemType="richtext">{mapJsonRichText(main.json)}</div>
 			</div>
 		</div>
@@ -112,7 +111,7 @@ function Contributer(props) {
 	let profilePicture = null;
 	if (props.profilePicture) {
 		profilePicture =
-			<img className="contributor-image" src={`${REACT_APP_PUBLISH_URI}${props.profilePicture._path}`}
+			<img className="contributor-image" src={`${getPublishHost()}${props.profilePicture._path}`}
 				 alt={props.firstName}/>
 	}
 

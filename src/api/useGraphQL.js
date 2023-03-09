@@ -6,8 +6,9 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import {useState, useEffect} from 'react';
+import {getAuthorHost} from "../utils/fetchData";
 const {AEMHeadless} = require('@adobe/aem-headless-client-js')
-const {REACT_APP_GRAPHQL_ENDPOINT, REACT_APP_HOST_URI} = process.env;
+const {GRAPHQL_ENDPOINT} = process.env;
 
 /**
  * Custom React Hook to perform a GraphQL query
@@ -20,11 +21,11 @@ function useGraphQL(query, path) {
     useEffect(() => {
         function makeRequest() {
             const sdk = new AEMHeadless({
-                serviceURL: REACT_APP_HOST_URI,
-                endpoint: REACT_APP_GRAPHQL_ENDPOINT,
+                serviceURL: getAuthorHost(),
+                endpoint: GRAPHQL_ENDPOINT,
             });
             const request = query ? sdk.runQuery.bind(sdk) : sdk.runPersistedQuery.bind(sdk);
-    
+
             request(path)
                 .then(({data, errors}) => {
                     //If there are errors in the response set the error message
@@ -44,7 +45,7 @@ function useGraphQL(query, path) {
         makeRequest();
     }, [query, path]);
 
-    
+
 
     return {data, errorMessage}
 }
