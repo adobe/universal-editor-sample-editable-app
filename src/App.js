@@ -13,7 +13,7 @@ import {Helmet} from "react-helmet";
 function App() {
 
   return (
-    <div className="App">
+    <div className="App">Hello World
       <Helmet>
         <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
       </Helmet>
