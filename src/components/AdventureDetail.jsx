@@ -8,8 +8,8 @@ it.
 import React from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import backIcon from '../images/icon-close.svg';
-import Error from './Error';
-import Loading from './Loading';
+import Error from './base/Error';
+import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';

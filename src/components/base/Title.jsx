@@ -7,7 +7,7 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React, {useEffect, useMemo} from 'react';
-import {fetchData} from '../utils/fetchData';
+import {fetchData} from '../../utils/fetchData';
 
 const Title = (props) => {
   const {itemID, itemProp = "jcr:title", itemType, className, data: initialData, isComponent = false} = props;

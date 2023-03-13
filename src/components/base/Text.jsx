@@ -7,7 +7,7 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React, {useEffect} from 'react';
-import {fetchData} from '../utils/fetchData';
+import {fetchData} from '../../utils/fetchData';
 
 const Text = (props) => {
   const {itemID, itemProp = "text", itemType, className, data: initialData, isComponent = false} = props;

@@ -9,13 +9,13 @@ it.
 @import './styles/variables';
 
 body {
-    background-color: $body-bg;
+    background-color: $black;
     font-family: $font-family-base;
     margin: 0;
     padding: 0;
     font-size: $font-size-base;
     text-align: left;
-    color: $text-color;
+    color: $white;
     line-height: $line-height-base;
     -webkit-font-smoothing: antialiased;
 }
@@ -26,13 +26,12 @@ body {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 line-height: $line-height-base;
-color: $text-color;
 }
 
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-font-family: $font-family-serif;
+font-family: $font-family-sans-serif;
 font-weight: $font-weight-normal;
 margin-top: $line-height-computed;
 margin-bottom: calc($line-height-computed / 2);
@@ -54,7 +53,6 @@ h5, .h5 { font-size: $font-size-h5; }
 h6, .h6 { font-size: $font-size-h6; }
 
 a {
-  color: $link-color;
   text-decoration: none;
 }
 
@@ -85,42 +83,43 @@ ul {
 ol, ul {
     padding-left: 0;
     margin-bottom: 0;
+    list-style: none;
 }
 
 hr {
     border: none;
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid $gray;
+}
+
+.pill {
+  padding: 11px 16px 13px;
+  border-radius: 20px
 }
 
 button {
-  background-color: $black;
-  color: $white;
-  text-transform: uppercase;
+  background-color: $button-color;
+  color: $black;
+  padding: 12px 40px;
   font-size: $font-size-base;
   font-family: $font-family-base;
-  border: none;
-  padding: 0.5em;
+  border: 1px solid $black;
+  border-radius: 4px;
   min-width: 4rem;
   margin-right: 1rem;
   cursor: pointer;
 
-  &:focus, &:active{
-    background-color: $white;
-    color: $black;
-    border: 1px solid $black;
+  &:hover {
+    background-color: #C4E018;
   }
-}
-.App {
-  max-width: $max-width;
-  margin: 0 auto;
-  padding-left: 14px;
-  padding-right: 14px;
-}
 
-.logo {
-  width: 128px;
-  height: 48px;
-  margin: 20px 0px 10px 0px;
+  &:focus, &:active{
+    background-color: #ABC123;
+  }
+  &.dark {
+    border: 1px solid $white;
+    background: inherit;
+    color: inherit;
+  }
 }
 
 // Error
@@ -157,9 +156,6 @@ button {
     grid-template-columns: 1fr 2fr;
     grid-column-gap: 20px;
   }
-  ul {
-    list-style: none;
-  }
   li {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -194,5 +190,44 @@ button {
     color: #fff;
     text-align: center;
     background-image: url("./images/wknd-card.jpeg")
+  }
+}
+
+.header, .footer {
+  background-color: $black;
+  color: $white;
+  display: grid;
+  align-items: center;
+  .logo {
+    height: 24px;
+  }
+  .menu {
+    margin: 0;
+    display: flex;
+    column-gap: 40px;
+
+    a {
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
+.header {
+  justify-items: center;
+  grid-template-columns: 1fr 4fr 1fr;
+  .logo {
+    margin: 44px 0;
+  }
+}
+.footer {
+  padding: 40px 80px;
+  grid-template-columns: 1fr 1fr;
+  nav, small {
+    justify-self: end;
+  }
+  small {
+    padding: 40px 0;
+    color: $gray;
+    grid-column: span 2;
   }
 }

@@ -8,19 +8,20 @@ it.
 import React from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import backIcon from '../images/icon-close.svg';
-import Error from './Error';
-import Loading from './Loading';
+import Error from './base/Error';
+import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
+import { getArticle } from '../utils/commons';
 import {getPublishHost} from "../utils/fetchData";
 
-function ArticleDetail() {
+function ArticleDetail({ article }) {
 
 	// params hook from React router
 	const {slug} = useParams();
 	const navigate = useNavigate();
-	const articleSlug = slug.substring(1);
+	const articleSlug = slug ? slug.substring(1) : article;
 
 	const persistentQuery = `wknd-shared/article-by-slug;slug=${articleSlug}`;
 
@@ -87,20 +88,6 @@ function NoArticleFound() {
 			<Error errorMessage="Missing data, article could not be rendered."/>
 		</div>
 	);
-}
-
-/**
- * Helper function to get the first adventure from the response
- * @param {*} response
- */
-function getArticle(data) {
-	if (data && data.articleList && data.articleList.items) {
-		// expect there only to be a single adventure in the array
-		if (data.articleList.items.length === 1) {
-			return data.articleList.items[0];
-		}
-	}
-	return undefined;
 }
 
 function Contributer(props) {
