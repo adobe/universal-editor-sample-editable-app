@@ -107,3 +107,21 @@ export const fetchAndSetData = (hostConfig, setStates, fetchVariations) => {
     );
   });
 };
+
+export const getWkndAppUrl = (queryParams) => {
+  const wkndAppBaseUrl = "https://ue-remote-app.adobe.net/"
+  if (Object.keys(queryParams).length) {
+    const params = [];
+    for (let param in queryParams) {
+      params.push([param, queryParams[param]]);
+    }
+    let allQueryParams = params.reduce(
+        (accumulator, currentValue, currentIndex) =>
+            accumulator + `${currentValue[0]}=${currentValue[1]}${currentIndex !== params.length - 1 ? "&" : ""}`,
+        `?`,
+    );
+    return `${wkndAppBaseUrl}${allQueryParams}`;
+  }
+  return `${wkndAppBaseUrl}`;
+}
+
