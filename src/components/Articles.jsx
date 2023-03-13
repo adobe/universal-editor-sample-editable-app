@@ -12,8 +12,7 @@ import {Link} from 'react-router-dom';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Articles.scss";
-
-const {REACT_APP_PUBLISH_URI} = process.env;
+import {getPublishHost} from "../utils/fetchData";
 
 const Article = ({_path, title, main, authorFragment, slug}) => {
     const editorProps = {
@@ -25,11 +24,11 @@ const Article = ({_path, title, main, authorFragment, slug}) => {
     return (
         <li className="article-item" itemScope {...editorProps}>
             <div>
-                <Link to={`/articles/article:${slug}`}>
+                <Link to={`/articles/article:${slug}${window.location.search}`}>
                     <h3 data-id="title" itemProp="title" itemType="text">{title}</h3>
                 </Link>
                 <img className="article-item-image"
-                     src={`${REACT_APP_PUBLISH_URI}${authorFragment?.profilePicture._path}`}
+                     src={`${getPublishHost()}${authorFragment?.profilePicture._path}`}
                      alt={title} itemProp="profilePicture" itemType="image"/>
                 <p>{`By ${authorFragment.firstName} ${authorFragment.lastName}`}</p>
             </div>
@@ -49,7 +48,7 @@ const Article = ({_path, title, main, authorFragment, slug}) => {
                 neoprene. Knowing it is our last surf before a few days of hard wind, we take full advantage out of
                 every ripple
                 the North Atlantic Ocean sends our way.<br/>
-                <Link to={`/articles/article:${slug}`}>
+                <Link to={`/articles/article:${slug}${window.location.search}`}>
                     Read more in the article
                 </Link>
             </p>
@@ -61,7 +60,7 @@ const Articles = () => {
   const persistentQuery = 'wknd-shared/articles-all';
 
   //Use a custom React Hook to execute the GraphQL query
-  const { data, errorMessage } = useGraphQL('', persistentQuery);
+  const { data, errorMessage } = useGraphQL(persistentQuery);
 
   //If there is an error with the GraphQL query
   if(errorMessage) return <Error errorMessage={errorMessage} />;

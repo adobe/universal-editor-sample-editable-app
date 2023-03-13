@@ -12,8 +12,7 @@ import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Adventures.scss";
 import Title from './base/Title';
-
-const { REACT_APP_PUBLISH_URI } =process.env;
+import {getPublishHost} from "../utils/fetchData";
 
 function AdventureItem(props) {
     const editorProps = {
@@ -31,7 +30,7 @@ function AdventureItem(props) {
          <li className="adventure-item" itemScope {...editorProps}>
           <div className="adventure-image-card">
           <Link to={`/adventure:${props.slug}`}>
-            <img className="adventure-item-image" src={`${REACT_APP_PUBLISH_URI}${props.primaryImage._path}`}
+            <img className="adventure-item-image" src={`${getPublishHost()}${props.primaryImage._path}`}
                   alt={props.title} itemProp="primaryImage" itemType="image" />
           </Link>
           </div>
@@ -47,7 +46,7 @@ function AdventureItem(props) {
 function Adventures() {
   const persistentQuery = 'wknd-shared/adventures-all';
   //Use a custom React Hook to execute the GraphQL query
-  const { data, errorMessage } = useGraphQL('', persistentQuery);
+  const { data, errorMessage } = useGraphQL(persistentQuery);
 
   //If there is an error with the GraphQL query
   if(errorMessage) return <Error errorMessage={errorMessage} />;

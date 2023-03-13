@@ -13,8 +13,7 @@ import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
-
-const {REACT_APP_PUBLISH_URI} = process.env;
+import {getPublishHost} from "../utils/fetchData";
 
 function AdventureDetail() {
 
@@ -26,7 +25,7 @@ function AdventureDetail() {
 	const persistentQuery = `wknd-shared/adventure-by-slug;slug=${adventureSlug}`;
 
 	//Use a custom React Hook to execute the GraphQL query
-	const {data, errorMessage} = useGraphQL('', persistentQuery);
+	const {data, errorMessage} = useGraphQL(persistentQuery);
 
 	//If there is an error with the GraphQL query
 	if (errorMessage) return <Error errorMessage={errorMessage}/>;
@@ -92,7 +91,7 @@ function AdventureDetailRender({
 			</div>
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"
-					 src={`${REACT_APP_PUBLISH_URI}${primaryImage._path}`} alt={title} itemType="image"/>
+					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemType="image"/>
 				<div itemProp="description"
 					 itemType="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
 				<h2>Itinerary</h2>
@@ -110,7 +109,7 @@ function AdventureDetailRender({
 function NoAdventureFound() {
 	return (
 		<div className="adventure-detail">
-			<Link className="adventure-detail-close-button" to={"/"}>
+			<Link className="adventure-detail-close-button" to={`/${window.location.search}`}>
 				<img className="Backbutton-icon" src={backIcon} alt="Return"/>
 			</Link>
 			<Error errorMessage="Missing data, adventure could not be rendered."/>

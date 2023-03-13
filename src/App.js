@@ -1,4 +1,4 @@
-import {React, useEffect} from "react";
+import {React} from "react";
 import Home from "./components/Home";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import "./App.scss";
@@ -8,16 +8,16 @@ import ArticleDetail from "./components/ArticleDetail";
 import About from "./components/About";
 import Header from './components/Header';
 import Footer from "./components/Footer";
-
-const {REACT_APP_HOST_URI} = process.env;
+import {getAuthorHost} from "./utils/fetchData";
+import {Helmet} from "react-helmet";
 
 function App() {
-  useEffect(() => {
-    document.querySelector('meta[name="urn:auecon:aemconnection"]').setAttribute("content", `aem:${REACT_APP_HOST_URI}`);
-  });
 
   return (
     <div className="App">
+      <Helmet>
+        <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
+      </Helmet>
       <Header />
       <hr/>
       <main>

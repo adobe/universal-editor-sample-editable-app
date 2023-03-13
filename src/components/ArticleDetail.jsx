@@ -14,8 +14,7 @@ import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
 import { getArticle } from '../utils/commons';
-
-const {REACT_APP_PUBLISH_URI} = process.env;
+import {getPublishHost} from "../utils/fetchData";
 
 function ArticleDetail({ article }) {
 
@@ -27,7 +26,7 @@ function ArticleDetail({ article }) {
 	const persistentQuery = `wknd-shared/article-by-slug;slug=${articleSlug}`;
 
 	//Use a custom React Hook to execute the GraphQL query
-	const {data, errorMessage} = useGraphQL('', persistentQuery);
+	const {data, errorMessage} = useGraphQL(persistentQuery);
 
 	//If there is an error with the GraphQL query
 	if (errorMessage) return <Error errorMessage={errorMessage}/>;
@@ -69,11 +68,11 @@ function ArticleDetailRender({
 			<h1 className="adventure-detail-title" itemProp="title" itemType="text">{title}</h1>
 			<div className="adventure-detail-info">
 				<Contributer {...authorFragment} />
-				<Link to={`/articles/article:${slug}/aboutus`}>About Us</Link>
+				<Link to={`/articles/article:${slug}/aboutus${window.location.search}`}>About Us</Link>
 			</div>
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"
-					 src={`${REACT_APP_PUBLISH_URI}${featuredImage._path}`} alt={title}/>
+					 src={`${getPublishHost()}${featuredImage._path}`} alt={title}/>
 				<div itemProp="main" itemType="richtext">{mapJsonRichText(main.json)}</div>
 			</div>
 		</div>
@@ -83,7 +82,7 @@ function ArticleDetailRender({
 function NoArticleFound() {
 	return (
 		<div className="adventure-detail">
-			<Link className="adventure-detail-close-button" to={"/"}>
+			<Link className="adventure-detail-close-button" to={`/${window.location.search}`}>
 				<img className="Backbutton-icon" src={backIcon} alt="Return"/>
 			</Link>
 			<Error errorMessage="Missing data, article could not be rendered."/>
@@ -99,7 +98,7 @@ function Contributer(props) {
 	let profilePicture = null;
 	if (props.profilePicture) {
 		profilePicture =
-			<img className="contributor-image" src={`${REACT_APP_PUBLISH_URI}${props.profilePicture._path}`}
+			<img className="contributor-image" src={`${getPublishHost()}${props.profilePicture._path}`}
 				 alt={props.firstName}/>
 	}
 
