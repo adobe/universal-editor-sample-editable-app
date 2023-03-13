@@ -9,8 +9,8 @@ it.
 import React from 'react';
 import useGraphQL from '../api/useGraphQL';
 import {Link} from 'react-router-dom';
-import Error from './Error';
-import Loading from './Loading';
+import Error from './base/Error';
+import Loading from './base/Loading';
 import "./Articles.scss";
 
 const {REACT_APP_PUBLISH_URI} = process.env;

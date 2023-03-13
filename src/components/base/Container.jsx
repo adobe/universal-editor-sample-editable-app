@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchData} from '../utils/fetchData';
+import {fetchData} from '../../utils/fetchData';
 import Text from './Text';
 import Title from './Title';
 const Container = ({ itemID, itemType }) => {

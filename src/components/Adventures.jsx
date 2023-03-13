@@ -8,9 +8,10 @@ it.
 import React from 'react';
 import {Link} from 'react-router-dom';
 import useGraphQL from '../api/useGraphQL';
-import Error from './Error';
-import Loading from './Loading';
+import Error from './base/Error';
+import Loading from './base/Loading';
 import "./Adventures.scss";
+import Title from './base/Title';
 
 const { REACT_APP_PUBLISH_URI } =process.env;
 
@@ -28,15 +29,17 @@ function AdventureItem(props) {
 
   return (
          <li className="adventure-item" itemScope {...editorProps}>
+          <div className="adventure-image-card">
           <Link to={`/adventure:${props.slug}`}>
             <img className="adventure-item-image" src={`${REACT_APP_PUBLISH_URI}${props.primaryImage._path}`}
-                alt={props.title} itemProp="primaryImage" itemType="image" />
+                  alt={props.title} itemProp="primaryImage" itemType="image" />
           </Link>
-          <div className="adventure-item-length-price">
-              <div className="adventure-item-length" itemProp="tripLength" itemType="text">{props.tripLength}</div>
-              <div className="adventure-item-price">$<span itemProp="price" itemType="text">{props.price}</span></div>
           </div>
-          <div className="adventure-item-title" itemProp="title" itemType="text">{props.title}</div>
+          <h3 className="adventure-item-title" itemProp="title" itemType="text">{props.title.toLowerCase()}</h3>
+          <div className="adventure-item-details">
+              <div className="adventure-item-length pill" itemProp="tripLength" itemType="text">{props.tripLength}</div>
+              <div className="adventure-item-price pill">$<span itemProp="price" itemType="text">{props.price}</span></div>
+          </div>  
       </li>
   );
 }
@@ -53,7 +56,8 @@ function Adventures() {
   if(!data) return <Loading />;
 
   return (
-      <div className="adventures">
+      <section id="adventures" className="adventures">
+        <Title itemID="urn:aemconnection:/content/wknd/us/en/adventures/jcr:content/root/container/container/title" itemType="text" itemProp="jcr:title"/>      
         <ul className="adventure-items">
           {
               //Iterate over the returned data items from the query
@@ -64,7 +68,7 @@ function Adventures() {
               })
           }
           </ul>
-      </div>
+      </section>
   );
 }
 
