@@ -8,6 +8,7 @@ import Articles from "./components/Articles";
 import ArticleDetail from "./components/ArticleDetail";
 import About from "./components/About";
 import {getAuthorHost} from "./utils/fetchData";
+import Header from "./components/Header";
 import {Helmet} from "react-helmet";
 
 function App() {
@@ -18,11 +19,8 @@ function App() {
         <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
       </Helmet>
       <div className="Home">
-        <header>
-          <img src={logo} className="logo" alt="WKND Logo" />
-          <hr />
-        </header>
         <Router>
+          <Header />
           <Routes>
             <Route path="/adventure:slug" element={<AdventureDetail />} />
             <Route path="/" element={<Home />} />
