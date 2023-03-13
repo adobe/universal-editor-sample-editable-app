@@ -10,14 +10,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useGraphQL from '../api/useGraphQL';
 import { getArticle } from '../utils/commons';
+import { getPublishHost } from '../utils/fetchData';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Teaser.scss";
-const {REACT_APP_PUBLISH_URI} = process.env;
 
 const Teaser = () => {
   const persistentQuery = `wknd-shared/article-by-slug;slug=aloha-spirits-in-northern-norway`;
-  const {data, errorMessage} = useGraphQL('', persistentQuery);
+  const {data, errorMessage} = useGraphQL(persistentQuery);
   	//If there is an error with the GraphQL query
 	if (errorMessage) return <Error errorMessage={errorMessage}/>;
 
@@ -45,7 +45,7 @@ const Teaser = () => {
         <button>Read more</button>
       </Link>
     </article>
-    <img src={`${REACT_APP_PUBLISH_URI}${featuredImage._path}`} alt={title} itemType="image" itemProp="featuredImage" />
+    <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} itemType="image" itemProp="featuredImage" />
   </div>
 );
   }
