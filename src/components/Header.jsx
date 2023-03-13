@@ -1,22 +1,12 @@
-import React, { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import React from "react";
 import logo from "../images/wknd-logo-dk.svg";
+import { useSparkleAppUrl } from "../hooks";
 
 const Header = () => {
-    const [queryParams] = useSearchParams();
-    const queryParamsString = queryParams.toString();
-    const sparkleUrl = useMemo(() => {
-        const sparkleBaseUrl = "https://ue-sparkle-app.adobe.net/";
-        if (queryParamsString) {
-            return `${sparkleBaseUrl}?${decodeURIComponent(queryParamsString)}`;
-        } else {
-            return sparkleBaseUrl;
-        }
-    }, [queryParamsString]);
-
+    const sparkleAppUrl = useSparkleAppUrl();
     return (
         <header>
-            <a href={sparkleUrl}>
+            <a href={sparkleAppUrl}>
                 <img src={logo} className="logo" alt="WKND Logo" />
             </a>
             <hr />
