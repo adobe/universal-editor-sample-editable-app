@@ -1,7 +1,7 @@
-import { getWkndAppUrl, scrollToId } from "./utils";
-import { useEffect, useMemo, useState } from "react";
+import { scrollToId } from "./utils";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useWkndAppUrl } from "../hooks";
 
 const DropdownIcon = () => (
   <svg className="dropdownIcon" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
@@ -77,10 +77,7 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
     setOpenNav(false);
   };
 
-  const router = useRouter();
-  const queryParams = router.query;
-  const wkndAppUrl = useMemo(() => getWkndAppUrl(queryParams), [queryParams]);
-
+  const wkndAppUrl = useWkndAppUrl();
   return (
     <header className="mobileHeaderWrapper" style={{ maxWidth }}>
       <div className="mainHeader">
