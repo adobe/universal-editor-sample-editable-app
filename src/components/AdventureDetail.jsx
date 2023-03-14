@@ -51,7 +51,7 @@ function AdventureDetail() {
 	};
 
 	return (<div  {...editorProps} itemScope className="adventure-detail">
-		<button className="adventure-detail-close-button" onClick={() => navigate(-1)}>
+		<button className="adventure-detail-close-button dark" onClick={() => navigate(-1)}>
 			<img className="Backbutton-icon" src={backIcon} alt="Return"/>
 		</button>
 		<AdventureDetailRender {...currentAdventure} references={references}/>
