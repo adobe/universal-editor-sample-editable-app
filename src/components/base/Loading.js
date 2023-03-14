@@ -7,7 +7,7 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
-import loadingIcon from '../images/icon-loading.svg';
+import loadingIcon from '../../images/icon-loading.svg';
 
 const Loading = () => (
     <div className="loading">

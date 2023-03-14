@@ -6,10 +6,13 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Container from './base/Container';
+import Title from './base/Title';
+import Text from './base/Text';
+import Teaser from './Teaser';
 import Adventures from './Adventures';
-import Card from './Card';
-import Summary from './Summary';
-import Title from './Title';
+import "./Home.scss";
 
 /***
  * Displays a grid of current adventures
@@ -17,12 +20,24 @@ import Title from './Title';
  function Home() {
     return (
       <div className="Home">
-            <Card/>
-          <hr/>
-        <Title itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/title_393953656_copy" itemType="text" itemProp="jcr:title"/>
+        <Teaser />
         <Adventures />
-        <hr/>
-        <Summary />
+        <section className="newsletter">
+          <div className="content">
+            <Title itemID="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/title" itemProp="jcr:title" itemType="text"/>
+            <Text itemID="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/text" itemProp="text" itemType="richtext" />       
+          </div>
+          <button>Subscribe</button>
+        </section>
+        <section className="about-us">
+          <div className="content">
+            <Title itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/title" itemProp="jcr:title" itemType="text"/>
+            <Container itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/container" itemType="container" />       
+          </div>
+          <Link to={`/aboutus${window.location.search}`}>
+            <button className="dark">Read more</button>
+          </Link>
+        </section>
     </div>
     );
 }
