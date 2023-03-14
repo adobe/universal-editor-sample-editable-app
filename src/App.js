@@ -9,6 +9,7 @@ import About from "./components/About";
 import {getAuthorHost} from "./utils/fetchData";
 import logo from "./images/wknd-logo-dk.svg";
 import "./App.scss";
+import { useSparkleAppUrl } from "./hooks";
 
 const NavMenu = () => (
   <nav>
@@ -20,13 +21,16 @@ const NavMenu = () => (
   </nav>
 );
 
-const Header = () => (
-  <header className="header">
-    <img src={logo} className="logo" alt="WKND Logo" />
-    <NavMenu />
-    <button className="dark">Sign in</button>
-  </header>
-);
+const Header = () => {
+  const sparkleAppUrl = useSparkleAppUrl();
+  return (
+    <header className="header">
+      <a href={sparkleAppUrl}><img src={logo} className="logo" alt="WKND Logo" /></a>
+      <NavMenu />
+      <button className="dark">Sign in</button>
+    </header>
+  );
+};
 
 const Footer = () => (
   <footer className="footer">
@@ -43,10 +47,10 @@ function App() {
       <Helmet>
         <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
       </Helmet>
-      <Header />
-      <hr/>
-      <main>
-        <Router>
+      <Router>
+        <Header />
+        <hr/>
+        <main>
           <Routes>
             <Route path="/adventure:slug" element={<AdventureDetail />} />
             <Route path="/" element={<Home />} />
@@ -54,8 +58,8 @@ function App() {
             <Route path="/articles/article:slug" element={<ArticleDetail />} />
             <Route path="/aboutus" element={<About />} />
           </Routes>
-        </Router>
-      </main>
+        </main>
+      </Router>
       <hr/>
       <Footer/>
     </div>
