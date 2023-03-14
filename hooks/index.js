@@ -1,0 +1,1 @@
+export { useWkndAppUrl } from "./useWkndAppUrl"

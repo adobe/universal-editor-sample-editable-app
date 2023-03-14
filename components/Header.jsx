@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useWkndAppUrl } from "../hooks";
 
 const ArrowSvg = () => (
   <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
@@ -12,6 +13,7 @@ const ArrowSvg = () => (
 );
 
 export default function Header({ isAuthorVersion, host }) {
+  const wkndAppUrl = useWkndAppUrl();
   return (
     <header className="header">
       <div className="content">
@@ -20,7 +22,7 @@ export default function Header({ isAuthorVersion, host }) {
         </div>
 
         <ul className="middle">
-          <a href="#">
+          <a href={wkndAppUrl}>
             <li>adventures</li>
           </a>
           <a href="#">
