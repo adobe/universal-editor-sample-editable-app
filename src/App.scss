@@ -75,6 +75,10 @@ line-height: $line-height-base + 0.75;
 text-align: justify;
 }
 
+a {
+  color: $white;
+  cursor: pointer;
+}
 
 ul {
     list-style-position: inside;
@@ -205,11 +209,6 @@ button {
     margin: 0;
     display: flex;
     column-gap: 40px;
-
-    a {
-      color: $white;
-      cursor: pointer;
-    }
   }
 }
 .header {
