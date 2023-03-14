@@ -215,9 +215,11 @@ button {
   padding: 0 80px;
   justify-items: center;
   grid-template-columns: 1fr 4fr 1fr;
+  a {
+    justify-self: flex-start;
+  }
   .logo {
     margin: 44px 0;
-    justify-self: flex-start;
   }
   button {
     white-space: nowrap;

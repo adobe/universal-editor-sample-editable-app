@@ -62,7 +62,7 @@ $adventureItemHeightMobile: 250px;
   
   .adventure-item-details {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     column-gap: 8px;
 
     > :not(.adventure-item-price) {

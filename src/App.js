@@ -1,5 +1,5 @@
 import {React} from "react";
-import {Helmet} from "react-helmet";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./components/Home";
 import AdventureDetail from "./components/AdventureDetail";
@@ -43,26 +43,28 @@ const Footer = () => (
 function App() {
 
   return (
-    <div className="App">
-      <Helmet>
-        <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
-      </Helmet>
-      <Router>
-        <Header />
+    <HelmetProvider>
+      <div className="App">
+        <Helmet>
+          <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
+        </Helmet>
+        <Router>
+          <Header />
+          <hr/>
+          <main>
+            <Routes>
+              <Route path="/adventure:slug" element={<AdventureDetail />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/articles" element={<Articles />} />
+              <Route path="/articles/article:slug" element={<ArticleDetail />} />
+              <Route path="/aboutus" element={<About />} />
+            </Routes>
+          </main>
+        </Router>
         <hr/>
-        <main>
-          <Routes>
-            <Route path="/adventure:slug" element={<AdventureDetail />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/article:slug" element={<ArticleDetail />} />
-            <Route path="/aboutus" element={<About />} />
-          </Routes>
-        </main>
-      </Router>
-      <hr/>
-      <Footer/>
-    </div>
+        <Footer/>
+      </div>
+    </HelmetProvider>
   );
 }
 
