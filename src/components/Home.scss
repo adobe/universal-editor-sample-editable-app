@@ -16,6 +16,10 @@ section {
     align-items: start;
     padding-bottom: 20px;
     column-gap: 20px;
+
+    h1 {
+      margin-top: 0;
+    }
   }
 
   &.about-us .content {
@@ -29,5 +33,16 @@ section {
       grid-template-columns: repeat(2,1fr);
     }
   }
+
+  @media only screen and (max-width: $mobile-breakpoint) {
+    .content {
+      display: inherit;
+    }
+  }
 }
 
+@media only screen and (max-width: $tablet-breakpoint) {
+  section {
+    padding: $tablet-padding;
+  }
+}

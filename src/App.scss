@@ -118,7 +118,7 @@ button {
   &.dark {
     border: 1px solid $white;
     background: inherit;
-    color: inherit;
+    color: $white;
   }
 }
 
@@ -213,10 +213,17 @@ button {
   }
 }
 .header {
+  padding: 0 80px;
   justify-items: center;
   grid-template-columns: 1fr 4fr 1fr;
   .logo {
     margin: 44px 0;
+    justify-self: flex-start;
+  }
+  button {
+    white-space: nowrap;
+    justify-self: flex-end;
+    margin: 0;
   }
 }
 .footer {
@@ -229,5 +236,29 @@ button {
     padding: 40px 0;
     color: $gray;
     grid-column: span 2;
+  }
+}
+
+@media only screen and (max-width: $tablet-breakpoint) {
+  .header, .footer {
+    padding: $tablet-padding;
+  }
+  .header {
+    .logo {
+      margin: 0;  
+    }
+  }
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+  .header {
+    button {
+      display:none;
+    }
+  }
+  .header, .footer {
+    grid-template-columns: 1fr 1.5fr;
+    white-space: nowrap;
+    column-gap: 10px;
   }
 }

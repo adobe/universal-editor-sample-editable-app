@@ -1,15 +1,40 @@
 import {React} from "react";
-import Home from "./components/Home";
+import {Helmet} from "react-helmet";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import "./App.scss";
+import Home from "./components/Home";
 import AdventureDetail from "./components/AdventureDetail";
 import Articles from "./components/Articles";
 import ArticleDetail from "./components/ArticleDetail";
 import About from "./components/About";
-import Header from './components/Header';
-import Footer from "./components/Footer";
 import {getAuthorHost} from "./utils/fetchData";
-import {Helmet} from "react-helmet";
+import logo from "./images/wknd-logo-dk.svg";
+import "./App.scss";
+
+const NavMenu = () => (
+  <nav>
+    <ul className="menu">
+      <li><a href={`/#adventures${window.location.search}`}>Adventures</a></li>
+      <li><a href={`/articles${window.location.search}`}>Magazine</a></li>
+      <li><a href={`/aboutus${window.location.search}`}>About Us</a></li>
+    </ul>
+  </nav>
+);
+
+const Header = () => (
+  <header className="header">
+    <img src={logo} className="logo" alt="WKND Logo" />
+    <NavMenu />
+    <button className="dark">Sign in</button>
+  </header>
+);
+
+const Footer = () => (
+  <footer className="footer">
+    <img src={logo} className="logo" alt="WKND Logo" />
+    <NavMenu />
+    <small>Copyright &copy; 2023 Adobe. All rights reserved</small>
+  </footer>
+);
 
 function App() {
 

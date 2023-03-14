@@ -6,11 +6,12 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
-import Adventures from './Adventures';
+import { Link } from 'react-router-dom';
 import Container from './base/Container';
-import Teaser from './Teaser';
 import Title from './base/Title';
 import Text from './base/Text';
+import Teaser from './Teaser';
+import Adventures from './Adventures';
 import "./Home.scss";
 
 /***
@@ -33,7 +34,9 @@ import "./Home.scss";
             <Title itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/title" itemProp="jcr:title" itemType="text"/>
             <Container itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/container" itemType="container" />       
           </div>
-          <button className="dark">Read more</button>
+          <Link to={`/aboutus${window.location.search}`}>
+            <button className="dark">Read more</button>
+          </Link>
         </section>
     </div>
     );

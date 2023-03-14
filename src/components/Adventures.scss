@@ -92,19 +92,17 @@ $adventureItemHeightMobile: 250px;
   }
 
   @media only screen and (max-width: $tablet-breakpoint) {
+    .adventures {
+      padding: $tablet-padding;
+    }
+
     .adventure-items {
-      justify-content: normal;
-    }
-    .adventure-item {
-      flex-basis: $adventureItemWidthMobile;
-    }
-    .adventure-item-image {
-      height: $adventureItemHeightMobile;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media only screen and (max-width: $mobile-breakpoint) {
     .adventure-items {
-      justify-content: center;
+      grid-template-columns: 1fr;
     }
   }
