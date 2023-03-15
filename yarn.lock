@@ -80,9 +80,9 @@
   integrity sha512-+u76oB43nOHrF4DDWRLWDCtci7f3QJoEBigemIdIeTi1ODqjx6Tad9NCVnPRwewWlKkVab5PlK8DCtPTyX7S8g==
 
 "@adobe/universal-editor-cors@^1.0.2":
-  version "1.0.2"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-platform-release/@adobe/universal-editor-cors/-/universal-editor-cors-1.0.2.tgz#9c495c7a22328023c42502a5368483df87e3d96d"
-  integrity sha512-ilw+yrnYXexaJUTrz1QBHf3jCILFheosCtxnd5gkb+4zuEBRzVsWrm50WYKxzHycWhNPTfboQW5MC/Pf1IuLyw==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@adobe/universal-editor-cors/-/universal-editor-cors-1.0.3.tgz#27141b81fcf703da75ad3f097ea0d00a82b69911"
+  integrity sha512-7p3lEW6PK+ueGQlCWeg/sb2UbFKrM/rbikjj6pDP1cCnbBMmvlDKR58TBDVG6+gHhXZtlU9YnyEtodZTCKm/gA==
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"

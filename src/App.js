@@ -14,7 +14,7 @@ import { useSparkleAppUrl } from "./hooks";
 const NavMenu = () => (
   <nav>
     <ul className="menu">
-      <li><a href={`/#adventures${window.location.search}`}>Adventures</a></li>
+      <li><a href={`/${window.location.search}`}>Adventures</a></li>
       <li><a href={`/articles${window.location.search}`}>Magazine</a></li>
       <li><a href={`/aboutus${window.location.search}`}>About Us</a></li>
     </ul>
