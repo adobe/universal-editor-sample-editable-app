@@ -13,45 +13,37 @@ import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Articles.scss";
 import {getPublishHost} from "../utils/fetchData";
+import { mapJsonRichText } from '../utils/renderRichText';
 
-const Article = ({_path, title, main, authorFragment, slug}) => {
+const Article = ({_path, title, synopsis, authorFragment, slug}) => {
     const editorProps = {
         itemID: "urn:aemconnection:" + _path + "/jcr:content/data/master",
         itemType: "reference",
         itemfilter: "cf"
     };
-
     return (
         <li className="article-item" itemScope {...editorProps}>
-            <div>
-                <Link to={`/articles/article:${slug}${window.location.search}`}>
-                    <h3 data-id="title" itemProp="title" itemType="text">{title}</h3>
-                </Link>
-                <img className="article-item-image"
-                     src={`${getPublishHost()}${authorFragment?.profilePicture._path}`}
-                     alt={title} itemProp="profilePicture" itemType="image"/>
-                <p>{`By ${authorFragment.firstName} ${authorFragment.lastName}`}</p>
-            </div>
-            <p className="article-content">
-                Steep mountain sides surround us, like wise trolls from a distant timeline, weathered and worn by
-                long-gone
-                glaciers, green moss now covering the black rock. White sheep forage on steep grass, defying the
-                chilling winds
-                funneled by the deep valley. The subtle hues of the arctic circle are welcoming, comfortable on the
-                eyes. When
-                rare sunrays pierce through the low clouds, the scenery reveals its vibrancy, as the waves reflect a
-                translucent
-                cyan blue before crashing loudly onto white sand. A small but playful groundswell is building, the
-                offshore breeze
-                grooming playful lines down the point, making for welcoming conditions for acclimatizing to cold water
-                and thick
-                neoprene. Knowing it is our last surf before a few days of hard wind, we take full advantage out of
-                every ripple
-                the North Atlantic Ocean sends our way.<br/>
-                <Link to={`/articles/article:${slug}${window.location.search}`}>
-                    Read more in the article
-                </Link>
-            </p>
+            <aside>
+              <img className="article-item-image"
+                src={`${getPublishHost()}${authorFragment?.profilePicture._path}`}
+                alt={title} itemProp="profilePicture" itemType="image"/>
+            </aside>
+            <article>
+              <Link to={`/articles/article:${slug}${window.location.search}`}>
+                  <h3 data-id="title" itemProp="title" itemType="text">{title}</h3>
+              </Link>
+
+              <p>{`By ${authorFragment.firstName} ${authorFragment.lastName}`}</p>
+              { synopsis && 
+                <div className="article-content" itemProp='synopsis' itemType='richtext'>
+                  {mapJsonRichText(synopsis.json)}
+                </div>
+              }
+              <Link to={`/articles/article:${slug}${window.location.search}`}>
+                <button>Read more</button>
+              </Link>
+            </article>
+            
     </li>
   );
 };
@@ -69,7 +61,7 @@ const Articles = () => {
   if(!data) return <Loading />;
 
   return (
-    <>
+    <section className="articles">
       <h2>Articles</h2>
       <ul>
         {
@@ -80,7 +72,7 @@ const Articles = () => {
             })
         }
         </ul>
-    </>
+    </section>
 );
 
 };
