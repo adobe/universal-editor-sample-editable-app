@@ -2,7 +2,7 @@ import React from 'react';
 import image from '../images/wknd-card.jpeg';
 
 const About = () => (
-    <div>
+    <div style={{ maxWidth: "1280px" , margin: "0 auto" }}>
         <h1>About Us</h1>
         <img width="100%" src={image} alt="Sample"/>
         <p>The WKND is a fictional online magazine and adventure company that focuses

@@ -10,6 +10,8 @@ it.
 .articles {
   padding: 70px;
   text-align: left;
+  max-width: $max-width;
+  margin: 0 auto;
 }
 .article-item {
   list-style: none;

@@ -33,7 +33,7 @@ const Teaser = () => {
 	};
 
   return (
-  <div {...editorProps} itemScope className="Teaser">
+  <section {...editorProps} itemScope className="Teaser">
     <article>
       <p>Latest article</p>
       <h1 itemProp="title" itemType="text">{title}</h1>
@@ -47,7 +47,7 @@ const Teaser = () => {
       </Link>
     </article>
     <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} itemType="image" itemProp="featuredImage" />
-  </div>
+  </section>
 );
   }
   

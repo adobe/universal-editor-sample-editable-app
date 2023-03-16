@@ -14,6 +14,9 @@ it.
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
+  text-align: left;
+  max-width: 1280px;
+  margin: 0 auto;
 
   article {
     grid-column: 1/3;
