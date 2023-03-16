@@ -12,7 +12,7 @@ import useGraphQL from '../api/useGraphQL';
 import { getArticle } from '../utils/commons';
 import { getPublishHost } from '../utils/fetchData';
 import { mapJsonRichText } from '../utils/renderRichText';
-import Error from './base/Error';
+// import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Teaser.scss";
 
@@ -20,7 +20,7 @@ const Teaser = () => {
   const persistentQuery = `wknd-shared/article-by-slug;slug=aloha-spirits-in-northern-norway`;
   const {data, errorMessage} = useGraphQL(persistentQuery);
   	//If there is an error with the GraphQL query
-	if (errorMessage) return <Error errorMessage={errorMessage}/>;
+	if (errorMessage) return;
 
 	//If query response is null then return a loading icon...
 	if (!data) return <Loading/>;

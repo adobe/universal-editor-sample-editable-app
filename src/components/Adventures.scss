@@ -33,8 +33,9 @@ $adventureItemHeightMobile: 250px;
   
 .adventure-image-card {
   .adventure-item-image {
+    border-radius: 16px;
     width: 100%;
-    height: $adventureItemHeight;
+    aspect-ratio: 5/4;
     object-fit: cover;
     object-position: center;
     overflow: hidden;

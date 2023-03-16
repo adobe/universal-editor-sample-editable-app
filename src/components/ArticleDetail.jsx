@@ -68,7 +68,6 @@ function ArticleDetailRender({
 			<h1 className="adventure-detail-title" itemProp="title" itemType="text">{title}</h1>
 			<div className="adventure-detail-info">
 				<Contributer {...authorFragment} />
-				<Link to={`/articles/article:${slug}/aboutus${window.location.search}`}>About Us</Link>
 			</div>
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"
