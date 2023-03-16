@@ -13,9 +13,9 @@ const ArrowSvg = () => (
 );
 
 export default function Header({ isAuthorVersion, host }) {
-    const wkndAppUrl = useWkndAppUrl();
-    const wkndAppMagazineUrl = useWkndAppUrl("/articles");
-    const wkndAppMagazineAboutUsUrl = useWkndAppUrl("/aboutus");
+  const wkndAppUrl = useWkndAppUrl();
+  const wkndAppMagazineUrl = useWkndAppUrl("/articles");
+  const wkndAppMagazineAboutUsUrl = useWkndAppUrl("/aboutus");
   return (
     <header className="header">
       <div className="content">
