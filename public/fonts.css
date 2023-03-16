@@ -18,3 +18,10 @@
   src: url(fonts/AktivGroteskCorp-Regular.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Aktiv Grotesk Medium';
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/AktivGroteskCorp-Medium.woff) format('woff');
+}
+

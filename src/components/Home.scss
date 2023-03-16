@@ -16,9 +16,12 @@ section {
     align-items: start;
     padding-bottom: 20px;
     column-gap: 20px;
+    max-width: $max-width;
+    margin: 0 auto;
 
     h1 {
       margin-top: 0;
+      text-align:left;
     }
   }
 

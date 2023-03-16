@@ -8,7 +8,7 @@ it.
 import React from 'react';
 import {Link} from 'react-router-dom';
 import useGraphQL from '../api/useGraphQL';
-import Error from './base/Error';
+// import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Adventures.scss";
 import Title from './base/Title';
@@ -49,7 +49,7 @@ function Adventures() {
   const { data, errorMessage } = useGraphQL(persistentQuery);
 
   //If there is an error with the GraphQL query
-  if(errorMessage) return <Error errorMessage={errorMessage} />;
+  if(errorMessage) return;
 
   //If data is null then return a loading state...
   if(!data) return <Loading />;

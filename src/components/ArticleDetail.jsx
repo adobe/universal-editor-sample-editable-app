@@ -49,9 +49,12 @@ function ArticleDetail({ article }) {
 	};
 
 	return (<div {...editorProps} itemScope className="adventure-detail">
-		<button className="adventure-detail-close-button" onClick={() => navigate(-1)}>
-			<img className="Backbutton-icon" src={backIcon} alt="Return"/>
-		</button>
+        <div class="adventure-detail-header">
+            <h1 className="adventure-detail-title" itemProp="title" itemType="text">{currentArticle.title}</h1>
+            <button className="adventure-detail-close-button dark" onClick={() => navigate(-1)}>
+                <img className="Backbutton-icon" src={backIcon} alt="Return"/>
+            </button>	
+        </div>
 		<ArticleDetailRender {...currentArticle} slug={articleSlug}/>
 	</div>);
 }
@@ -65,10 +68,8 @@ function ArticleDetailRender({
 
 
 	return (<div>
-			<h1 className="adventure-detail-title" itemProp="title" itemType="text">{title}</h1>
 			<div className="adventure-detail-info">
 				<Contributer {...authorFragment} />
-				<Link to={`/articles/article:${slug}/aboutus${window.location.search}`}>About Us</Link>
 			</div>
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"

@@ -13,11 +13,17 @@ $adventureItemHeight: 360px;
 $adventureItemWidthMobile: 300px;
 $adventureItemHeightMobile: 250px;
 
+
 .adventures {
   padding: 70px;
   background-color: $white;
   color: $black;
   text-align: left;
+
+  & > h1, &> ul {
+    max-width: $max-width;
+    margin: 0 auto;
+  } 
 }
 
 .adventure-items {
@@ -33,24 +39,13 @@ $adventureItemHeightMobile: 250px;
   
 .adventure-image-card {
   .adventure-item-image {
+    border-radius: 16px;
     width: 100%;
-    height: $adventureItemHeight;
+    aspect-ratio: 5/4;
     object-fit: cover;
     object-position: center;
     overflow: hidden;
   }
-
-  // > a {
-  //   padding: 12px 40px;
-  //   background: #DBFF00;
-  //   border-radius: 4px;
-  //   color: $black;
-  //   visibility: hidden;
-  // }
-
-  // &:hover a {
-  //   visibility: visible;
-  // }
 } 
 
 .adventure-item-title {

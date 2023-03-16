@@ -25,7 +25,7 @@ $lime:                   #DBFF00;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Aktiv Grotesk", sans-serif;
+$font-family-sans-serif:  "Aktiv Grotesk Medium", sans-serif;
 $font-family-serif:       "Asar",Georgia, "Times New Roman", Times, serif;
 $font-family-base:        $font-family-sans-serif;
 
@@ -57,7 +57,7 @@ $text-color-inverse:        $gray-light;
 $link-color:                $blue;
 $button-color:              $lime;
 //Layout
-$max-width: 1024px;
+$max-width: 1280px;
 
 // Spacing
 $gutter-padding: 12px; 

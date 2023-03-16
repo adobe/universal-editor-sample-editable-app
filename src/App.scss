@@ -95,11 +95,6 @@ hr {
     border-bottom: 1px solid $gray;
 }
 
-.pill {
-  padding: 11px 16px 13px;
-  border-radius: 20px
-}
-
 button {
   background-color: $button-color;
   color: $black;
@@ -124,6 +119,11 @@ button {
     background: inherit;
     color: $white;
   }
+}
+
+.pill {
+  padding: 11px 16px 13px;
+  border-radius: 20px
 }
 
 // Error
@@ -202,6 +202,8 @@ button {
   color: $white;
   display: grid;
   align-items: center;
+  max-width: $max-width;
+  margin: 0 auto;
   .logo {
     height: 24px;
   }

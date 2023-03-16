@@ -12,7 +12,7 @@ import useGraphQL from '../api/useGraphQL';
 import { getArticle } from '../utils/commons';
 import { getPublishHost } from '../utils/fetchData';
 import { mapJsonRichText } from '../utils/renderRichText';
-import Error from './base/Error';
+// import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Teaser.scss";
 
@@ -20,7 +20,7 @@ const Teaser = () => {
   const persistentQuery = `wknd-shared/article-by-slug;slug=aloha-spirits-in-northern-norway`;
   const {data, errorMessage} = useGraphQL(persistentQuery);
   	//If there is an error with the GraphQL query
-	if (errorMessage) return <Error errorMessage={errorMessage}/>;
+	if (errorMessage) return;
 
 	//If query response is null then return a loading icon...
 	if (!data) return <Loading/>;
@@ -33,7 +33,7 @@ const Teaser = () => {
 	};
 
   return (
-  <div {...editorProps} itemScope className="Teaser">
+  <section {...editorProps} itemScope className="Teaser">
     <article>
       <p>Latest article</p>
       <h1 itemProp="title" itemType="text">{title}</h1>
@@ -47,7 +47,7 @@ const Teaser = () => {
       </Link>
     </article>
     <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} itemType="image" itemProp="featuredImage" />
-  </div>
+  </section>
 );
   }
   

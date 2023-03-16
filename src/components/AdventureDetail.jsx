@@ -51,9 +51,12 @@ function AdventureDetail() {
 	};
 
 	return (<div  {...editorProps} itemScope className="adventure-detail">
-		<button className="adventure-detail-close-button dark" onClick={() => navigate(-1)}>
-			<img className="Backbutton-icon" src={backIcon} alt="Return"/>
-		</button>
+        <div class="adventure-detail-header">
+            <h1 className="adventure-detail-title" itemProp="title" itemType="text">{currentAdventure.title}</h1>
+            <button className="adventure-detail-close-button dark" onClick={() => navigate(-1)}>
+                <img className="Backbutton-icon" src={backIcon} alt="Return"/>
+            </button>
+        </div>
 		<AdventureDetailRender {...currentAdventure} references={references}/>
 	</div>);
 }
@@ -71,8 +74,7 @@ function AdventureDetailRender({
 								   itinerary,
 								   contributor, references
 							   }) {
-	return (<div>
-			<h1 className="adventure-detail-title" itemProp="title" itemType="text">{title}</h1>
+	return (<div>			
 			<div className="adventure-detail-info">
 				<div className="adventure-detail-info-label">Activity</div>
 				<div className="adventure-detail-info-description" itemProp='activity' itemType="text">{activity}</div>
