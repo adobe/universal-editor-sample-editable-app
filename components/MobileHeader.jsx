@@ -78,6 +78,8 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
   };
 
   const wkndAppUrl = useWkndAppUrl();
+  const wkndAppMagazineUrl = useWkndAppUrl("/articles");
+  const wkndAppMagazineAboutUsUrl = useWkndAppUrl("/aboutus");
   return (
     <header className="mobileHeaderWrapper" style={{ maxWidth }}>
       <div className="mainHeader">
@@ -166,8 +168,12 @@ export default function MobileHeader({ maxWidth, isAuthorVersion, host, mobileNa
             <a href={wkndAppUrl}>
               <li>adventures</li>
             </a>
-            <li>magazine</li>
-            <li>settings</li>
+            <a href={wkndAppMagazineUrl}>
+              <li>magazine</li>
+            </a>
+            <a href={wkndAppMagazineAboutUsUrl}>
+              <li>about us</li>
+            </a>
           </ul>
         </div>
 
