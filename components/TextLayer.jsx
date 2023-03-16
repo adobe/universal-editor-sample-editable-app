@@ -83,24 +83,22 @@ export default function TextLayer({data, activeMenuItem, panelNr}) {
 				}
 			</div>) :
 			(<div className={"textLayer"} id={data.id} itemID={`urn:aem:${data?._path}/jcr:content/data/master`}
-				  itemType="reference" itemScope>
+				  itemType="reference" itemfilter="cf" itemScope itemProp="column">
 				{data?.column?.length ? <div className={`columnWrapper ${data?.textPosition || ""} ${data?.noPadding ? "noPadding" : ""}`}
-											 itemType="container" itemProp="column"
 				>
 					{data?.column?.map((item, index) => {
 						const columnKey = uuidv4();
 						const MatchingComponent = textItemLookup[item.type] || "p";
 						return (
-							<div key={columnKey}
-								 itemScope
-								 itemID={`urn:aem:${item._path}/jcr:content/data/master`}
-								 itemType="reference" data-editor-behavior="component"
-							>
+							<div key={columnKey}>
 								<MatchingComponent
 									className={`${item.type} ${item?.styles?.join(" ")}`}
 									id={item.id}
+									itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+									itemScope
 									itemProp="content"
 									itemType="text"
+									data-editor-behavior="component"
 								>
 									{item.content?.plaintext}
 								</MatchingComponent>
@@ -114,13 +112,15 @@ export default function TextLayer({data, activeMenuItem, panelNr}) {
 						const MatchingComponent = textItemLookup[item.type] || "p";
 						const leftKey = uuidv4();
 						return (
-							<div key={leftKey} itemScope itemID={`urn:aem:${item._path}/jcr:content/data/master`}
-								 itemType="reference" data-editor-behavior="component">
+							<div key={leftKey}>
 								<MatchingComponent
 									className={`${item.type} ${item?.styles?.join(" ")}`}
 									id={item.id}
 									itemProp="content"
 									itemType="text"
+									itemScope
+									itemID={`urn:aem:${item._path}/jcr:content/data/master`}
+									data-editor-behavior="component"
 								>
 									{item.content?.plaintext}
 								</MatchingComponent>
@@ -130,7 +130,7 @@ export default function TextLayer({data, activeMenuItem, panelNr}) {
 				</div> : null
 				}
 
-				{data?.rightBox?.length ? <div className="right" itemType="container" itemProp="rightBox">
+				{data?.rightBox?.length ? <div className="right">
 					{data?.rightBox?.map((item, index) => {
 						const MatchingComponent = isMenu(item) ? Menu : textItemLookup[item.type] || "p";
 						return (
