@@ -16,18 +16,16 @@ export default function Menu({ menuItems, activeMenuItem, panelNr }) {
       <ul className="menuList">
         {menuItems.map((item, index) => {
           const unique = uuidv4();
-          const editorReference = panelNr === 0 ? { itemID: `urn:aem:${item._path}/jcr:content/data/master`, itemType: "reference" } : null;
-          const editorText = panelNr === 0 ? { itemType: 'text', itemProp: 'text' } : null;
+          const editorText = panelNr === 0 ? { itemID: `urn:aem:${item._path}/jcr:content/data/master`, itemType: 'text', itemProp: 'text' } : null;
           return (
             <li
                 itemScope
-                {...editorReference}
                 key={unique + index}
                 onClick={() => onClickHandler(item?.link)}
                 className={`menuListItem ${activeMenuItem === item.menuItemId ? "active" : ""}`}
                 id={"menuItem-" + item.menuItemId + unique}
             >
-              <span {...editorText}>{item.text}</span>
+              <span itemScope {...editorText}>{item.text}</span>
             </li>
           );
         })}
