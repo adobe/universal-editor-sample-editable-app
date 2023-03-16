@@ -17,10 +17,6 @@
 @import "./textLayers.scss";
 @import "./imageLayers.scss";
 
-* {
-  font-family: source-sans-pro;
-}
-
 h1 {
   font-family: bebas-neue;
 }
@@ -36,13 +32,22 @@ h6 {
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-  Helvetica Neue, sans-serif;
+  Helvetica Neue, source-sans-pro, sans-serif;
 }
 
 body {
   height: 100%;
   width: 100%;
   overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
 }
 
 #__next {
@@ -53,12 +58,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
 }
 
 button {

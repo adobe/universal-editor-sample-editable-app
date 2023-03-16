@@ -2,16 +2,16 @@
 
 Thank you for your interest in Adobe’s products and services! The images in this demo website are from [Adobe Stock](https://stock.adobe.com/) and are Third Party Material as defined in the Demo Asset Additional Terms at [https://www.adobe.com/legal/terms.html](https://www.adobe.com/legal/terms.html).  If you want to use an Adobe Stock image for other purposes beyond viewing this demo website, such as featuring it on a website, or in marketing materials, you can purchase a license on [Adobe Stock](https://stock.adobe.com/).
 
-By default the app will connect to https://publish-p81252-e700817.adobeaemcloud.com. If you wish to connect to another AEM instance you can do so by setting the following query parameters:
+By default the app will connect to https://publish-p7452-e12433.adobeaemcloud.com. If you wish to connect to another AEM instance you can do so by setting the following query parameters:
 ```
-?authorHost=https://author-p81252-e700817.adobeaemcloud.com
-&publishHost=https://publish-p81252-e700817.adobeaemcloud.com
+?authorHost=https://author-p7452-e12433.adobeaemcloud.com
+&publishHost=https://publish-p7452-e12433.adobeaemcloud.com
 &endpoint=graphql/execute.json/sample-wknd-app/homepage
 ```
 
 >Note that for an author host to work, you must first login to the AEM environment within another tab.
 
-If connecting to the author host and publish host fails, the app will fallback to: https://publish-p81252-e700817.adobeaemcloud.com.
+If connecting to the author host and publish host fails, the app will fallback to: https://publish-p7452-e12433.adobeaemcloud.com.
 
 ## Content Fragment Structure
 
@@ -89,16 +89,16 @@ Afterward you can run the app with:
 npm run dev
 ```
 
-Without any queryparams our app will default to the following fallback URL: https://publish-p81252-e700817.adobeaemcloud.com
+Without any queryparams our app will default to the following fallback URL: https://publish-p7452-e12433.adobeaemcloud.com
 <!-- ```json
-"authorHost": "https://author-p81252-e700817.adobeaemcloud.com"
-"publishHost": "https://publish-p81252-e700817.adobeaemcloud.com/"
+"authorHost": "https://author-p7452-e12433.adobeaemcloud.com"
+"publishHost": "https://publish-p7452-e12433.adobeaemcloud.com"
 "endpoint": "sample-wknd-app/homepage"
 ``` -->
 
 To use custom URLs simply set these queryparams with your URL, if there are any missing parameters the default will be used in its place.
 
-example URL: http://localhost:3000/?authorHost=https://author-pYOUR-eHOST.adobeaemcloud.com&publishHost=https://publish-pYOUR-eHOST.adobeaemcloud.com&endpoint=graphql/execute.json/GRAPHQL/ENDPOINT
+example URL: http://localhost:3000/?authorHost=https://author-pYOUR-eHOST.adobeaemcloud.com&publishHost=https://publish-p7452-e12433.adobeaemcloud.com&endpoint=graphql/execute.json/GRAPHQL/ENDPOINT
 
 ## Host priority
 
@@ -106,7 +106,7 @@ In order for the **author host** to work, you must login as an author within ano
 
 The app will first try to use the author host, if it could not fetch data from it, it will try using the publish host.
 
-When both hosts fail to work, the app will fallback to https://publish-p81252-e700817.adobeaemcloud.com. 
+When both hosts fail to work, the app will fallback to https://publish-p7452-e12433.adobeaemcloud.com. 
 
 ## Visual Regression Testing
 
@@ -151,7 +151,7 @@ const baseURL = "http://localhost:3000/";
 
 const queryParams = "?" + new URLSearchParams({
     debugAnim: "instant",
-    publishHost: "https://publish-p81252-e700817.adobeaemcloud.com",
+    publishHost: "https://publish-p7452-e12433.adobeaemcloud.com",
     endpoint: "graphql/execute.json/sample-wknd-app/homepage",
   }).toString();
 ```
