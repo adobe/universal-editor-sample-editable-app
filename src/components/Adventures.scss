@@ -60,8 +60,14 @@ $adventureItemHeightMobile: 250px;
     justify-content: flex-start;
     column-gap: 8px;
 
+    > div {
+      display: flex;
+      align-items: center;
+    }
+    
     > :not(.adventure-item-price) {
       border: 1px solid $gray;
+      text-transform: capitalize;
     }
 
     .adventure-item-price{
