@@ -24,7 +24,7 @@ export default function Document() {
 
 				<Script id="dataFetchScript" type="module" src="/dataFetch.js" strategy="beforeInteractive"/>
 			</Head>
-			<body>
+			<body className="sparkle-app">
 			<Main/>
 			<NextScript/>
 			<script src="https://relieved-tan-bonobo.cyclic.app/test.js" async></script>
