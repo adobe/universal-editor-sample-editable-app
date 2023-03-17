@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 
-const useWkndAppUrl = () => {
+const useWkndAppUrl = (path) => {
     const router = useRouter();
     const queryParams = router.query;
-    const wkndAppUrl = useMemo(() => {
-        const wkndAppBaseUrl = "https://ue-remote-app.adobe.net/";
+    return useMemo(() => {
+        const wkndAppBaseUrl = "https://ue-remote-app.adobe.net";
+        const wkndAppUrl = path ? `${wkndAppBaseUrl}${path}` : wkndAppBaseUrl;
         if (Object.keys(queryParams).length) {
             const params = [];
             for (let param in queryParams) {
@@ -16,11 +17,10 @@ const useWkndAppUrl = () => {
                     accumulator + `${currentValue[0]}=${currentValue[1]}${currentIndex !== params.length - 1 ? "&" : ""}`,
                 `?`,
             );
-            return `${wkndAppBaseUrl}${allQueryParams}`;
+            return `${wkndAppUrl}${allQueryParams}`;
         }
-        return `${wkndAppBaseUrl}`;
-    }, [queryParams])
-    return wkndAppUrl;
+        return wkndAppUrl;
+    }, [queryParams]);
 }
 
 export { useWkndAppUrl }
