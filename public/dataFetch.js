@@ -1,7 +1,7 @@
 import fetchConfig from "./initializeQueries.js";
 
 function fallbackFetch(fetchConfig, variation, resolve) {
-  fetch(`${fetchConfig.fallbackHost}/${fetchConfig.endpoint};variation=${variation}`)
+  fetch(`${fetchConfig.fallbackHost}/${fetchConfig.endpoint};variation=${variation}?${Date.now()}`)
     .then(response => {
       return response.json();
     })
@@ -21,7 +21,7 @@ function publishFetch(fetchConfig, variation, resolve) {
     fallbackFetch(fetchConfig, variation, resolve)
     return
   }
-  fetch(`${fetchConfig.publishHost}/${fetchConfig.endpoint};variation=${variation}`)
+  fetch(`${fetchConfig.publishHost}/${fetchConfig.endpoint};variation=${variation}?${Date.now()}`)
     .then(response => response.json())
     .then(data => {
       window.customHost = fetchConfig.publishHost;
@@ -48,7 +48,7 @@ function attemptFetch(fetchConfig, variation, sparkleFetch = false, delay) {
     if (fetchConfig.authorHost) {
       fetch(
         `${fetchConfig.authorHost}/${fetchConfig.endpoint}${
-          sparkleFetch ? `/${variation}.json` : `;variation=${variation}`
+          sparkleFetch ? `/${variation}.json` : `;variation=${variation}?${Date.now()}`
         }`,
         !sparkleFetch ? { credentials: "include" } : null
       )
