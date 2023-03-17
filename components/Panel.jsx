@@ -6,7 +6,6 @@ import PointTextMap from "./PointTextMap";
 import Header from "./Header";
 import {TimelineProvider} from "./TimelineWrapper";
 import {scrollToId} from "../components/utils";
-import {useRouter} from "next/router";
 
 const lookupObject = {
 	image: LayerImage,
@@ -30,9 +29,6 @@ export default function Panel({
 								  dynamicPanelHeight
 							  }) {
 	const createTimeline = useContext(TimelineProvider);
-	const router = useRouter();
-	const isEditable = router.query["isEditable"];
-	const isInEditor = isEditable === 'true';
 
 	useEffect(() => {
 		if (!createTimeline) {
@@ -52,37 +48,35 @@ export default function Panel({
 		}
 	}, [hash, ignoreHash, panel.id, setIgnoreHash]);
 
-	return ( isInEditor && panelNr === 1 || isInEditor  && panelNr === 4 ?
-			null
-		:
-			<div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id} style={{height: dynamicPanelHeight}}>
-				{settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host}/>}
-				{panel?.background && (
-					<Background
-						backgroundProps={panel.background}
-						lazy={panelNr > 0 ? true : false}
-						host={host}
-						viewType={viewType}
-					/>
-				)}
-				{Array.isArray(panel?.layers) &&
-					panel?.layers?.length &&
-					panel.layers.map((layer, index) => {
-						const Component = lookupObject[layer.type || layer?._model?.title];
-						if (!Component) {
-							return null;
-						}
-						return (
-							<Component
-								host={host}
-								activeMenuItem={panel.activeMenuItem}
-								data={layer}
-								panelNr={panelNr}
-								key={index}
-								viewType={viewType}
-							/>
-						);
-					})}
-			</div>
+	return (
+		<div className={`panel ${panel?.dark ? "darkPanel" : ""} `} id={panel.id} style={{height: dynamicPanelHeight}}>
+			{settings?.viewType === "mobile" ? null : <Header isAuthorVersion={isAuthorVersion} host={host}/>}
+			{panel?.background && (
+				<Background
+					backgroundProps={panel.background}
+					lazy={panelNr > 0 ? true : false}
+					host={host}
+					viewType={viewType}
+				/>
+			)}
+			{Array.isArray(panel?.layers) &&
+				panel?.layers?.length &&
+				panel.layers.map((layer, index) => {
+					const Component = lookupObject[layer.type || layer?._model?.title];
+					if (!Component) {
+						return null;
+					}
+					return (
+						<Component
+							host={host}
+							activeMenuItem={panel.activeMenuItem}
+							data={layer}
+							panelNr={panelNr}
+							key={index}
+							viewType={viewType}
+						/>
+					);
+				})}
+		</div>
 	);
 }

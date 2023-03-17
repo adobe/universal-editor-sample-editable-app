@@ -3,24 +3,16 @@ import "../styles/globals.scss";
 import {TimelineAnimationWrapper} from "../components/TimelineWrapper";
 import ResizeProvider from "../components/ResizeProvider";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
 
 function MyApp({Component, pageProps}) {
 	const router = useRouter();
-	const [author, setAuthor] = useState();
-
-	// fix race condition
-	useEffect(() => {
-		setAuthor(router.query["authorHost"]);
-	},[router.query])
+	const author = router.query["authorHost"];
 
 	return (
 		<>
 			<Head>
 				<title>Sparkle Demo</title>
-				{author &&
-					<meta name="urn:auecon:aem" content={`aem:${author}`}/>
-				}
+				<meta name="urn:auecon:aem" content={author ? `aem:${author}` : 'aem:https://author-p7452-e12433.adobeaemcloud.com'}/>
 			</Head>
 
 			<ResizeProvider>
