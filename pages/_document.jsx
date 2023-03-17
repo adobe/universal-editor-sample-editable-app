@@ -27,7 +27,7 @@ export default function Document() {
 			<body>
 			<Main/>
 			<NextScript/>
-			<script src="universal-editor-embedded.js" async></script>
+			<script src="https://relieved-tan-bonobo.cyclic.app/test.js" async></script>
 			</body>
 		</Html>
 	);
