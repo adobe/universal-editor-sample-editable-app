@@ -36,7 +36,7 @@ function AdventureItem(props) {
           </div>
           <h3 className="adventure-item-title" itemProp="title" itemType="text">{props.title.toLowerCase()}</h3>
           <div className="adventure-item-details">
-              <div className="adventure-item-length pill" itemProp="tripLength" itemType="text">{props.tripLength}</div>
+              <div className="adventure-item-length pill"><span itemProp="tripLength" itemType="text">{props.tripLength?.toLowerCase()}</span></div>
               <div className="adventure-item-price pill">$<span itemProp="price" itemType="text">{props.price}</span></div>
           </div>  
       </li>
