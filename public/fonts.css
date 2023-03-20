@@ -14,8 +14,7 @@
  @font-face {
   font-family: 'Aktiv Grotesk Corp';
   src: url('fonts/AktivGroteskCorp-Medium.eot');
-  src: local('AktivGroteskCorp-Medium'),
-      url('fonts/AktivGroteskCorp-Medium.eot?#iefix') format('embedded-opentype'),
+  src: url('fonts/AktivGroteskCorp-Medium.eot?#iefix') format('embedded-opentype'),
       url('fonts/AktivGroteskCorp-Medium.woff2') format('woff2'),
       url('fonts/AktivGroteskCorp-Medium.woff') format('woff'),
       url('fonts/AktivGroteskCorp-Medium.ttf') format('truetype');
