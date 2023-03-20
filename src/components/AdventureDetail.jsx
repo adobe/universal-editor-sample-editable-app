@@ -93,7 +93,7 @@ function AdventureDetailRender({
 			</div>
 			<div className="adventure-detail-content">
 				<img className="adventure-detail-primaryimage"
-					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemType="image"/>
+					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemProp="primaryImage" itemType="image"/>
 				<div itemProp="description"
 					 itemType="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
 				<h2>Itinerary</h2>

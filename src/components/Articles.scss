@@ -33,3 +33,8 @@ it.
     align-self: flex-end;
   }
 }
+@media only screen and (max-width: $mobile-breakpoint) {
+  .article-item {
+    display:inherit;
+  }
+}
