@@ -1,6 +1,8 @@
 body {
   margin: 0;
-  font-family: "Aktiv Grotesk Medium", sans-serif;
+  font-family: 'Aktiv Grotesk Corp';
+    font-weight: 500;
+    font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
