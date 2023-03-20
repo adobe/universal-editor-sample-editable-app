@@ -86,6 +86,9 @@ it.
   .adventure-detail-content {
     width: 100%;
   }
+  .adventure-detail > div:last-child {
+    display: inherit;
+  }
 }
 
 /* Contributer Styles */

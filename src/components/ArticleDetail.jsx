@@ -72,7 +72,7 @@ function ArticleDetailRender({
 				<Contributer {...authorFragment} />
 			</div>
 			<div className="adventure-detail-content">
-				<img className="adventure-detail-primaryimage"
+				<img className="adventure-detail-primaryimage" itemProp="featuredImage"
 					 src={`${getPublishHost()}${featuredImage._path}`} alt={title}/>
 				<div itemProp="main" itemType="richtext">{mapJsonRichText(main.json)}</div>
 			</div>

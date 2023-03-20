@@ -20,6 +20,10 @@ $adventureItemHeightMobile: 250px;
   color: $black;
   text-align: left;
 
+  & > h1 {
+    padding-bottom: 40px;
+  }
+
   & > h1, &> ul {
     max-width: $max-width;
     margin: 0 auto;
@@ -30,7 +34,7 @@ $adventureItemHeightMobile: 250px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   list-style: none;
-  grid-column-gap: 20px;
+  grid-column-gap: 40px;
 }
 
 .adventure-item {
@@ -39,7 +43,7 @@ $adventureItemHeightMobile: 250px;
   
 .adventure-image-card {
   .adventure-item-image {
-    border-radius: 16px;
+    border-radius: 8px;
     width: 100%;
     aspect-ratio: 5/4;
     object-fit: cover;
