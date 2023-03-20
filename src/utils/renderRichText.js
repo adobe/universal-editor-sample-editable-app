@@ -13,6 +13,7 @@ import React, { isValidElement, cloneElement } from 'react';
 const defaultNodeMap = {
     'header': (node, children, style) => style[node.style]?.(node, children),
     'paragraph': (node, children) => <p>{children}</p>,
+    'span': ({ format } , children) => <span style={format}>{children}</span>,
     'unordered-list': (node, children) => <ul>{children}</ul>,
     'ordered-list': (node, children) => <ol>{children}</ol>,
     'list-item': (node, children) => <li>{children}</li>,
@@ -31,7 +32,9 @@ const defaultNodeMap = {
 const defaultTextFormat = {
     'bold': (value) => <b>{value}</b>,
     'italic': (value) => <i>{value}</i>,
-    'underline': (value) => <u>{value}</u>
+    'underline': (value) => <u>{value}</u>,
+    'strong': (value) => <strong>{value}</strong>,
+    'emphasis': (value) => <em>{value}</em>,
 }
 
 /**
