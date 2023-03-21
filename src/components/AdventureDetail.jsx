@@ -7,7 +7,7 @@ it.
 */
 import React from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
-import backIcon from '../images/icon-close.svg';
+import backIcon from '../images/Back.svg';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
@@ -50,59 +50,60 @@ function AdventureDetail() {
 		itemfilter: "cf"
 	};
 
-	return (<div  {...editorProps} itemScope className="adventure-detail">
-        <div class="adventure-detail-header">
-            <h1 className="adventure-detail-title" itemProp="title" itemType="text">{currentAdventure.title}</h1>
-            <button className="adventure-detail-close-button dark" onClick={() => navigate(-1)}>
-                <img className="Backbutton-icon" src={backIcon} alt="Return"/>
+	return (
+    <div  {...editorProps} itemScope className="adventure-detail">
+        <div><div class="adventure-detail-header">
+            <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
+                <img className="Backbutton-icon" src={backIcon} alt="Return"/> Adventures
             </button>
-        </div>
+            <h1 className="adventure-detail-title" itemProp="title" itemType="text">{currentAdventure.title}</h1>
+            <div className="pill default"><span itemProp="activity" itemType="text">{currentAdventure.activity}</span></div>
+        </div></div>
 		<AdventureDetailRender {...currentAdventure} references={references}/>
-	</div>);
+	</div>
+    );
 }
 
 function AdventureDetailRender({
-								   _path, title,
+								   title,
 								   primaryImage,
-								   activity,
 								   adventureType,
 								   tripLength,
 								   groupSize,
 								   difficulty,
-								   price,
 								   description,
-								   itinerary,
-								   contributor, references
+								   itinerary, references
 							   }) {
-	return (<div>			
-			<div className="adventure-detail-info">
-				<div className="adventure-detail-info-label">Activity</div>
-				<div className="adventure-detail-info-description" itemProp='activity' itemType="text">{activity}</div>
-				<div className="adventure-detail-info-label">Type</div>
-				<div className="adventure-detail-info-description" itemProp='adventureType'
-					 itemType="text">{adventureType}</div>
-				<div className="adventure-detail-info-label">Trip Length</div>
-				<div className="adventure-detail-info-description" itemProp='tripLength'
-					 itemType="text">{tripLength}</div>
-				<div className="adventure-detail-info-label">Group Size</div>
-				<div className="adventure-detail-info-description" itemProp='groupSize'
-					 itemType="text">{groupSize}</div>
-				<div className="adventure-detail-info-label">Difficulty</div>
-				<div className="adventure-detail-info-description" itemProp='difficulty'
-					 itemType="text">{difficulty}</div>
-			</div>
+	return (<div>
+            <img className="adventure-detail-primaryimage"
+					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemProp="primaryImage" itemType="image"/>			
 			<div className="adventure-detail-content">
-				<img className="adventure-detail-primaryimage"
-					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemProp="primaryImage" itemType="image"/>
+				
 				<div itemProp="description"
 					 itemType="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
-				<h2>Itinerary</h2>
-				<hr/>
-
-				{/* Render the itinerary without any custom render options (just use defaults) */}
+                <div className="adventure-detail-info">
+                    <div className="adventure-detail-info-label">
+                        <h6>Adventure Type</h6>
+                        <span itemProp='adventureType' itemType="text">{adventureType}</span>
+                    </div>
+                    <div className="adventure-detail-info-label">
+                        <h6>Trip Length</h6>
+                        <span itemProp='tripLength' itemType="text">{tripLength}</span>
+                    </div>
+                    <div className="adventure-detail-info-label">
+                        <h6>Difficulty</h6>
+                        <span itemProp='difficulty' itemType="text">{difficulty}</span>
+                    </div>
+                    <div className="adventure-detail-info-label">
+                        <h6>Group Size</h6>
+                        <span itemProp='groupSize' itemType="text">{groupSize}</span>
+                    </div>
+                </div>
+				<h6>Itinerary</h6>
 				<div itemProp="itinerary" itemType="richtext"
 					 className="adventure-detail-itinerary">{mapJsonRichText(itinerary.json)}</div>
 			</div>
+
 		</div>
 	);
 

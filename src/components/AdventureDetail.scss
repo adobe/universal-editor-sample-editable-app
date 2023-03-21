@@ -10,65 +10,77 @@ it.
 @import '../styles/variables';
 
 .adventure-detail {
-  padding: 70px;
-  max-width: $max-width;
-  margin: 0 auto;
+  padding: 0 80px;
+  background: $white;
+  color: $black;
   button.dark {
     border: none;
+    color: inherit;
+    padding: 0;
   }
 
   .adventure-detail-header {
     display: flex;
     justify-content: space-between;
-    .adventure-detail-close-button {
+    flex-flow: wrap;
+    align-items: center;
+    row-gap: 40px;
+    padding-bottom: 40px;
+    .adventure-detail-back-nav {
       width: 24px;
-      margin: 0;
-      background: none;
-      border: none;
+      flex-basis: 100%;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
     }
   }
-  & > div:last-child {
-    display:grid;
-    grid-template-columns: 1fr 3fr;
+  > div {
+    max-width: $max-width;
+    margin: 0 auto;
   }
 }
 
 
 
-.adventure-detail-title {
-  margin-bottom: 1em;
-}
-
-.adventure-detail-info-label,
-.adventure-detail-info-description {
-  border-left: 5px solid $gray-light;
-}
-
-.adventure-detail-info-label {
-  padding: 10px 0px 5px 20px;
-  text-transform: uppercase;
-}
-
-.adventure-detail-info-description {
-  margin-bottom: 20px;
-  padding: 5px 0px 10px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
+.adventure-detail-content, .adventure-detail-header {
+  padding: 40px 20%;
 }
 
 .adventure-detail-content {
-
-  img {
-    width: 100%;
+  .adventure-detail-info {
+    display: flex;
+    background: $lime;
+    border-radius: 16px;
+    align-items: flex-start;
+    padding: 24px 40px;
+    column-gap: 80px;
+    justify-content: space-evenly;
+    margin: 40px 0;
   }
+  h6 {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+    text-transform: inherit;
+    margin: 0 0 8px 0;
+  }
+  span {
+    line-height: 24px;
+  }
+}
+.adventure-detail-title {
+  margin: 0;
 }
 
 .adventure-detail-content h2 {
-  margin: 15px 0px 0px 0px;
+  margin-top: 32px;
   padding: 0px;
 }
 
 .adventure-detail-primaryimage {
+  margin: 0 auto;
+  border-radius: 16px;
+  aspect-ratio: 16/8;
   width: 100%;
 }
 
@@ -79,15 +91,18 @@ it.
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
-  .adventure-detail-info {
-    display: none;
-  }
-
   .adventure-detail-content {
-    width: 100%;
+    .adventure-detail-info {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 10px;
+    }
   }
-  .adventure-detail > div:last-child {
-    display: inherit;
+}
+
+@media only screen and (max-width: $tablet-breakpoint) {
+  .adventure-detail-content, .adventure-detail-header {
+    padding: 40px 0;
   }
 }
 

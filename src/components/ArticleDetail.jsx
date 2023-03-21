@@ -7,7 +7,7 @@ it.
 */
 import React from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
-import backIcon from '../images/icon-close.svg';
+import backIcon from '../images/Back.svg';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
@@ -50,10 +50,11 @@ function ArticleDetail({ article }) {
 
 	return (<div {...editorProps} itemScope className="adventure-detail">
         <div class="adventure-detail-header">
+            <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
+            <img className="Backbutton-icon" src={backIcon} alt="Return"/> Back
+            </button>
             <h1 className="adventure-detail-title" itemProp="title" itemType="text">{currentArticle.title}</h1>
-            <button className="adventure-detail-close-button dark" onClick={() => navigate(-1)}>
-                <img className="Backbutton-icon" src={backIcon} alt="Return"/>
-            </button>	
+            {/* <span className="pill default" itemProp="title" itemType="text">{currentAdventure.activity}</span> */}
         </div>
 		<ArticleDetailRender {...currentArticle} slug={articleSlug}/>
 	</div>);
@@ -68,12 +69,9 @@ function ArticleDetailRender({
 
 
 	return (<div>
-			<div className="adventure-detail-info">
-				<Contributer {...authorFragment} />
-			</div>
-			<div className="adventure-detail-content">
-				<img className="adventure-detail-primaryimage" itemType="image" itemProp="featuredImage"
+            <img className="adventure-detail-primaryimage" itemType="image" itemProp="featuredImage"
 					 src={`${getPublishHost()}${featuredImage._path}`} alt={title}/>
+			<div className="adventure-detail-content">			
 				<div itemProp="main" itemType="richtext">{mapJsonRichText(main.json)}</div>
 			</div>
 		</div>

@@ -26,13 +26,13 @@ body {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 line-height: $line-height-base;
+font-family: "Poppins Medium";
+font-weight: 500; 
 }
 
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-font-family: $font-family-sans-serif;
-font-weight: $font-weight-normal;
 margin-top: $line-height-computed;
 margin-bottom: calc($line-height-computed / 2);
 }
@@ -40,9 +40,7 @@ margin-bottom: calc($line-height-computed / 2);
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-font-family: $font-family-sans-serif;
 text-transform: uppercase;
-font-weight: $font-weight-bold;
 }
 
 h1, .h1 { font-size: $font-size-h1; }
@@ -93,6 +91,7 @@ ol, ul {
 hr {
     border: none;
     border-bottom: 1px solid $gray;
+    margin: 0;
 }
 
 button {
@@ -124,6 +123,9 @@ button {
 .pill {
   padding: 11px 16px 13px;
   border-radius: 20px
+}
+.pill.default {
+  border: 1px solid #696969;
 }
 
 // Error
