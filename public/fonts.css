@@ -25,3 +25,17 @@
   src: url(fonts/AktivGroteskCorp-Medium.woff) format('woff');
 }
 
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins Medium';
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/Poppins-Medium.ttf);
+}
