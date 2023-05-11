@@ -46,7 +46,7 @@ function App() {
     <HelmetProvider>
       <div className="App">
         <Helmet>
-          <meta name="urn:auecon:aemconnection" content={`aem:${getAuthorHost()}`}/>
+          <meta name="urn:adobe:aem:editor:aemconnection" content={`aem:${getAuthorHost()}`}/>
         </Helmet>
         <Router>
           <Header />
