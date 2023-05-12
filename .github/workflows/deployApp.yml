@@ -1,4 +1,4 @@
-# Flow for deploying the app to https://sample-app-development-testing.netlify.app
+# Flow for deploying the app to: https://sample-app-development-testing.netlify.app
 name: Deploy to https://sample-app-development-testing.netlify.app
 on:
   push:
