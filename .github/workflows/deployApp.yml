@@ -3,7 +3,7 @@ name: Deploy to https://ue-remote-app.adobe.net
 on:
   push:
     branches:
-      - issue/enable-development-app
+      - development-app
     paths:
       - 'build/index.html'
 jobs:
@@ -15,7 +15,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2.3
         with:
           publish-dir: './build'
-          production-branch: issue/enable-development-app
+          production-branch: development-app
           github-token: ${{ secrets.AUTH_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
