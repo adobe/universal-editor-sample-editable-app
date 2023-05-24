@@ -25,14 +25,14 @@ import "./Home.scss";
         <section className="newsletter">
           <div className="content">
             <Title itemID="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/title" itemProp="jcr:title" itemType="text"/>
-            <Text itemID="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/text" itemProp="text" itemType="richtext" />       
+            <Text itemID="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/text" itemProp="text" itemType="richtext" />
           </div>
           <button>Subscribe</button>
         </section>
         <section className="about-us">
           <div className="content">
-            <Title itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/title" itemProp="jcr:title" itemType="text"/>
-            <Container itemID="urn:aemconnection:/content/wknd/us/en/about-us/jcr:content/root/container/container" itemType="container" />       
+            <Title itemID="urn:aemconnection:/content/experience-fragments/wknd/language-masters/en/about-us/master/jcr:content/root/container/container/title_copy" itemProp="jcr:title" itemType="text"/>
+            <Container itemID="urn:aemconnection:/content/experience-fragments/wknd/language-masters/en/about-us/master/jcr:content/root/container/container_339706497/container_copy" itemType="container" />
           </div>
           <Link to={`/aboutus${window.location.search}`}>
             <button className="dark">Read more</button>
