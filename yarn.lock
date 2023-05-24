@@ -79,31 +79,31 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.0.1.tgz#b38b444ad3aa5fedbb15f2f746dcd934226a12dd"
   integrity sha512-+u76oB43nOHrF4DDWRLWDCtci7f3QJoEBigemIdIeTi1ODqjx6Tad9NCVnPRwewWlKkVab5PlK8DCtPTyX7S8g==
 
-"@aem-sites/universal-editor-commons@^0.0.32":
-  version "0.0.32"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-commons/-/@aem-sites/universal-editor-commons-0.0.32.tgz#a6a7e33ff8058b0d90bbc4633faa39e0f2673999"
-  integrity sha512-GXxvfXTQ45mjqVWopM9qBVaa8waZcnDV0SxMVII0RTZlaP8g8IO+hNbOoF1UdTW8cwEt3N4t53htr+12ns3d5Q==
+"@aem-sites/universal-editor-commons@^0.0.34":
+  version "0.0.34"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-commons/-/@aem-sites/universal-editor-commons-0.0.34.tgz#a40b5c36e21aa865be1f125a62605602dfbab686"
+  integrity sha512-fIeGAVRgUrD+etvQWO7XVl5zDwYYdZXjtTZ2k7YdATZd1ifocXrC5IRDmL19zEdQY3BLr2Yy8gsuGnme/NcS1w==
   dependencies:
     typescript "~4.7.2"
     uuid "^9.0.0"
 
-"@aem-sites/universal-editor-cors@^0.0.61":
-  version "0.0.61"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-cors/-/@aem-sites/universal-editor-cors-0.0.61.tgz#64641e9159dd37271844fcae612378b8d262d731"
-  integrity sha512-Le4XaIG/9TwuAatmGGCTKLDR8vJvBEMZHYGbVS/xWPW+6Kz4xVtGfb9wz/mDHV94cF+4kXkZ1iZCmwgWR/KVYQ==
+"@aem-sites/universal-editor-cors@^0.0.63":
+  version "0.0.63"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-cors/-/@aem-sites/universal-editor-cors-0.0.63.tgz#751ca7697a286a9a473cbb5900719de1d77b53d3"
+  integrity sha512-5TjPtrl1/qTzrlgSF1tqltYKvcJZ9MNlYG7ApzyHOsrtXhlByfIzWM0Gw3DsSfmLDk64QE21luh/zrIyFnVeYg==
   dependencies:
-    "@aem-sites/universal-editor-commons" "^0.0.32"
-    "@aem-sites/universal-editor-overlays" "^0.0.59"
+    "@aem-sites/universal-editor-commons" "^0.0.34"
+    "@aem-sites/universal-editor-overlays" "^0.0.61"
     penpal "^6.2.2"
     typescript "~4.7.2"
     zustand "^4.1.5"
 
-"@aem-sites/universal-editor-overlays@^0.0.59":
-  version "0.0.59"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-overlays/-/@aem-sites/universal-editor-overlays-0.0.59.tgz#31f522eda9277698bf4acf92453c258c0dc4eff9"
-  integrity sha512-HeFs3lN2L6mvNXuPnPce6HbnpNYCNQMxy3AjqblVuXMWVhxsA/kj6X2RUEt6i3Zn2sMOput8cel09TXjL9VTMw==
+"@aem-sites/universal-editor-overlays@^0.0.61":
+  version "0.0.61"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-aem-sites-release/@aem-sites/universal-editor-overlays/-/@aem-sites/universal-editor-overlays-0.0.61.tgz#f043ca520453695bd86c8cc4cc17f62a09fd209d"
+  integrity sha512-j3m9Jrtg8FDvbFiDDwAyEjmgktywpaCUVEILIo5Tmx/ZYT+zyxo8rnqbdmF/lo3aoDrnVApRJkGbbdavBlJ0vw==
   dependencies:
-    "@aem-sites/universal-editor-commons" "^0.0.32"
+    "@aem-sites/universal-editor-commons" "^0.0.34"
     debounce "^1.2.1"
     typescript "~4.7.2"
     uuid "^9.0.0"
