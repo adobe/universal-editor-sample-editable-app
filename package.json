@@ -14,7 +14,7 @@
   "dependencies": {
     "@adobe/aem-headless-client-js": "^3.1.0",
     "@adobe/aem-headless-client-nodejs": "^1.1.0",
-    "@adobe/universal-editor-cors": "^1.1.2",
+    "@adobe/universal-editor-cors": "^1.2.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
