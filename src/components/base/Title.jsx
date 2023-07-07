@@ -28,7 +28,7 @@ const Title = (props) => {
 
   const TitleTag = `${data.type}`;
   return (
-    <TitleTag {...editorProps} className={className}>{data.text}</TitleTag>
+    <TitleTag {...editorProps} data-editor-itemlabel={data.text} className={className}>{data.text}</TitleTag>
   );
 };
 
