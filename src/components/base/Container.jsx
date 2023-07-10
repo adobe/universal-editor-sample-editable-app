@@ -28,8 +28,12 @@ const Container = ({ itemID, itemType }) => {
   }, [itemID]);
   
   return (
-    <div itemScope itemID={itemID} itemType={itemType}>
+    <div classname="container" itemScope itemID={itemID} itemType={itemType}>
      {components}
+     {/* <div id="test" itemScope itemID={`${itemID}/container`} itemType={itemType} {...{"data-editor-behavior": "component"}}>
+      <Text key={1} {...{itemID: `${1}/text`,itemType: "text", isComponent: "component",data:{text:"hello1"}}} />
+      <Text key={2} {...{itemID: `${2}/text`,itemType: "text", isComponent: "component",data:{text:"hello2"}}} />
+     </div> */}
     </div>
   )
 };
