@@ -26,7 +26,7 @@ const Text = (props) => {
   
   return (
       itemType !== "richtext" ?(
-          <div {...editorProps} className={className}>
+          <div {...editorProps} className={className} data-editor-itemlabel={data[itemProp]}>
             {data[itemProp]}
           </div>
       ) : <div {...editorProps} className={className} dangerouslySetInnerHTML={{__html: data[itemProp]}}/>
