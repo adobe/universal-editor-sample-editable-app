@@ -23,7 +23,11 @@ section {
       margin-top: 0;
       text-align:left;
     }
-  }
+
+    .container {
+      text-align: left;
+    } 
+  } 
 
   &.about-us .content {
     grid-template-columns: 1fr 3fr;
