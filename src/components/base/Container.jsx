@@ -8,13 +8,15 @@ const Container = ({ itemID, itemType }) => {
   const createChildComponents = (items, itemid) => {
     const components = [];
     for(let key in items) {
+      const item = items[key];
+      const isContainer = !!item[":items"];
       const props = {
         itemID: `${itemid}/${key}`,
-        itemType: items[key].richText ? "richtext" : "text",
-        data: items[key],
-        isComponent: "component"
+        itemType: isContainer ? "container" : item.richText ? "richtext" : "text",
+        data: item,
+        isComponent: isContainer ? false: "component"
       };
-      const Component =  items[key].type ? Title : Text;
+      const Component =  isContainer ? Container : item.type ? Title : Text;
       components.push(<Component key={key} {...props} />)
     }
     return components;
@@ -30,10 +32,6 @@ const Container = ({ itemID, itemType }) => {
   return (
     <div classname="container" itemScope itemID={itemID} itemType={itemType}>
      {components}
-     {/* <div id="test" itemScope itemID={`${itemID}/container`} itemType={itemType} {...{"data-editor-behavior": "component"}}>
-      <Text key={1} {...{itemID: `${1}/text`,itemType: "text", isComponent: "component",data:{text:"hello1"}}} />
-      <Text key={2} {...{itemID: `${2}/text`,itemType: "text", isComponent: "component",data:{text:"hello2"}}} />
-     </div> */}
     </div>
   )
 };
