@@ -17,7 +17,11 @@
         },
         {
           "title": "Title",
-          "plugins": {},
+          "plugins": {
+            "aem": {
+              "sling:resourceType": "wknd/components/title"
+            }
+          },
           "model": {
             "uri": "",
             "fields": []
