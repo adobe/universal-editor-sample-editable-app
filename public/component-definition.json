@@ -5,7 +5,11 @@
       "components": [
         {
           "title": "Text",
-          "plugins": {},
+          "plugins": {
+            "aem": {
+              "sling:resourceType": "wknd/components/text"
+            }
+          },
           "model": {
             "uri": "",
             "fields": []
