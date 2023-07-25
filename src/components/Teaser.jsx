@@ -46,7 +46,7 @@ const Teaser = () => {
         <button>Read more</button>
       </Link>
     </article>
-    {featuredImage && <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} itemType="image" itemProp="featuredImage" />}
+    {featuredImage && <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} itemType="media" itemProp="featuredImage" />}
   </section>
 );
   }
