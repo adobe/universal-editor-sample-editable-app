@@ -1,0 +1,70 @@
+{
+  "groups": [
+    {
+      "title": "General Components",
+      "components": [
+        {
+          "title": "Text",
+          "plugins": {
+            "aem": {
+              "sling:resourceType": "wknd/components/text"
+            }
+          },
+          "model": {
+            "uri": "",
+            "fields": []
+          }
+        },
+        {
+          "title": "Title",
+          "plugins": {
+            "aem": {
+              "sling:resourceType": "wknd/components/title"
+            }
+          },
+          "model": {
+            "uri": "",
+            "fields": []
+          }
+        },
+        {
+          "title": "Image",
+          "plugins": {},
+          "model": {
+            "uri": "",
+            "fields": []
+          }
+        },
+        {
+          "title": "List",
+          "plugins": {},
+          "model": {
+            "uri": "",
+            "fields": []
+          }
+        },
+        {
+          "title": "Container",
+          "plugins": {},
+          "model": {
+            "uri": "",
+            "fields": []
+          }
+        }
+      ]
+    },
+    {
+      "title": "Advance Components",
+      "components": [
+        {
+          "title": "Rich Text",
+          "plugins": {},
+          "model": {
+            "uri": "",
+            "fields": []
+          }
+        }
+      ]
+    }
+  ]
+}
