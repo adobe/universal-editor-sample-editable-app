@@ -11,6 +11,7 @@
 # production
 /build/*.*
 /build/static/*
+!/build/static/*.json
 !/build/fonts
 !/build/fonts.css
 !/build/static/media
