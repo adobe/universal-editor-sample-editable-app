@@ -76,7 +76,7 @@ function AdventureDetailRender({
 							   }) {
 	return (<div>
             <img className="adventure-detail-primaryimage"
-					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemProp="primaryImage" itemType="image"/>			
+					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemProp="primaryImage" itemType="media"/>			
 			<div className="adventure-detail-content">
 				
 				<div itemProp="description"
