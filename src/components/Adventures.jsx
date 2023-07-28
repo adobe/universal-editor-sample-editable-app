@@ -32,7 +32,7 @@ function AdventureItem(props) {
           <div className="adventure-image-card">
           <Link to={`/adventure:${props.slug}${window.location.search}`}>
             <img className="adventure-item-image" src={`${getPublishHost()}${props.primaryImage._path}`}
-                  alt={props.title} itemProp="primaryImage" itemType="image" />
+                  alt={props.title} itemProp="primaryImage" itemType="media" />
           </Link>
           </div>
           <h3 className="adventure-item-title" itemProp="title" itemType="text">{props.title.toLowerCase()}</h3>

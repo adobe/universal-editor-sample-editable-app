@@ -26,7 +26,7 @@ const Article = ({_path, title, synopsis, authorFragment, slug}) => {
             <aside>
               <img className="article-item-image"
                 src={`${getPublishHost()}${authorFragment?.profilePicture._path}`}
-                alt={title} itemProp="profilePicture" itemType="image"/>
+                alt={title} itemProp="profilePicture" itemType="media"/>
             </aside>
             <article>
               <Link to={`/articles/article:${slug}${window.location.search}`}>
