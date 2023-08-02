@@ -2,29 +2,56 @@
   "groups": [
     {
       "title": "General Components",
+      "id": "general",
       "components": [
         {
           "title": "Text",
+          "id": "text",
           "plugins": {
             "aem": {
-              "sling:resourceType": "wknd/components/text"
+              "page":{
+                "resourceType": "wknd/components/text"
+              }
             }
           },
-          "model": {
+          "model": {  
+           "id": "text",
             "uri": "",
-            "fields": []
+            "fields": [{
+              "component": "text-input",
+              "name": "text",
+              "value": "Text",
+              "label": "Text",
+              "valueType": "string"
+            },{
+              "component": "boolean",
+              "name": "richText",
+              "value": false,
+              "label": "Toggle RTE",
+              "valueType": "boolean"
+            }]
           }
         },
         {
           "title": "Title",
+          "id": "title",
           "plugins": {
             "aem": {
-              "sling:resourceType": "wknd/components/title"
+              "page":{
+                "resourceType": "wknd/components/title"
+              }
             }
           },
           "model": {
             "uri": "",
-            "fields": []
+            "id": "title",
+            "fields": [{
+              "component": "text-input",
+              "name": "text",
+              "value": "Title",
+              "label": "Title",
+              "valueType": "string"
+            }]
           }
         },
         {
@@ -45,8 +72,16 @@
         },
         {
           "title": "Container",
-          "plugins": {},
+          "id": "container",
+          "plugins": {
+            "aem": {
+              "page":{
+                "resourceType": "wknd/components/container"
+              }
+            }
+          },
           "model": {
+            "modeltype": "container",
             "uri": "",
             "fields": []
           }
@@ -54,14 +89,38 @@
       ]
     },
     {
-      "title": "Advance Components",
+      "title": "Advanced Components", 
+      "id": "advanced",
       "components": [
         {
           "title": "Rich Text",
-          "plugins": {},
+          "id": "richtext",
+          "plugins": {
+            "aem": {
+              "page":{
+                "resourceType": "wknd/components/text",
+                "template": {
+                  "textIsRich": true
+                }
+              }
+            }
+          },
           "model": {
             "uri": "",
-            "fields": []
+            "id": "richtext",
+            "fields": [{
+              "component": "text-area",
+              "name": "text",
+              "value": "Text",
+              "label": "Text",
+              "valueType": "string"
+            },{
+              "component": "boolean",
+              "name": "richText",
+              "value": true,
+              "label": "Toggle RTE",
+              "valueType": "boolean"
+            }]
           }
         }
       ]

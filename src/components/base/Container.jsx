@@ -2,7 +2,7 @@ import React from 'react';
 import {fetchData} from '../../utils/fetchData';
 import Text from './Text';
 import Title from './Title';
-const Container = ({ itemID, itemType }) => {
+const Container = ({ itemID, itemType, isComponent = "" }) => {
   const [components, setComponents] = React.useState(null);
 
   const createChildComponents = (items, itemid) => {
@@ -14,7 +14,7 @@ const Container = ({ itemID, itemType }) => {
         itemID: `${itemid}/${key}`,
         itemType: isContainer ? "container" : item.richText ? "richtext" : "text",
         data: item,
-        isComponent: isContainer ? false: "component"
+        isComponent: "component"
       };
       const Component =  isContainer ? Container : item.type ? Title : Text;
       components.push(<Component key={key} {...props} />)
@@ -30,7 +30,7 @@ const Container = ({ itemID, itemType }) => {
   }, [itemID]);
   
   return (
-    <div classname="container" itemScope itemID={itemID} itemType={itemType}>
+    <div classname="container" data-editor-itemmodel="container" data-editor-behavior={isComponent} itemScope itemID={itemID} itemType={itemType}>
      {components}
     </div>
   )
