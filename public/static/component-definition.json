@@ -10,7 +10,10 @@
           "plugins": {
             "aem": {
               "page":{
-                "resourceType": "wknd/components/text"
+                "resourceType": "wknd/components/text",
+                "template": {
+                  "text": "Default Text"
+                }
               }
             }
           },
@@ -33,12 +36,15 @@
           }
         },
         {
-          "title": "Title",
-          "id": "title",
+          "title": "Image",
+          "id": "image",
           "plugins": {
             "aem": {
               "page":{
-                "resourceType": "wknd/components/title"
+                "resourceType": "wknd/components/image",
+                "template": {
+                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
+                }
               }
             }
           },
@@ -100,7 +106,8 @@
               "page":{
                 "resourceType": "wknd/components/text",
                 "template": {
-                  "textIsRich": true
+                  "textIsRich": true,
+                  "text": "<p>Default Richtext</p>"
                 }
               }
             }
