@@ -40,6 +40,7 @@
     "zustand": "^4.1.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "husky": "^8.0.1"
   },
   "eslintConfig": {

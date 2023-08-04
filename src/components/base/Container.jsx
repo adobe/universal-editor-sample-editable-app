@@ -52,7 +52,7 @@ const Container = ({ itemID, itemType, isComponent = "" }) => {
   }, [itemID]);
   
   return (
-    <div classname="container" data-editor-itemmodel="container" data-editor-behavior={isComponent} itemScope itemID={itemID} itemType={itemType}>
+    <div className="container" data-editor-itemmodel="container" data-editor-behavior={isComponent} itemScope itemID={itemID} itemType={itemType}>
      {components}
     </div>
   )
