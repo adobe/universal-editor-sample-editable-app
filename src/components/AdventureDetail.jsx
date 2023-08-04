@@ -16,13 +16,10 @@ import useGraphQL from '../api/useGraphQL';
 import {getPublishHost} from "../utils/fetchData";
 
 function AdventureDetail() {
-
 	// params hook from React router
 	const {slug} = useParams();
 	const navigate = useNavigate();
-	const adventureSlug = slug.substring(1);
-
-	const persistentQuery = `wknd-shared/adventure-by-slug;slug=${adventureSlug}`;
+	const persistentQuery = `wknd-shared/adventure-by-slug;slug=${slug}`;
 
 	//Use a custom React Hook to execute the GraphQL query
 	const {data, errorMessage} = useGraphQL(persistentQuery);
@@ -52,7 +49,7 @@ function AdventureDetail() {
 
 	return (
     <div  {...editorProps} itemScope className="adventure-detail">
-        <div><div class="adventure-detail-header">
+        <div><div className="adventure-detail-header">
             <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
                 <img className="Backbutton-icon" src={backIcon} alt="Return"/> Adventures
             </button>

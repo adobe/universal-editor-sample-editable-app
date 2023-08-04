@@ -53,10 +53,10 @@ function App() {
           <hr/>
           <main>
             <Routes>
-              <Route path="/adventure:slug" element={<AdventureDetail />} />
+              <Route path="/adventure/:slug" element={<AdventureDetail />} />
               <Route path="/" element={<Home />} />
               <Route path="/articles" element={<Articles />} />
-              <Route path="/articles/article:slug" element={<ArticleDetail />} />
+              <Route path="/articles/article/:slug" element={<ArticleDetail />} />
               <Route path="/aboutus" element={<About />} />
             </Routes>
           </main>
