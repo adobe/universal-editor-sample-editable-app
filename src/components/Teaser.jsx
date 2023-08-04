@@ -42,7 +42,7 @@ const Teaser = () => {
         <span className='pill'>Magazine</span>
         <span className='pill'>Surfing</span>
       </div>
-      <Link to={`/articles/article:aloha-spirits-in-northern-norway${window.location.search}`}>
+      <Link to={`/articles/article/aloha-spirits-in-northern-norway${window.location.search}`}>
         <button>Read more</button>
       </Link>
     </article>
