@@ -19,7 +19,7 @@ function AdventureItem(props) {
         itemID: "urn:aemconnection:" + props?._path + "/jcr:content/data/master",
         itemType: "reference",
         itemfilter: "cf",
-        "data-editor-itemlabel": props.title
+        "data-editor-itemlabel": props.slug
     };
 
   //Must have title, path, and image

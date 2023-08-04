@@ -243,6 +243,10 @@ button {
   }
 }
 
+.container img {
+  max-width: 50%;
+}
+
 @media only screen and (max-width: $tablet-breakpoint) {
   .header, .footer {
     padding: $tablet-padding;
