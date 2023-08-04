@@ -21,7 +21,7 @@ function ArticleDetail({ article }) {
 	// params hook from React router
 	const {slug} = useParams();
 	const navigate = useNavigate();
-	const articleSlug = slug ? slug.substring(1) : article;
+	const articleSlug = slug || article;
 
 	const persistentQuery = `wknd-shared/article-by-slug;slug=${articleSlug}`;
 

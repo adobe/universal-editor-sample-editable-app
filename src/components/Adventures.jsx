@@ -30,7 +30,7 @@ function AdventureItem(props) {
   return (
          <li className="adventure-item" itemScope {...editorProps}>
           <div className="adventure-image-card">
-          <Link to={`/adventure:${props.slug}${window.location.search}`}>
+          <Link to={`/adventure/${props.slug}${window.location.search}`}>
             <img className="adventure-item-image" src={`${getPublishHost()}${props.primaryImage._path}`}
                   alt={props.title} itemProp="primaryImage" itemType="media" />
           </Link>
