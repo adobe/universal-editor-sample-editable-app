@@ -1,17 +1,17 @@
-# Universal Editor Sample App
+# Adobe Universal Editor Sample App
 
 ## Using the Sample App
-This Sample App is hosted at https://ue-remote-app.adobe.net.
-Per Default the content is retrieved and written back to our Production Demo Environment:
+The Sample App is hosted at https://ue-remote-app.adobe.net.
+Per Default the content is retrieved and written back to the Adobe Experience Manager as a Cloud Service ( Production ) Demo Environment:
 ```
 authorHost=https://author-p7452-e12433.adobeaemcloud.com
 publishHost=https://publish-p7452-e12433.adobeaemcloud.com
 ```
-If you'd like to retrieve content from another environment add authorHost & publishHost as query parameters, e.g.
+To retrieve content from another environment add `authorHost` & `publishHost` as query parameters, e.g.
 
 [https://ue-remote-app.adobe.net?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com](https://ue-remote-app.adobe.net?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com)
 
-respectively if run on local dev environment:
+Similarly, if running the Universal Editor App on local dev environment, add `authorHost` & `publishHost` as query parameters like this:
 
 [https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com](https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com)
 
