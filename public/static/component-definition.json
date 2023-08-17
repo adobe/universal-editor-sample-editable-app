@@ -24,14 +24,41 @@
               "component": "text-input",
               "name": "text",
               "value": "Text",
-              "label": "Text",
+              "label": "Custom Text",
               "valueType": "string"
-            },{
-              "component": "boolean",
-              "name": "richText",
-              "value": false,
-              "label": "Toggle RTE",
-              "valueType": "boolean"
+            }]
+          }
+        },
+        {
+          "title": "Title",
+          "id": "title",
+          "plugins": {
+            "aem": {
+              "page":{
+                "resourceType": "wknd/components/title",
+                "template": {
+                  "jcr:title": "Default Title"
+                }
+              }
+            }
+          },
+          "model": {
+            "uri": "",
+            "id": "title",
+            "fields": [{
+              "component": "select",
+              "name": "type",
+              "value": "h1",
+              "label": "Type",
+              "valueType": "string",
+              "options": [
+                {"name": "h1","value":"h1"},
+                {"name": "h2","value":"h2"},
+                {"name": "h3","value":"h3"}
+                {"name": "h4","value":"h4"},
+                {"name": "h5","value":"h5"},
+                {"name": "h6","value":"h6"}
+              ]
             }]
           }
         },
@@ -49,23 +76,15 @@
             }
           },
           "model": {
+            "id": "image",
             "uri": "",
-            "id": "title",
-            "fields": [{
+            "fields": [{ 
               "component": "text-input",
-              "name": "text",
-              "value": "Title",
-              "label": "Title",
-              "valueType": "string"
+              "valueType": "string", 
+              "name": "alt", 
+              "value": "Default alt", 
+              "label": "Alt Text" 
             }]
-          }
-        },
-        {
-          "title": "Image",
-          "plugins": {},
-          "model": {
-            "uri": "",
-            "fields": []
           }
         },
         {
@@ -119,14 +138,8 @@
               "component": "text-area",
               "name": "text",
               "value": "Text",
-              "label": "Text",
+              "label": "Custom Richtext",
               "valueType": "string"
-            },{
-              "component": "boolean",
-              "name": "richText",
-              "value": true,
-              "label": "Toggle RTE",
-              "valueType": "boolean"
             }]
           }
         }
