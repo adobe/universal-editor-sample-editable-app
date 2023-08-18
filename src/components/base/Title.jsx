@@ -10,7 +10,7 @@ import React, {useEffect, useMemo} from 'react';
 import {fetchData} from '../../utils/fetchData';
 
 const Title = (props) => {
-  const {itemID, itemProp = "jcr:title", itemType, className, data: initialData, isComponent = false} = props;
+  const {itemID, itemProp = "jcr:title", itemType, className = "test", data: initialData, isComponent = false} = props;
   const editorProps = useMemo(() => true && {
     itemID,
     itemProp,
@@ -18,18 +18,31 @@ const Title = (props) => {
     "data-editor-behavior": isComponent
   }, [itemID, itemProp, itemType, isComponent]);
 
-  const [data,setData] = React.useState(initialData || {});
+  const [data,setData] = React.useState(initialData);
+
   useEffect(() => {
     if(!itemID || !itemProp) return;
-    if (!initialData) { fetchData(itemID).then((data) => setData(data)) };
-  }, [itemID, itemProp, initialData]);
+    if (!data) { fetchData(itemID, "model").then((data) => setData(data)) };
+  }, [itemID, itemProp, data]);
 
-  if(!data.type) return null;
-
-  const TitleTag = `${data.type}`;
-  return (
-    <TitleTag {...editorProps} data-editor-itemmodel="title" data-editor-itemlabel={data.text} className={className}>{data.text}</TitleTag>
-  );
+  useEffect(() => {
+    const handleUpdate = (e) => {
+      const { detail } = e;
+      if(itemID === detail.itemid) {
+        setData(null);
+      }
+      e.stopPropagation();
+    };
+    document.addEventListener("editor-update", handleUpdate);
+    return () => {
+      document.removeEventListener("editor-update", handleUpdate);
+    }
+  },[itemID]);
+  
+  const TitleTag = data?.type ? `${data.type}` : "h1";
+  return data ? (
+    <TitleTag {...editorProps} data-editor-itemmodel="title" data-editor-itemlabel={"title"} className={className}>{data["text"]}</TitleTag>
+  ):<></>;
 };
 
 export default Title;
