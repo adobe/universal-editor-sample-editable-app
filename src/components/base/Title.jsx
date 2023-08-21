@@ -27,8 +27,8 @@ const Title = (props) => {
 
   useEffect(() => {
     const handleUpdate = (e) => {
-      const { detail } = e;
-      if(itemID === detail.itemid) {
+      const { itemids = [] } = e.detail;
+      if(itemids.indexOf(itemID) >= 0) {
         setData(null);
       }
       e.stopPropagation();
