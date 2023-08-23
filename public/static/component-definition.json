@@ -19,7 +19,6 @@
           },
           "model": {  
            "id": "text",
-            "uri": "",
             "fields": [{
               "component": "text-input",
               "name": "text",
@@ -43,7 +42,6 @@
             }
           },
           "model": {
-            "uri": "",
             "id": "title",
             "fields": [{
               "component": "select",
@@ -77,7 +75,6 @@
           },
           "model": {
             "id": "image",
-            "uri": "",
             "fields": [{ 
               "component": "text-input",
               "valueType": "string", 
@@ -107,7 +104,6 @@
           },
           "model": {
             "modeltype": "container",
-            "uri": "",
             "fields": []
           }
         }
@@ -132,7 +128,6 @@
             }
           },
           "model": {
-            "uri": "",
             "id": "richtext",
             "fields": [{
               "component": "text-area",

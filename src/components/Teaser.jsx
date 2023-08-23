@@ -24,7 +24,10 @@ const Teaser = () => {
 
 	//If query response is null then return a loading icon...
 	if (!data) return <Loading/>;
-  const { title, _path, featuredImage, synopsis } = getArticle(data);
+  
+  const article =  getArticle(data);
+  if(!article) return <></>
+  const { title, _path, featuredImage, synopsis } = article;
 
   const editorProps = {
 		itemID: "urn:aemconnection:" + _path + "/jcr:content/data/master",
