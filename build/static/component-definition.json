@@ -9,23 +9,13 @@
           "id": "text",
           "plugins": {
             "aem": {
-              "page":{
+              "page": {
                 "resourceType": "wknd/components/text",
                 "template": {
                   "text": "Default Text"
                 }
               }
             }
-          },
-          "model": {  
-           "id": "text",
-            "fields": [{
-              "component": "text-input",
-              "name": "text",
-              "value": "Text",
-              "label": "Custom Text",
-              "valueType": "string"
-            }]
           }
         },
         {
@@ -33,31 +23,13 @@
           "id": "title",
           "plugins": {
             "aem": {
-              "page":{
+              "page": {
                 "resourceType": "wknd/components/title",
                 "template": {
                   "jcr:title": "Default Title"
                 }
               }
             }
-          },
-          "model": {
-            "id": "title",
-            "fields": [{
-              "component": "select",
-              "name": "type",
-              "value": "h1",
-              "label": "Type",
-              "valueType": "string",
-              "options": [
-                {"name": "h1","value":"h1"},
-                {"name": "h2","value":"h2"},
-                {"name": "h3","value":"h3"},
-                {"name": "h4","value":"h4"},
-                {"name": "h5","value":"h5"},
-                {"name": "h6","value":"h6"}
-              ]
-            }]
           }
         },
         {
@@ -65,7 +37,7 @@
           "id": "image",
           "plugins": {
             "aem": {
-              "page":{
+              "page": {
                 "resourceType": "wknd/components/image",
                 "template": {
                   "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
@@ -75,42 +47,36 @@
           },
           "model": {
             "id": "image",
-            "fields": [{ 
-              "component": "text-input",
-              "valueType": "string", 
-              "name": "alt", 
-              "value": "Default alt", 
-              "label": "Alt Text" 
-            }]
+            "fields": [
+              {
+                "component": "text-input",
+                "valueType": "string",
+                "name": "alt",
+                "value": "Default alt",
+                "label": "Alt Text"
+              }
+            ]
           }
         },
         {
           "title": "List",
-          "plugins": {},
-          "model": {
-            "uri": "",
-            "fields": []
-          }
+          "plugins": {}
         },
         {
           "title": "Container",
           "id": "container",
           "plugins": {
             "aem": {
-              "page":{
+              "page": {
                 "resourceType": "wknd/components/container"
               }
             }
-          },
-          "model": {
-            "modeltype": "container",
-            "fields": []
           }
         }
       ]
     },
     {
-      "title": "Advanced Components", 
+      "title": "Advanced Components",
       "id": "advanced",
       "components": [
         {
@@ -118,7 +84,7 @@
           "id": "richtext",
           "plugins": {
             "aem": {
-              "page":{
+              "page": {
                 "resourceType": "wknd/components/text",
                 "template": {
                   "textIsRich": true,
@@ -126,16 +92,6 @@
                 }
               }
             }
-          },
-          "model": {
-            "id": "richtext",
-            "fields": [{
-              "component": "text-area",
-              "name": "text",
-              "value": "Text",
-              "label": "Custom Richtext",
-              "valueType": "string"
-            }]
           }
         }
       ]
