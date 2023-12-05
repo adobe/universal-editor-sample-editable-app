@@ -43,14 +43,6 @@ h4, .h4 { font-size: $font-size-h4; }
 h5, .h5 { font-size: $font-size-h5; }
 h6, .h6 { font-size: $font-size-h6; }
 
-a {
-  text-decoration: none;
-}
-
-h1 a, h2 a, h3 a {
-    color: $text-color;
-}
-
 h1 u, h2 u, h3 u {
     text-decoration: none;
     border-bottom: 1px #ededed solid;
@@ -67,7 +59,6 @@ text-align: justify;
 }
 
 a {
-  color: $white;
   cursor: pointer;
 }
 
@@ -147,6 +138,11 @@ button {
 
 .customfont {
   font-family: "Crimson Pro", Arial, sans-serif;
+}
+
+.menu a, .article-item article a:first-child {
+  color: $white;
+  text-decoration: none;
 }
 
 .article {
