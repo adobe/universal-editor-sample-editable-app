@@ -84,10 +84,10 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.2.0.tgz#e1a84fca468f4b337816fcb7f0964beb620ba855"
   integrity sha512-E09FiIft46CmH5Qnjb0wsW54/YQd69LsxeKUOWawmws1XWvyFGURnAChH0mlr7YPFR1ofwvUQfcL0J3lMxXqPA==
 
-"@adobe/universal-editor-cors@^1.4.4":
-  version "1.4.4"
-  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/@adobe/universal-editor-cors/-/universal-editor-cors-1.4.4.tgz#d9c95763f3da5f00be962d372a88514b82374fe2"
-  integrity sha512-5P++EKt8E+vdhREpxKw8rDe7WU8JvZ1dP3HAFWLarV2VsQeHRoa48So7KFq+4wC+FtZAe7rgj/3fXaz2RBHp6g==
+"@adobe/universal-editor-cors@^1.4.6":
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/@adobe/universal-editor-cors/-/universal-editor-cors-1.4.6.tgz#dc453e371862357512c7f25e6f5485053b5248b5"
+  integrity sha512-EyNduPhIN8R4JfDyszClHiCgpTNgDXDtn0bIwR+m/VHpIshilukPFb6RepD9W2gf7OMSvqnWdksMFYzkR6DUFg==
 
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
