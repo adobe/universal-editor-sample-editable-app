@@ -67,7 +67,6 @@ text-align: justify;
 }
 
 a {
-  color: $white;
   cursor: pointer;
 }
 
@@ -147,6 +146,10 @@ button {
 
 .customfont {
   font-family: "Crimson Pro", Arial, sans-serif;
+}
+
+.menu a, .article-item article a:first-child {
+  color: $white;
 }
 
 .article {
