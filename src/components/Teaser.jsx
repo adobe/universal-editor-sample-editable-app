@@ -30,17 +30,18 @@ const Teaser = () => {
   const { title, _path, featuredImage, synopsis } = article;
 
   const editorProps = {
-		itemID: "urn:aemconnection:" + _path + "/jcr:content/data/master",
-		itemType: "reference",
-		itemfilter: "cf"
+		"data-aue-resource": "urn:aemconnection:" + _path + "/jcr:content/data/master",
+		"data-aue-type": "reference",
+		"data-aue-filter": "cf"
 	};
 
   return (
-  <section {...editorProps} itemScope className="Teaser">
+
+  <section {...editorProps} className="Teaser">
     <article>
       <p>Latest article</p>
-      <h1 itemProp="title" itemType="text">{title}</h1>
-      {synopsis && <div itemProp="synopsis" itemType="richtext">{mapJsonRichText(synopsis.json)}</div>}
+      <h1 data-aue-prop="title" data-aue-type="text">{title}</h1>
+      {synopsis && <div data-aue-prop="synopsis" data-aue-type="richtext">{mapJsonRichText(synopsis.json)}</div>}
       <div>
         <span className='pill'>Magazine</span>
         <span className='pill'>Surfing</span>
@@ -49,8 +50,9 @@ const Teaser = () => {
         <button>Read more</button>
       </Link>
     </article>
-    {featuredImage && <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} itemType="media" itemProp="featuredImage" />}
+    {featuredImage && <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />}
   </section>
+
 );
   }
   
