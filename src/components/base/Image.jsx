@@ -10,24 +10,24 @@ import React, {useEffect, useMemo} from 'react';
 import {fetchData, getPublishHost} from '../../utils/fetchData';
 
 const Image = (props) => {
-  const {itemID, itemProp = "fileReference", itemType, className, data: initialData, isComponent = false} = props;
+  const {resource, prop = "fileReference", type, className, data: initialData, isComponent = false} = props;
 
   const editorProps = useMemo(() => true && {
-    itemID,
-    itemProp,
-    itemType,
-    "data-editor-behavior": isComponent
-  }, [itemID, itemProp, itemType, isComponent]);
+    "data-aue-resource": resource,
+    "data-aue-prop":prop,
+    "data-aue-type": type,
+    "data-aue-behavior": isComponent
+  }, [resource, prop, type, isComponent]);
 
   const [data,setData] = React.useState(initialData || {});
   useEffect(() => {
-    if(!itemID || !itemProp || initialData) return;
-    fetchData(itemID).then((data) => setData(data));
-  }, [itemID, itemProp, initialData]);
+    if(!resource || !prop || initialData) return;
+    fetchData(resource).then((data) => setData(data));
+  }, [resource, prop, initialData]);
   const path = data?.dataLayer?.[data.id]?.image?.["repo:path"];
 
   return (
-    <img {...editorProps} data-editor-itemmodel="image" data-editor-itemlabel={data.id} src={path ? `${getPublishHost()}${path}` : ""} className={className} alt={data.alt} />
+    <img {...editorProps} data-aue-model="image" data-aue-label={data.id} src={path ? `${getPublishHost()}${path}` : ""} className={className} alt={data.alt} />
   );
 };
 

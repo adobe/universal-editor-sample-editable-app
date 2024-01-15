@@ -16,10 +16,10 @@ import {getPublishHost} from "../utils/fetchData";
 
 function AdventureItem(props) {
     const editorProps = {
-        itemID: "urn:aemconnection:" + props?._path + "/jcr:content/data/master",
-        itemType: "reference",
-        itemfilter: "cf",
-        "data-editor-itemlabel": props.slug
+      "data-aue-resource": "urn:aemconnection:" + props?._path + "/jcr:content/data/master",
+      "data-aue-type": "reference",
+      "data-aue-filter": "cf",
+      "data-aue-label": props.slug
     };
 
   //Must have title, path, and image
@@ -28,17 +28,17 @@ function AdventureItem(props) {
   }
 
   return (
-         <li className="adventure-item" itemScope {...editorProps}>
+         <li className="adventure-item" {...editorProps}>
           <div className="adventure-image-card">
           <Link to={`/adventure/${props.slug}${window.location.search}`}>
             <img className="adventure-item-image" src={`${getPublishHost()}${props.primaryImage._path}`}
-                  alt={props.title} itemProp="primaryImage" itemType="media" />
+                  alt={props.title} data-aue-prop="primaryImage" data-aue-type="media" />
           </Link>
           </div>
-          <h3 className="adventure-item-title" itemProp="title" itemType="text">{props.title.toLowerCase()}</h3>
+          <h3 className="adventure-item-title" data-aue-prop="title" data-aue-type="text">{props.title.toLowerCase()}</h3>
           <div className="adventure-item-details">
-              <div className="adventure-item-length pill default"><span itemProp="tripLength" itemType="text">{props.tripLength?.toLowerCase()}</span></div>
-              <div className="adventure-item-price pill">$<span itemProp="price" itemType="text">{props.price}</span></div>
+              <div className="adventure-item-length pill default"><span data-aue-prop="tripLength" data-aue-type="text">{props.tripLength?.toLowerCase()}</span></div>
+              <div className="adventure-item-price pill">$<span data-aue-prop="price" data-aue-type="text">{props.price}</span></div>
           </div>  
       </li>
   );

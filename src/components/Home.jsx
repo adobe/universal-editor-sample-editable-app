@@ -24,15 +24,15 @@ function Home() {
             <Adventures />
             <section className="newsletter">
                 <div className="content">
-                    <Title itemID="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/title" itemProp="jcr:title" itemType="text"/>
-                    <Text itemID="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/text" itemProp="text" itemType="richtext" />
+                    <Title resource="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/title" prop="jcr:title" type="text"/>
+                    <Text resource="urn:aemconnection:/content/wknd/us/en/newsletter/jcr:content/root/container/text" prop="text" type="richtext" />
                 </div>
                 <button>Subscribe</button>
             </section>
             <section className="about-us">
                 <div className="content">
-                    <Title itemID="urn:aemconnection:/content/wknd/language-masters/en/universal-editor-container/jcr:content/root/title" itemProp="jcr:title" itemType="text"/>
-                    <Container itemID="urn:aemconnection:/content/wknd/language-masters/en/universal-editor-container/jcr:content/root/container" itemType="container" />
+                    <Title resource="urn:aemconnection:/content/wknd/language-masters/en/universal-editor-container/jcr:content/root/title" prop="jcr:title" type="text"/>
+                    <Container resource="urn:aemconnection:/content/wknd/language-masters/en/universal-editor-container/jcr:content/root/container" type="container" />
                 </div>
                 <Link to={`/aboutus${window.location.search}`}>
                     <button className="dark">Read more</button>

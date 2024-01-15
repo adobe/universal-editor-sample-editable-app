@@ -4,7 +4,7 @@ import Text from './Text';
 import Title from './Title';
 import Image from './Image';
 
-const Container = ({ itemID, itemType, isComponent = "" }) => {
+const Container = ({ resource, type, isComponent = "" }) => {
   const [components, setComponents] = React.useState(null);
 
   const createChildComponents = (items, itemid) => {
@@ -34,8 +34,8 @@ const Container = ({ itemID, itemType, isComponent = "" }) => {
       }
 
       const props = {
-        itemID: `${itemid}/${key}`,
-        itemType,
+        resource: `${itemid}/${key}`,
+        type: itemType,
         data: item,
         isComponent: "component"
       };
@@ -45,14 +45,14 @@ const Container = ({ itemID, itemType, isComponent = "" }) => {
   }
 
   React.useEffect(() => {
-    if(!itemID) return;
-    fetchData(itemID).then((data) => {
-      setComponents(createChildComponents(data[":items"], itemID));
+    if(!resource) return;
+    fetchData(resource).then((data) => {
+      setComponents(createChildComponents(data[":items"], resource));
     });
-  }, [itemID]);
+  }, [resource]);
   
   return (
-    <div className="container" data-editor-itemmodel="container" data-editor-behavior={isComponent} itemScope itemID={itemID} itemType={itemType}>
+    <div className="container" data-aue-filter="container" data-aue-model="container" data-aue-behavior={isComponent} data-aue-resource={resource} data-aue-type={type}>
      {components}
     </div>
   )
