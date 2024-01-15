@@ -43,17 +43,17 @@ function ArticleDetail({ article }) {
 	}
 
 	const editorProps = {
-		itemID: "urn:aemconnection:" + currentArticle._path + "/jcr:content/data/master",
-		itemType: "reference",
-		itemfilter: "cf"
+		"data-aue-resource": "urn:aemconnection:" + currentArticle._path + "/jcr:content/data/master",
+		"data-aue-type": "reference",
+		"data-aue-filter": "cf"
 	};
 
-	return (<div {...editorProps} itemScope className="adventure-detail">
+	return (<div {...editorProps} className="adventure-detail">
         <div class="adventure-detail-header">
             <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
             <img className="Backbutton-icon" src={backIcon} alt="Return"/> Back
             </button>
-            <h1 className="adventure-detail-title" itemProp="title" itemType="text">{currentArticle.title}</h1>
+            <h1 className="adventure-detail-title" data-aue-prop="title" data-aue-type="text">{currentArticle.title}</h1>
             {/* <span className="pill default" itemProp="title" itemType="text">{currentAdventure.activity}</span> */}
         </div>
 		<ArticleDetailRender {...currentArticle} slug={articleSlug}/>
@@ -69,10 +69,10 @@ function ArticleDetailRender({
 
 
 	return (<div>
-            <img className="adventure-detail-primaryimage" itemType="media" itemProp="featuredImage"
+            <img className="adventure-detail-primaryimage" data-aue-type="media" data-aue-prop="featuredImage"
 					 src={`${getPublishHost()}${featuredImage._path}`} alt={title}/>
 			<div className="adventure-detail-content">			
-				<div itemProp="main" itemType="richtext">{mapJsonRichText(main.json)}</div>
+				<div data-aue-prop="main" data-aue-type="richtext">{mapJsonRichText(main.json)}</div>
 			</div>
 		</div>
 	);

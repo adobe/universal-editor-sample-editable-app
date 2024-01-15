@@ -17,25 +17,25 @@ import { mapJsonRichText } from '../utils/renderRichText';
 
 const Article = ({_path, title, synopsis, authorFragment, slug}) => {
     const editorProps = {
-        itemID: "urn:aemconnection:" + _path + "/jcr:content/data/master",
-        itemType: "reference",
-        itemfilter: "cf"
+        "data-aue-resource": "urn:aemconnection:" + _path + "/jcr:content/data/master",
+        "data-aue-type": "reference",
+        "data-aue-filter": "cf"
     };
     return (
-        <li className="article-item" itemScope {...editorProps}>
+        <li className="article-item" {...editorProps}>
             <aside>
               <img className="article-item-image"
                 src={`${getPublishHost()}${authorFragment?.profilePicture._path}`}
-                alt={title} itemProp="profilePicture" itemType="media"/>
+                alt={title} data-aue-prop="profilePicture" data-aue-type="media"/>
             </aside>
             <article>
               <Link to={`/articles/article/${slug}${window.location.search}`}>
-                  <h3 data-id="title" itemProp="title" itemType="text">{title}</h3>
+                  <h3 data-id="title" data-aue-prop="title" data-aue-type="text">{title}</h3>
               </Link>
 
               <p>{`By ${authorFragment.firstName} ${authorFragment.lastName}`}</p>
               { synopsis && 
-                <div className="article-content" itemProp='synopsis' itemType='richtext'>
+                <div className="article-content" data-aue-prop='synopsis' data-aue-type='richtext'>
                   {mapJsonRichText(synopsis.json)}
                 </div>
               }
