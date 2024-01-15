@@ -52,7 +52,7 @@ const Container = ({ resource, type, isComponent = "" }) => {
   }, [resource]);
   
   return (
-    <div className="container" data-aue-model="container" data-aue-behavior={isComponent} data-aue-resource={resource} data-aue-type={type}>
+    <div className="container" data-aue-filter="container" data-aue-model="container" data-aue-behavior={isComponent} data-aue-resource={resource} data-aue-type={type}>
      {components}
     </div>
   )

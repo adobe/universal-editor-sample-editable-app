@@ -48,6 +48,7 @@
         },
         {
           "title": "List",
+          "id": "list",
           "plugins": {},
           "model": {
             "uri": "",
