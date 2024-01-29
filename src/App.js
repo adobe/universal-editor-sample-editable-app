@@ -48,6 +48,7 @@ function App() {
       <div className="App">
         <Helmet>
           <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`}/>
+          <meta name="urn:adobe:aue:config:extensions" content="https://47679-workflowextension.adobeio-static.net"/>
         </Helmet>
         <Router>
           <Header />
