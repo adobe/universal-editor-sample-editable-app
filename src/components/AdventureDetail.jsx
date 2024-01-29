@@ -42,19 +42,19 @@ function AdventureDetail() {
 	}
 
 	const editorProps = {
-		itemID: "urn:aemconnection:" + currentAdventure._path + "/jcr:content/data/master",
-		itemType: "reference",
+		"data-aue-resource": "urn:aemconnection:" + currentAdventure._path + "/jcr:content/data/master",
+		"data-aue-type": "reference",
 		itemfilter: "cf"
 	};
 
 	return (
-    <div  {...editorProps} itemScope className="adventure-detail">
+    <div  {...editorProps} className="adventure-detail">
         <div><div className="adventure-detail-header">
             <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
                 <img className="Backbutton-icon" src={backIcon} alt="Return"/> Adventures
             </button>
-            <h1 className="adventure-detail-title" itemProp="title" itemType="text">{currentAdventure.title}</h1>
-            <div className="pill default"><span itemProp="activity" itemType="text">{currentAdventure.activity}</span></div>
+            <h1 className="adventure-detail-title" data-aue-prop="title" data-aue-type="text">{currentAdventure.title}</h1>
+            <div className="pill default"><span data-aue-prop="activity" data-aue-type="text">{currentAdventure.activity}</span></div>
         </div></div>
 		<AdventureDetailRender {...currentAdventure} references={references}/>
 	</div>
@@ -73,31 +73,31 @@ function AdventureDetailRender({
 							   }) {
 	return (<div>
             <img className="adventure-detail-primaryimage"
-					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} itemProp="primaryImage" itemType="media"/>			
+					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} data-aue-prop="primaryImage" data-aue-type="media"/>			
 			<div className="adventure-detail-content">
 				
-				<div itemProp="description"
-					 itemType="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
+				<div data-aue-prop="description"
+					 data-aue-type="richtext">{mapJsonRichText(description.json, customRenderOptions(references))}</div>
                 <div className="adventure-detail-info">
                     <div className="adventure-detail-info-label">
                         <h6>Adventure Type</h6>
-                        <span itemProp='adventureType' itemType="text">{adventureType}</span>
+                        <span data-aue-prop='adventureType' data-aue-type="text">{adventureType}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Trip Length</h6>
-                        <span itemProp='tripLength' itemType="text">{tripLength}</span>
+                        <span data-aue-prop='tripLength' data-aue-type="text">{tripLength}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Difficulty</h6>
-                        <span itemProp='difficulty' itemType="text">{difficulty}</span>
+                        <span data-aue-prop='difficulty' data-aue-type="text">{difficulty}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Group Size</h6>
-                        <span itemProp='groupSize' itemType="text">{groupSize}</span>
+                        <span data-aue-prop='groupSize' data-aue-type="text">{groupSize}</span>
                     </div>
                 </div>
 				<h6>Itinerary</h6>
-				<div itemProp="itinerary" itemType="richtext"
+				<div data-aue-prop="itinerary" data-aue-type="richtext"
 					 className="adventure-detail-itinerary">{mapJsonRichText(itinerary.json)}</div>
 			</div>
 

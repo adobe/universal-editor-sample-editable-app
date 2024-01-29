@@ -10,25 +10,25 @@ import React, {useEffect, useMemo} from 'react';
 import {fetchData} from '../../utils/fetchData';
 
 const Title = (props) => {
-  const {itemID, itemProp = "jcr:title", itemType, className = "test", data: initialData, isComponent = false} = props;
+  const {resource, prop = "jcr:title", type, className = "test", data: initialData, isComponent = false} = props;
   const editorProps = useMemo(() => true && {
-    itemID,
-    itemProp,
-    itemType,
-    "data-editor-behavior": isComponent
-  }, [itemID, itemProp, itemType, isComponent]);
+    "data-aue-resource": resource,
+    "data-aue-prop":prop,
+    "data-aue-type": type,
+    "data-aue-behavior": isComponent
+  }, [resource, prop, type, isComponent]);
 
   const [data,setData] = React.useState(initialData);
 
   useEffect(() => {
-    if(!itemID || !itemProp) return;
-    if (!data) { fetchData(itemID, "model").then((data) => setData(data)) };
-  }, [itemID, itemProp, data]);
+    if(!resource || !prop) return;
+    if (!data) { fetchData(resource, "model").then((data) => setData(data)) };
+  }, [resource, prop, data]);
 
   useEffect(() => {
     const handleUpdate = (e) => {
       const { itemids = [] } = e.detail;
-      if(itemids.indexOf(itemID) >= 0) {
+      if(itemids.indexOf(resource) >= 0) {
         setData(null);
       }
       e.stopPropagation();
@@ -37,11 +37,11 @@ const Title = (props) => {
     return () => {
       document.removeEventListener("editor-update", handleUpdate);
     }
-  },[itemID]);
+  },[resource]);
   
   const TitleTag = data?.type ? `${data.type}` : "h1";
   return data ? (
-    <TitleTag {...editorProps} data-editor-itemmodel="title" data-editor-itemlabel={"title"} className={className}>{data["text"]}</TitleTag>
+    <TitleTag {...editorProps} data-aue-model="title" data-aue-label={"title"} className={className}>{data["text"]}</TitleTag>
   ):<></>;
 };
 
