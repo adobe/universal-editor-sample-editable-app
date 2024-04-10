@@ -37,16 +37,15 @@ function AdventureItem(props) {
           </div>
           <h3 className="adventure-item-title" data-aue-prop="title" data-aue-type="text">{props.title.toLowerCase()}</h3>
           <div className="adventure-item-details">
-               {/* todo: renable inline edit for span */}
               <div className="adventure-item-length pill default">
                 <span 
-                // data-aue-prop="tripLength" data-aue-type="text"
+                data-aue-prop="tripLength" data-aue-type="text"
                 >{props.tripLength?.toLowerCase()}
                 </span>
               </div>
               <div className="adventure-item-price pill">$
                 <span 
-                  // data-aue-prop="price" data-aue-type="text"
+                  data-aue-prop="price" data-aue-type="text"
                   >{props.price}
                 </span>
               </div>
