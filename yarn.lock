@@ -84,10 +84,10 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.2.0.tgz#e1a84fca468f4b337816fcb7f0964beb620ba855"
   integrity sha512-E09FiIft46CmH5Qnjb0wsW54/YQd69LsxeKUOWawmws1XWvyFGURnAChH0mlr7YPFR1ofwvUQfcL0J3lMxXqPA==
 
-"@adobe/universal-editor-cors@^2.2.15":
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/@adobe/universal-editor-cors/-/universal-editor-cors-2.2.15.tgz#ef5a5050ce6fec12d66515a611d40f288e7fb8f4"
-  integrity sha512-LGnxJ59nlBI2gPhryJWF+2bM4SmFx1vzG58hvFnIiF/Dy7itAXkDg41Ods8eyUT+HgjXCxnSnpM2xtHlhPNtiw==
+"@adobe/universal-editor-cors@^2.2.16":
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/@adobe/universal-editor-cors/-/universal-editor-cors-2.2.16.tgz#16475695eaeff5ac6b13da72ebfd3ed48a81d4d2"
+  integrity sha512-n78JSjJmO2quqwShKllOjgv7GwFhkd74PxxjHGkLv4cNRV+3uvYGjVySsKvd6973pEPJUS2BTzIWPnzIre7uyw==
 
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
