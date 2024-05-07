@@ -35,7 +35,7 @@ function AdventureItem(props) {
                   alt={props.title} data-aue-prop="primaryImage" data-aue-type="media" />
           </Link>
           </div>
-          <h3 className="adventure-item-title" data-aue-prop="title" data-aue-type="text">{props.title.toLowerCase()}</h3>
+          <h3 className="adventure-item-title" data-aue-prop="title" data-aue-type="text">{props.title}</h3>
           <div className="adventure-item-details">
               <div className="adventure-item-length pill default">
                 <span 
