@@ -54,7 +54,12 @@ function AdventureDetail() {
                 <img className="Backbutton-icon" src={backIcon} alt="Return"/> Adventures
             </button>
             <h1 className="adventure-detail-title" data-aue-prop="title" data-aue-type="text">{currentAdventure.title}</h1>
-            <div className="pill default"><span data-aue-prop="activity" data-aue-type="text">{currentAdventure.activity}</span></div>
+            <div className="pill default">
+							<span 
+								data-aue-prop="activity" data-aue-type="text"
+							>{currentAdventure.activity}
+							</span>
+						</div>
         </div></div>
 		<AdventureDetailRender {...currentAdventure} references={references}/>
 	</div>
@@ -81,19 +86,27 @@ function AdventureDetailRender({
                 <div className="adventure-detail-info">
                     <div className="adventure-detail-info-label">
                         <h6>Adventure Type</h6>
-                        <span data-aue-prop='adventureType' data-aue-type="text">{adventureType}</span>
+                        <span 
+												data-aue-prop='adventureType' data-aue-type="text"
+												>{adventureType}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Trip Length</h6>
-                        <span data-aue-prop='tripLength' data-aue-type="text">{tripLength}</span>
+                        <span 
+												data-aue-prop='tripLength' data-aue-type="text"
+												>{tripLength}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Difficulty</h6>
-                        <span data-aue-prop='difficulty' data-aue-type="text">{difficulty}</span>
+                        <span 
+												data-aue-prop='difficulty' data-aue-type="text"
+												>{difficulty}</span>
                     </div>
                     <div className="adventure-detail-info-label">
                         <h6>Group Size</h6>
-                        <span data-aue-prop='groupSize' data-aue-type="text">{groupSize}</span>
+                        <span 
+												data-aue-prop='groupSize' data-aue-type="text"
+												>{groupSize}</span>
                     </div>
                 </div>
 				<h6>Itinerary</h6>
