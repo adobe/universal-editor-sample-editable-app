@@ -137,10 +137,9 @@ function NoAdventureFound() {
 function getAdventure(data) {
 
 	if (data && data.adventureList && data.adventureList.items) {
-		// expect there only to be a single adventure in the array
-		if (data.adventureList.items.length === 1) {
-			return data.adventureList.items[0];
-		}
+		return data.adventureList.items.find(item => {
+			return item._path.startsWith("/content/dam/wknd-shared/en");
+		});
 	}
 	return undefined;
 }
