@@ -127,6 +127,10 @@ function getAdventure(data) {
 		// expect there only to be a single adventure in the array
 		if (data.adventureList.items.length === 1) {
 			return data.adventureList.items[0];
+		} else {
+			return data.adventureList.items.filter(item => {
+				return item._path.startsWith("/content/dam/wknd-shared/en");
+			})[0];
 		}
 	}
 	return undefined;
