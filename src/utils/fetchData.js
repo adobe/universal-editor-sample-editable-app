@@ -2,7 +2,7 @@ const {REACT_APP_DEFAULT_AUTHOR_HOST, REACT_APP_DEFAULT_PUBLISH_HOST} = process.
 
 export const fetchData = async (path) => {
 	const url = `${getAuthorHost()}/${path.split(":/")[1]}.model.json`;
-	const data = await fetch(url, {credentials: "include"});
+	const data = await fetch(url, { headers: {"X-Aem-Affinity-Type": "api"}, credentials: "include"});
 	const json = await data.json();
 	return json;
 };
