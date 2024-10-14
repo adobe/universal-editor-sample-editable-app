@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy to https://ue-remote-app.adobe.net
+      - name: Deploy to https://sample-app-ue-e2e-tests.netlify.app
         uses: nwtgck/actions-netlify@v1.2.3
         with:
           publish-dir: './build'
