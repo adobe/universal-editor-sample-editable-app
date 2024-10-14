@@ -15,7 +15,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2.3
         with:
           publish-dir: './build'
-          production-branch: prod
+          production-branch: e2e-app
           github-token: ${{ secrets.AUTH_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
