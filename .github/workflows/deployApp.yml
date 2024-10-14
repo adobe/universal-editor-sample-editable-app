@@ -1,4 +1,4 @@
-# Flow for deploying the app to https://ue-remote-app.adobe.net
+# Flow for deploying the app to https://sample-app-ue-e2e-tests.netlify.app
 name: Deploy to https://sample-app-ue-e2e-tests.netlify.app
 on:
   push:
