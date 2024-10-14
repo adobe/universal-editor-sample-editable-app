@@ -9,15 +9,14 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+import { type ReactElement } from "react";
+import { Image, RichText } from "./base";
 
-/* Reset default styles */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+const Teaser = (): ReactElement => (
+  <div data-aue-type="component" data-aue-resource="...">
+    <Image />
+    <RichText />
+  </div>
+);
 
-* {
-  margin: 0;
-  padding: 0;
-}
+export { Teaser };

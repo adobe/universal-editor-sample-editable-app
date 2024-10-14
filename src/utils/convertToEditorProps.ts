@@ -9,15 +9,24 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+import type { EditableProps, EditorProps } from "src/types";
 
-/* Reset default styles */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+const convertToEditorProps = ({
+  resource,
+  prop,
+  type,
+  filter,
+  label,
+  model,
+  behavior,
+}: EditableProps): EditorProps => ({
+  "data-aue-resource": resource,
+  "data-aue-prop": prop,
+  "data-aue-type": type,
+  "data-aue-filter": filter,
+  "data-aue-label": label,
+  "data-aue-model": model,
+  "data-aue-behavior": behavior,
+});
 
-* {
-  margin: 0;
-  padding: 0;
-}
+export { convertToEditorProps };

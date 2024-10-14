@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "strict": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": false,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noEmitOnError": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "preserveSymlinks": true,
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ES2019",
+    "isolatedModules": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": [
+      "node"
+    ],
+    "jsx": "react-jsx",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types/roots"
+    ],
+    "lib": [
+      "ES2021",
+      "DOM"
+    ],
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src/**/*",
+    "tests/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

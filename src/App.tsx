@@ -9,15 +9,17 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+import { type ReactElement } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { getAuthorHost } from "src/utils";
 
-/* Reset default styles */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+const App = (): ReactElement => (
+  <HelmetProvider>
+    <Helmet>
+      <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
+    </Helmet>
+    <div>Hello E2E World</div>
+  </HelmetProvider>
+);
 
-* {
-  margin: 0;
-  padding: 0;
-}
+export default App;

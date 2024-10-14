@@ -19,6 +19,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "buffer": "^6.0.3",
+    "caniuse-lite": "1.0.30001632",
     "express-session": "^1.17.3",
     "gulp": "^4.0.2",
     "gulp-inline-source": "^4.0.0",
@@ -35,12 +36,17 @@
     "react-scripts": "4.0.3",
     "sass": "^1.53.0",
     "stream-browserify": "^3.0.0",
+    "typescript": "5.5.4",
     "util": "^0.12.4",
     "web-vitals": "^2.1.4",
     "zustand": "^4.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
     "husky": "^8.0.1"
   },
   "eslintConfig": {
@@ -63,5 +69,8 @@
   },
   "engines": {
     "node": ">=16.0.0 <=16.20.2"
+  },
+  "resolutions": {
+    "caniuse-lite": "1.0.30001632"
   }
 }
