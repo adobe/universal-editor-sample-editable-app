@@ -1,5 +1,5 @@
-# Flow for deploying the app to https://ue-remote-app.adobe.net
-name: Deploy to https://ue-remote-app.adobe.net
+# Flow for deploying the app to https://sample-app-ue-e2e-tests.netlify.app
+name: Deploy to https://sample-app-ue-e2e-tests.netlify.app
 on:
   push:
     branches:
@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy to https://ue-remote-app.adobe.net
+      - name: Deploy to https://sample-app-ue-e2e-tests.netlify.app
         uses: nwtgck/actions-netlify@v1.2.3
         with:
           publish-dir: './build'
-          production-branch: prod
+          production-branch: e2e-app
           github-token: ${{ secrets.AUTH_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
@@ -23,5 +23,5 @@ jobs:
           overwrites-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_E2E_APP_ID }}
         timeout-minutes: 1
