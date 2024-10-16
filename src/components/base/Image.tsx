@@ -9,7 +9,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-import { type ReactElement, useEffect, useMemo, useState } from "react";
+import { type ReactElement, useEffect, useState } from "react";
 import { type EditableProps, ITEM_TYPE } from "src/types";
 import { convertToEditorProps, fetchData, getPublishHost } from "src/utils";
 
@@ -18,7 +18,8 @@ type ImageProps = Omit<EditableProps, "filter" | "type">;
 const Image = (props: ImageProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const editableProps = { ...props, type: ITEM_TYPE.MEDIA };
+  const defaultProps = { type: ITEM_TYPE.MEDIA, prop: "fileReference", label: data?.id }
+  const editableProps = { ...defaultProps, ...props };
   const editorProps = convertToEditorProps(editableProps);
 
   const { resource, prop } = editableProps;
@@ -31,13 +32,11 @@ const Image = (props: ImageProps): ReactElement => {
     fetchData(resource).then((data) => setData(data));
   }, [resource, prop]);
 
-  const src = useMemo(() => {
-    const path = data?.dataLayer?.[data.id]?.image?.["repo:path"];
+  const path = data?.dataLayer?.[data.id]?.image?.["repo:path"];
+  const src = path ? `${getPublishHost()}${path}` : "";
+  const alt = data?.alt;
 
-    return path ? `${getPublishHost()}${path}` : "";
-  }, [data]);
-
-  return <img {...editorProps} src={src} />;
+  return <img {...editorProps} src={src} alt={alt} />;
 };
 
 export { Image };

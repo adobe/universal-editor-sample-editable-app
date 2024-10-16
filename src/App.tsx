@@ -12,13 +12,28 @@
 import { type ReactElement } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { getAuthorHost } from "src/utils";
+import { Text, RichText, Image } from "src/components";
+import "./App.css";
 
 const App = (): ReactElement => (
   <HelmetProvider>
     <Helmet>
       <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
     </Helmet>
-    <div>Hello E2E World</div>
+    <main>
+      <Text
+        resource="urn:aemconnection:/content/wknd/e2e/jcr:content/root/container/text"
+        label="text"
+      />
+      <RichText
+        resource="urn:aemconnection:/content/wknd/e2e/jcr:content/root/container/richtext"
+        label="richtext"
+      />
+      <Image 
+        resource="urn:aemconnection:/content/wknd/e2e/jcr:content/root/container/image"
+        label="image"
+      />
+    </main>
   </HelmetProvider>
 );
 

@@ -67,7 +67,8 @@ const createChildComponents = (items: any, itemid: string): ReactElement[] => {
 const Container = (props: ContainerProps): ReactElement => {
   const [components, setComponents] = useState<ReactElement[]>([]);
 
-  const editableProps = { ...props, type: ITEM_TYPE.CONTAINER };
+  const defaultProps = { type: ITEM_TYPE.CONTAINER }
+  const editableProps = { ...defaultProps, ...props };
   const editorProps = convertToEditorProps(editableProps);
 
   const { resource } = editableProps;

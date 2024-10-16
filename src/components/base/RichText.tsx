@@ -18,10 +18,11 @@ type RichTextProps = Omit<EditableProps, "filter" | "type">;
 const RichText = (props: RichTextProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const componentProps = { ...props, type: ITEM_TYPE.RICH_TEXT };
-  const editableProps = convertToEditorProps(componentProps);
+  const defaultProps = { type: ITEM_TYPE.RICH_TEXT, prop: "text", label: data?.id }
+  const editableProps = { ...defaultProps, ...props };
+  const editorProps = convertToEditorProps(editableProps);
 
-  const { resource, prop } = componentProps;
+  const { resource, prop } = editableProps;
 
   useEffect(() => {
     if (!resource || !prop) {
@@ -33,7 +34,9 @@ const RichText = (props: RichTextProps): ReactElement => {
     }
   }, [resource, prop, data]);
 
-  return <p {...editableProps} dangerouslySetInnerHTML={{ __html: data[prop ?? ""] }} />;
+  const content = prop ? data?.[prop] : null
+
+  return <p {...editorProps} dangerouslySetInnerHTML={{ __html: content }} />;
 };
 
 export { RichText };
