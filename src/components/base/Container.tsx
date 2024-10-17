@@ -30,12 +30,13 @@ const createChildComponents = (items: any, itemid: string): ReactElement[] => {
 
     switch (type) {
       case "text":
-        itemType = ITEM_TYPE.TEXT;
-        Component = Text;
-        break;
-      case "richtext":
-        itemType = ITEM_TYPE.RICH_TEXT;
-        Component = RichText;
+        if (item.richText) {
+          itemType = ITEM_TYPE.RICH_TEXT;
+          Component = RichText;
+        } else {
+          itemType = ITEM_TYPE.TEXT;
+          Component = Text;
+        }
         break;
       case "image":
         itemType = ITEM_TYPE.MEDIA;
