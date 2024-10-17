@@ -28,3 +28,7 @@ div [data-aue-type="container"] {
     object-fit: contain;
   }
 }
+
+.teaser {
+  margin: 20px 0px;
+}
