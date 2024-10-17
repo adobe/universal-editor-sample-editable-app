@@ -60,8 +60,8 @@ const createChildComponents = (items: any, itemid: string): ReactElement[] => {
     const editableProps: EditableProps = {
       resource: `${itemid}/${key}`,
       type: itemType,
-      behavior: ITEM_TYPE.COMPONENT,
       data: item,
+      // behavior: ITEM_TYPE.COMPONENT,
     };
 
     components.push(<Component key={key} {...editableProps} />);

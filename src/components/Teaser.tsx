@@ -39,7 +39,7 @@ const Teaser = (props: ComponentProps): ReactElement => {
   const richTextProps = { prop: "text", data: { text: data?.text }, label: "RichText" };
 
   return (
-    <div {...editorProps}>
+    <div {...editorProps} className="teaser">
       <Image {...imageProps} />
       <RichText {...richTextProps} />
     </div>
