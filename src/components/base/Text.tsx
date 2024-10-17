@@ -18,7 +18,7 @@ type TextProps = Omit<EditableProps, "filter" | "type">;
 const Text = (props: TextProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const defaultProps = { type: ITEM_TYPE.TEXT, prop: "text", label: data?.id }
+  const defaultProps = { type: ITEM_TYPE.TEXT, prop: "text", label: data?.id };
   const editableProps = { ...defaultProps, ...props };
   const editorProps = convertToEditorProps(editableProps);
 
@@ -34,7 +34,7 @@ const Text = (props: TextProps): ReactElement => {
     }
   }, [resource, prop, data]);
 
-  const content = prop ? data?.[prop] : null
+  const content = prop ? data?.[prop] : null;
 
   return <p {...editorProps}>{content}</p>;
 };

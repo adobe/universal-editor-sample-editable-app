@@ -11,23 +11,21 @@
  */
 import { type ReactElement, useMemo } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { getAuthorHost, getPath } from "src/utils";
-import { Container } from "src/components";
 import "./App.css";
+import { Container } from "src/components";
+import { getAuthorHost, getPath } from "src/utils";
 
 const App = (): ReactElement => {
-  const path = useMemo(() => getPath(), [])
+  const path = useMemo(() => getPath(), []);
 
   return (
-  <HelmetProvider>
-    <Helmet>
-      <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
-    </Helmet>
-      <Container 
-        resource={`urn:aemconnection:${path}`}
-        label="container"
-      />
-  </HelmetProvider>
-)};
+    <HelmetProvider>
+      <Helmet>
+        <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
+      </Helmet>
+      <Container resource={`urn:aemconnection:${path}`} label="Page" />
+    </HelmetProvider>
+  );
+};
 
 export default App;

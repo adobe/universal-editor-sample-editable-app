@@ -50,6 +50,6 @@ const getPath = (): string => {
   } else {
     return "";
   }
-}
+};
 
 export { fetchData, getAuthorHost, getPublishHost, getPath };

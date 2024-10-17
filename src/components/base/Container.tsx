@@ -12,6 +12,7 @@
 import { type FC, ReactElement, useEffect, useState } from "react";
 import { type EditableProps, ITEM_TYPE } from "src/types";
 import { convertToEditorProps, fetchData } from "src/utils";
+import { CustomComponent } from "../index";
 import { Image, RichText, Text } from "./index";
 
 type ContainerProps = Omit<EditableProps, "type">;
@@ -46,6 +47,10 @@ const createChildComponents = (items: any, itemid: string): ReactElement[] => {
         itemType = ITEM_TYPE.CONTAINER;
         Component = Container;
         break;
+      case "component":
+        itemType = ITEM_TYPE.COMPONENT;
+        Component = CustomComponent;
+        break;
       default:
         itemType = ITEM_TYPE.COMPONENT;
         Component = Default;
@@ -68,7 +73,7 @@ const createChildComponents = (items: any, itemid: string): ReactElement[] => {
 const Container = (props: ContainerProps): ReactElement => {
   const [components, setComponents] = useState<ReactElement[]>([]);
 
-  const defaultProps = { type: ITEM_TYPE.CONTAINER }
+  const defaultProps = { type: ITEM_TYPE.CONTAINER };
   const editableProps = { ...defaultProps, ...props };
   const editorProps = convertToEditorProps(editableProps);
 

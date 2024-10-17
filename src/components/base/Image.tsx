@@ -18,7 +18,7 @@ type ImageProps = Omit<EditableProps, "filter" | "type">;
 const Image = (props: ImageProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const defaultProps = { type: ITEM_TYPE.MEDIA, prop: "fileReference", label: data?.id }
+  const defaultProps = { type: ITEM_TYPE.MEDIA, prop: "fileReference", label: data?.id };
   const editableProps = { ...defaultProps, ...props };
   const editorProps = convertToEditorProps(editableProps);
 
@@ -32,7 +32,7 @@ const Image = (props: ImageProps): ReactElement => {
     fetchData(resource).then((data) => setData(data));
   }, [resource, prop]);
 
-  const path = data?.dataLayer?.[data.id]?.image?.["repo:path"];
+  const path = data?.[prop] ?? data?.dataLayer?.[data.id]?.image?.["repo:path"];
   const src = path ? `${getPublishHost()}${path}` : "";
   const alt = data?.alt;
 

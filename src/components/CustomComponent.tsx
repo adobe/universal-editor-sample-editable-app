@@ -9,6 +9,25 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-export * from "./base";
-export { Teaser } from "./Teaser";
-export { CustomComponent } from "./CustomComponent";
+import { type FC, ReactElement } from "react";
+import { type EditableProps } from "src/types";
+import { Teaser } from "./index";
+
+const Default = (): ReactElement => <div />;
+
+const CustomComponent = (props: EditableProps): ReactElement => {
+  let Component: FC<EditableProps>;
+
+  switch (props?.data?.component) {
+    case "teaser":
+      Component = Teaser;
+      break;
+    default:
+      Component = Default;
+      break;
+  }
+
+  return <Component {...props} />;
+};
+
+export { CustomComponent };
