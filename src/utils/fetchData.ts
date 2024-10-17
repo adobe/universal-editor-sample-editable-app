@@ -41,4 +41,15 @@ const getPublishHost = (): string => {
   }
 };
 
-export { fetchData, getAuthorHost, getPublishHost };
+const getPath = (): string => {
+  const url = new URL(window.location.href);
+  const searchParams = new URLSearchParams(url.search);
+
+  if (searchParams.has("path")) {
+    return searchParams.get("path") ?? "";
+  } else {
+    return "";
+  }
+}
+
+export { fetchData, getAuthorHost, getPublishHost, getPath };

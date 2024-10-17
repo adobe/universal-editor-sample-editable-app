@@ -19,14 +19,15 @@
           }
         },
         {
-          "title": "Title",
-          "id": "title",
+          "title": "Rich Text",
+          "id": "richtext",
           "plugins": {
             "aem": {
               "page": {
-                "resourceType": "wknd/components/title",
+                "resourceType": "wknd/components/text",
                 "template": {
-                  "jcr:title": "Default Title"
+                  "textIsRich": true,
+                  "text": "<p>Default Richtext</p>"
                 }
               }
             }
@@ -47,42 +48,12 @@
           }
         },
         {
-          "title": "List",
-          "id": "list",
-          "plugins": {},
-          "model": {
-            "uri": "",
-            "fields": []
-          }
-        },
-        {
           "title": "Container",
           "id": "container",
           "plugins": {
             "aem": {
               "page": {
                 "resourceType": "wknd/components/container"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "title": "Advanced Components",
-      "id": "advanced",
-      "components": [
-        {
-          "title": "Rich Text",
-          "id": "richtext",
-          "plugins": {
-            "aem": {
-              "page": {
-                "resourceType": "wknd/components/text",
-                "template": {
-                  "textIsRich": true,
-                  "text": "<p>Default Richtext</p>"
-                }
               }
             }
           }
