@@ -23,7 +23,7 @@ const App = (): ReactElement => {
       <Helmet>
         <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
       </Helmet>
-      <Container resource={`urn:aemconnection:${path}`} label="Page" />
+      <Container resource={`urn:aemconnection:${path}`} />
     </HelmetProvider>
   );
 };
