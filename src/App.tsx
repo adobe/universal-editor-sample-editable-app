@@ -9,23 +9,38 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-import { type ReactElement, useMemo } from "react";
+import { ReactElement, useEffect, useMemo, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css";
-import { Container } from "src/components";
-import { getAuthorHost, getPath } from "src/utils";
+import { Container } from "./components";
+import { fetchData, getAuthorHost, getPath } from "./utils";
 
 const App = (): ReactElement => {
-  const path = useMemo(() => getPath(), []);
+  const pagePath = useMemo(() => getPath(), []);
+  const pageContentPath = `${pagePath}/jcr:content/root`;
+  const [items, setItems] = useState<Record<string, any>>({});
 
+  useEffect(() => {
+    fetchData(`urn:aemconnection:${pageContentPath}`).then((data) => {
+      setItems(data[":items"]);
+    });
+  }, [pageContentPath]);
+
+  const renderItem = (key: string) => {
+    const itemType = items[key]?.[":type"]?.split("/").pop();
+    if (itemType === "container") {
+      return <Container key={key} resource={`urn:aemconnection:${pageContentPath}/${key}`} />;
+    }
+    // Optionally handle other item types
+    return null;
+  };
   return (
     <HelmetProvider>
       <Helmet>
         <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
       </Helmet>
-      <Container resource={`urn:aemconnection:${path}`} />
+      {Object.keys(items).map(renderItem)}
     </HelmetProvider>
   );
 };
-
 export default App;
