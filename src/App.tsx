@@ -9,37 +9,32 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-import { ReactElement, useEffect, useMemo, useState } from "react";
+import { type ReactElement, useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css";
-import { Container } from "./components";
-import { fetchData, getAuthorHost, getPath } from "./utils";
+import { createChildComponents, fetchData, getAuthorHost, getPath } from "src/utils";
 
 const App = (): ReactElement => {
-  const pagePath = useMemo(() => getPath(), []);
-  const pageContentPath = `${pagePath}/jcr:content/root`;
   const [items, setItems] = useState<Record<string, any>>({});
 
+  const pagePath = getPath();
+  const pageContentPath = `${pagePath}/jcr:content/root`;
+  const resource = `urn:aemconnection:${pageContentPath}`;
+
   useEffect(() => {
-    fetchData(`urn:aemconnection:${pageContentPath}`).then((data) => {
+    fetchData(resource).then((data) => {
       setItems(data[":items"]);
     });
-  }, [pageContentPath]);
+  }, [resource]);
 
-  const renderItem = (key: string) => {
-    const itemType = items[key]?.[":type"]?.split("/").pop();
-    if (itemType === "container") {
-      return <Container key={key} resource={`urn:aemconnection:${pageContentPath}/${key}`} />;
-    }
-    // Optionally handle other item types
-    return null;
-  };
+  const components = createChildComponents(items, resource, true);
+
   return (
     <HelmetProvider>
       <Helmet>
         <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
       </Helmet>
-      {Object.keys(items).map(renderItem)}
+      {components}
     </HelmetProvider>
   );
 };

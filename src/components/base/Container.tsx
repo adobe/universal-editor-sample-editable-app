@@ -9,66 +9,11 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-import { type FC, ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { type EditableProps, ITEM_TYPE } from "src/types";
-import { convertToEditorProps, fetchData } from "src/utils";
-import { CustomComponent } from "../index";
-import { Image, RichText, Text } from "./index";
+import { convertToEditorProps, createChildComponents, fetchData } from "src/utils";
 
 type ContainerProps = Omit<EditableProps, "type">;
-
-const Default = (): ReactElement => <div />;
-
-const createChildComponents = (items: any, itemid: string): ReactElement[] => {
-  const components: JSX.Element[] = [];
-
-  for (const key in items) {
-    const item = items[key];
-    const type = item[":type"].split("/").pop();
-
-    let itemType: ITEM_TYPE;
-    let Component: FC<EditableProps>;
-
-    switch (type) {
-      case "text":
-        if (item.richText) {
-          itemType = ITEM_TYPE.RICH_TEXT;
-          Component = RichText;
-        } else {
-          itemType = ITEM_TYPE.TEXT;
-          Component = Text;
-        }
-        break;
-      case "image":
-        itemType = ITEM_TYPE.MEDIA;
-        Component = Image;
-        break;
-      case "container":
-        itemType = ITEM_TYPE.CONTAINER;
-        Component = Container;
-        break;
-      case "component":
-        itemType = ITEM_TYPE.COMPONENT;
-        Component = CustomComponent;
-        break;
-      default:
-        itemType = ITEM_TYPE.COMPONENT;
-        Component = Default;
-        break;
-    }
-
-    const editableProps: EditableProps = {
-      resource: `${itemid}/${key}`,
-      type: itemType,
-      data: item,
-      // behavior: ITEM_TYPE.COMPONENT,
-    };
-
-    components.push(<Component key={key} {...editableProps} />);
-  }
-
-  return components;
-};
 
 const Container = (props: ContainerProps): ReactElement => {
   const [components, setComponents] = useState<ReactElement[]>([]);
