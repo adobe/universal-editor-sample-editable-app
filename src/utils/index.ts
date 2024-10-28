@@ -11,3 +11,4 @@
  */
 export * from "./convertToEditorProps";
 export * from "./fetchData";
+export * from "./createChildComponents";
