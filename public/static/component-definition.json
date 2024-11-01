@@ -44,7 +44,7 @@
                 "resourceType": "core/wcm/components/image/v3/image",
                 "template": {
                   "jcr:title": "Image",
-                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
+                  "fileReference": "/content/dam/wknd/e2e/e2e_default.jpeg"
                 }
               }
             }
@@ -81,7 +81,7 @@
                   "jcr:title": "Teaser",
                   "text": "<p>Default Richtext</p>",
                   "textIsRich": true,
-                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
+                  "fileReference": "/content/dam/wknd/e2e/e2e_default.jpeg"
                 }
               }
             }

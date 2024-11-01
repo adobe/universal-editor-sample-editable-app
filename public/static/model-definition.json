@@ -29,7 +29,7 @@
       {
         "component": "aem-content",
         "name": "fileReference",
-        "value": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg",
+        "value": "/content/dam/wknd/e2e/e2e_default.jpeg",
         "label": "Custom Media",
         "valueType": "string"
       }
@@ -48,7 +48,7 @@
       {
         "component": "aem-content",
         "name": "media",
-        "value": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg",
+        "value": "/content/dam/wknd/e2e/e2e_default.jpeg",
         "label": "Custom Media",
         "valueType": "string"
       }
