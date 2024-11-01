@@ -17,9 +17,7 @@ import { createChildComponents, fetchData, getHost, getPath } from "src/utils";
 const App = (): ReactElement => {
   const [items, setItems] = useState<Record<string, any>>({});
 
-  const pagePath = getPath();
-  const pageContentPath = `${pagePath}/jcr:content`;
-  const resource = `urn:aemconnection:${pageContentPath}`;
+  const resource = `urn:aemconnection:${getPath()}`;
 
   useEffect(() => {
     fetchData(resource).then((data) => {

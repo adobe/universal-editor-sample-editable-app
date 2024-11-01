@@ -20,7 +20,7 @@
           }
         },
         {
-          "title": "RichText",
+          "title": "Richtext",
           "id": "richtext",
           "plugins": {
             "aem": {
@@ -76,15 +76,12 @@
           "plugins": {
             "aem": {
               "page": {
-                "resourceType": "core/wcm/components/teaser/v2/teaser",
+                "resourceType": "custom-components/teaser",
                 "template": {
                   "jcr:title": "Teaser",
-                  "titleFromPage": false,
-                  "jcr:description": "<p>Default Richtext</p>",
-                  "descriptionFromPage": false,
+                  "text": "<p>Default Richtext</p>",
                   "textIsRich": true,
-                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg",
-                  "actionsEnabled": false
+                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
                 }
               }
             }

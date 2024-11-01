@@ -35,8 +35,8 @@ const Teaser = (props: ComponentProps): ReactElement => {
     }
   }, [resource, prop, data]);
 
-  const imageProps: EditableProps = { prop: "imagePath", data: { imagePath: data?.imagePath } };
-  const richTextProps: EditableProps = { prop: "description", data: { description: data?.description } };
+  const imageProps: EditableProps = { prop: "fileReference", data: { fileReference: data?.fileReference } };
+  const richTextProps: EditableProps = { prop: "text", data: { text: data?.text } };
 
   return (
     <div {...editorProps} className="teaser">
