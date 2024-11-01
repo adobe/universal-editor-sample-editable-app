@@ -10,17 +10,18 @@
  * governing permissions and limitations under the License.
  */
 import { ReactElement, useEffect, useState } from "react";
-import { type EditableProps, ITEM_TYPE } from "src/types";
+import { type EditableProps, type EditorProps, ITEM_TYPE } from "src/types";
 import { convertToEditorProps, createChildComponents, fetchData } from "src/utils";
 
 type ContainerProps = Omit<EditableProps, "type">;
 
 const Container = (props: ContainerProps): ReactElement => {
+  const [data, setData] = useState<any>(props.data);
   const [components, setComponents] = useState<ReactElement[]>([]);
 
-  const defaultProps = { type: ITEM_TYPE.CONTAINER };
-  const editableProps = { ...defaultProps, ...props };
-  const editorProps = convertToEditorProps(editableProps);
+  const defaultProps: EditableProps = { type: ITEM_TYPE.CONTAINER };
+  const editableProps: EditableProps = { ...defaultProps, ...props };
+  const editorProps: EditorProps = convertToEditorProps(editableProps);
 
   const { resource } = editableProps;
 
@@ -29,10 +30,12 @@ const Container = (props: ContainerProps): ReactElement => {
       return;
     }
 
-    fetchData(resource).then((data) => {
-      setComponents(createChildComponents(data[":items"], resource));
-    });
-  }, [resource]);
+    if (!data) {
+      fetchData(resource).then((data) => setData(data));
+    }
+
+    setComponents(createChildComponents(data[":items"], resource));
+  }, [resource, data]);
 
   return <div {...editorProps}>{components}</div>;
 };

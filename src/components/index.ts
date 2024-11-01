@@ -11,4 +11,3 @@
  */
 export * from "./base";
 export { Teaser } from "./Teaser";
-export { CustomComponent } from "./CustomComponent";

@@ -12,13 +12,13 @@
 import { type ReactElement, useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css";
-import { createChildComponents, fetchData, getAuthorHost, getPath } from "src/utils";
+import { createChildComponents, fetchData, getHost, getPath } from "src/utils";
 
 const App = (): ReactElement => {
   const [items, setItems] = useState<Record<string, any>>({});
 
   const pagePath = getPath();
-  const pageContentPath = `${pagePath}/jcr:content/root`;
+  const pageContentPath = `${pagePath}/jcr:content`;
   const resource = `urn:aemconnection:${pageContentPath}`;
 
   useEffect(() => {
@@ -32,9 +32,9 @@ const App = (): ReactElement => {
   return (
     <HelmetProvider>
       <Helmet>
-        <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`} />
+        <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getHost()}`} />
       </Helmet>
-      {components}
+      <main>{components}</main>
     </HelmetProvider>
   );
 };

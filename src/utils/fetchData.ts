@@ -9,35 +9,24 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-const { REACT_APP_DEFAULT_AUTHOR_HOST, REACT_APP_DEFAULT_PUBLISH_HOST } = process.env;
+const { REACT_APP_DEFAULT_HOST } = process.env;
 
 const fetchData = async (path: string): Promise<any> => {
-  const url = `${getAuthorHost()}/${path.split(":/")[1]}.model.json`;
+  const url = `${getHost()}/${path.split(":/")[1]}.model.json`;
   const data = await fetch(url, { headers: { "X-Aem-Affinity-Type": "api" }, credentials: "include" });
   const json = await data.json();
 
   return json;
 };
 
-const getAuthorHost = (): string => {
+const getHost = (): string => {
   const url = new URL(window.location.href);
   const searchParams = new URLSearchParams(url.search);
 
-  if (searchParams.has("authorHost")) {
-    return searchParams.get("authorHost") ?? "";
+  if (searchParams.has("host")) {
+    return searchParams.get("host") ?? "";
   } else {
-    return REACT_APP_DEFAULT_AUTHOR_HOST ?? "";
-  }
-};
-
-const getPublishHost = (): string => {
-  const url = new URL(window.location.href);
-  const searchParams = new URLSearchParams(url.search);
-
-  if (searchParams.has("publishHost")) {
-    return searchParams.get("publishHost") ?? "";
-  } else {
-    return REACT_APP_DEFAULT_PUBLISH_HOST ?? "";
+    return REACT_APP_DEFAULT_HOST ?? "";
   }
 };
 
@@ -52,4 +41,4 @@ const getPath = (): string => {
   }
 };
 
-export { fetchData, getAuthorHost, getPublishHost, getPath };
+export { fetchData, getHost, getPath };

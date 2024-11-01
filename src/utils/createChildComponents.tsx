@@ -10,10 +10,10 @@
  * governing permissions and limitations under the License.
  */
 import { type FC, type ReactElement } from "react";
-import { Container, CustomComponent, Image, RichText, Text } from "src/components";
+import { Container, Image, RichText, Teaser, Text } from "src/components";
 import { type EditableProps, ITEM_TYPE } from "src/types";
 
-const createChildComponents = (items: any, parent: string, isPage?: boolean): ReactElement[] => {
+const createChildComponents = (items: any, parentResource: string, isPageNode?: boolean): ReactElement[] => {
   const components: JSX.Element[] = [];
 
   for (const key in items) {
@@ -41,9 +41,9 @@ const createChildComponents = (items: any, parent: string, isPage?: boolean): Re
         itemType = ITEM_TYPE.CONTAINER;
         Component = Container;
         break;
-      case "component":
+      case "teaser":
         itemType = ITEM_TYPE.COMPONENT;
-        Component = CustomComponent;
+        Component = Teaser;
         break;
       default:
         itemType = ITEM_TYPE.COMPONENT;
@@ -52,10 +52,10 @@ const createChildComponents = (items: any, parent: string, isPage?: boolean): Re
     }
 
     const editableProps: EditableProps = {
-      resource: `${parent}/${key}`,
+      resource: `${parentResource}/${key}`,
       type: itemType,
       data: item,
-      behavior: isPage ? undefined : ITEM_TYPE.COMPONENT,
+      behavior: isPageNode ? undefined : ITEM_TYPE.COMPONENT,
     };
 
     components.push(<Component key={key} {...editableProps} />);

@@ -10,8 +10,9 @@
           "plugins": {
             "aem": {
               "page": {
-                "resourceType": "wknd/components/text",
+                "resourceType": "core/wcm/components/text/v2/text",
                 "template": {
+                  "jcr:title": "Text",
                   "text": "Default Text"
                 }
               }
@@ -24,8 +25,9 @@
           "plugins": {
             "aem": {
               "page": {
-                "resourceType": "wknd/components/text",
+                "resourceType": "core/wcm/components/text/v2/text",
                 "template": {
+                  "jcr:title": "Richtext",
                   "textIsRich": true,
                   "text": "<p>Default Richtext</p>"
                 }
@@ -39,8 +41,9 @@
           "plugins": {
             "aem": {
               "page": {
-                "resourceType": "wknd/components/image",
+                "resourceType": "core/wcm/components/image/v3/image",
                 "template": {
+                  "jcr:title": "Image",
                   "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
                 }
               }
@@ -53,7 +56,10 @@
           "plugins": {
             "aem": {
               "page": {
-                "resourceType": "wknd/components/container"
+                "resourceType": "core/wcm/components/container/v1/container",
+                "template": {
+                  "jcr:title": "Container"
+                }
               }
             }
           }
@@ -70,11 +76,15 @@
           "plugins": {
             "aem": {
               "page": {
-                "resourceType": "wknd/components/component",
+                "resourceType": "core/wcm/components/teaser/v2/teaser",
                 "template": {
-                  "component": "teaser",
-                  "text": "Default RichText",
-                  "image": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
+                  "jcr:title": "Teaser",
+                  "titleFromPage": false,
+                  "jcr:description": "<p>Default Richtext</p>",
+                  "descriptionFromPage": false,
+                  "textIsRich": true,
+                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg",
+                  "actionsEnabled": false
                 }
               }
             }

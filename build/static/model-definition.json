@@ -5,7 +5,7 @@
       {
         "component": "text-input",
         "name": "text",
-        "value": "Text",
+        "value": "Default Text",
         "label": "Custom Text",
         "valueType": "string"
       }
@@ -17,8 +17,8 @@
       {
         "component": "text-area",
         "name": "text",
-        "value": "RichText",
-        "label": "Custom RichText",
+        "value": "<p>Default Richtext</p>",
+        "label": "Custom Richtext",
         "valueType": "string"
       }
     ]
@@ -30,7 +30,7 @@
         "component": "aem-content",
         "name": "fileReference",
         "value": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg",
-        "label": "Custom Image",
+        "label": "Custom Media",
         "valueType": "string"
       }
     ]
@@ -41,15 +41,15 @@
       {
         "component": "text-area",
         "name": "text",
-        "value": "RichText",
-        "label": "Custom RichText",
+        "value": "Default Richtext",
+        "label": "Custom Richtext",
         "valueType": "string"
       },
       {
         "component": "aem-content",
-        "name": "image",
+        "name": "media",
         "value": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg",
-        "label": "Custom Image",
+        "label": "Custom Media",
         "valueType": "string"
       }
     ]

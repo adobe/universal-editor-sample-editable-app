@@ -10,6 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
+main,
 div [data-aue-type="container"] {
   display: flex;
   flex-direction: column;

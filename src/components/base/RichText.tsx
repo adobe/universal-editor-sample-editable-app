@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 import { type ReactElement, useEffect, useState } from "react";
-import { type EditableProps, ITEM_TYPE } from "src/types";
+import { type EditableProps, type EditorProps, ITEM_TYPE } from "src/types";
 import { convertToEditorProps, fetchData } from "src/utils";
 
 type RichTextProps = Omit<EditableProps, "filter" | "type">;
@@ -18,9 +18,9 @@ type RichTextProps = Omit<EditableProps, "filter" | "type">;
 const RichText = (props: RichTextProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const defaultProps = { type: ITEM_TYPE.RICH_TEXT, prop: "text", label: data?.id };
-  const editableProps = { ...defaultProps, ...props };
-  const editorProps = convertToEditorProps(editableProps);
+  const defaultProps: EditableProps = { type: ITEM_TYPE.RICH_TEXT, prop: "text" };
+  const editableProps: EditableProps = { ...defaultProps, ...props };
+  const editorProps: EditorProps = convertToEditorProps(editableProps);
 
   const { resource, prop } = editableProps;
 

@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 import { type ReactElement, useEffect, useState } from "react";
-import { type EditableProps, ITEM_TYPE } from "src/types";
+import { type EditableProps, type EditorProps, ITEM_TYPE } from "src/types";
 import { convertToEditorProps, fetchData } from "src/utils";
 import { Image, RichText } from "./base";
 
@@ -19,9 +19,9 @@ type ComponentProps = Omit<EditableProps, "filter" | "type">;
 const Teaser = (props: ComponentProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const defaultProps = { type: ITEM_TYPE.COMPONENT, model: "teaser", label: "Teaser" };
-  const editableProps = { ...defaultProps, ...props };
-  const editorProps = convertToEditorProps(editableProps);
+  const defaultProps: EditableProps = { type: ITEM_TYPE.COMPONENT, model: "teaser", label: "teaser" };
+  const editableProps: EditableProps = { ...defaultProps, ...props };
+  const editorProps: EditorProps = convertToEditorProps(editableProps);
 
   const { resource, prop } = editableProps;
 
@@ -35,8 +35,8 @@ const Teaser = (props: ComponentProps): ReactElement => {
     }
   }, [resource, prop, data]);
 
-  const imageProps = { prop: "image", data: { image: data?.image }, label: "Image" };
-  const richTextProps = { prop: "text", data: { text: data?.text }, label: "RichText" };
+  const imageProps: EditableProps = { prop: "imagePath", data: { imagePath: data?.imagePath } };
+  const richTextProps: EditableProps = { prop: "description", data: { description: data?.description } };
 
   return (
     <div {...editorProps} className="teaser">

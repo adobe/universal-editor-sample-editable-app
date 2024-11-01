@@ -10,17 +10,17 @@
  * governing permissions and limitations under the License.
  */
 import { type ReactElement, useEffect, useState } from "react";
-import { type EditableProps, ITEM_TYPE } from "src/types";
-import { convertToEditorProps, fetchData, getPublishHost } from "src/utils";
+import { type EditableProps, type EditorProps, ITEM_TYPE } from "src/types";
+import { convertToEditorProps, fetchData, getHost } from "src/utils";
 
 type ImageProps = Omit<EditableProps, "filter" | "type">;
 
 const Image = (props: ImageProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const defaultProps = { type: ITEM_TYPE.MEDIA, prop: "fileReference", label: data?.id };
-  const editableProps = { ...defaultProps, ...props };
-  const editorProps = convertToEditorProps(editableProps);
+  const defaultProps: EditableProps = { type: ITEM_TYPE.MEDIA, prop: "fileReference" };
+  const editableProps: EditableProps = { ...defaultProps, ...props };
+  const editorProps: EditorProps = convertToEditorProps(editableProps);
 
   const { resource, prop } = editableProps;
 
@@ -29,11 +29,13 @@ const Image = (props: ImageProps): ReactElement => {
       return;
     }
 
-    fetchData(resource).then((data) => setData(data));
-  }, [resource, prop]);
+    if (!data) {
+      fetchData(resource).then((data) => setData(data));
+    }
+  }, [resource, prop, data]);
 
-  const path = data?.[prop] ?? data?.dataLayer?.[data.id]?.image?.["repo:path"];
-  const src = path ? `${getPublishHost()}${path}` : "";
+  const path = (prop && data?.[prop]) ?? data?.dataLayer?.[data.id]?.image?.["repo:path"];
+  const src = path ? `${getHost()}${path}` : "";
   const alt = data?.alt;
 
   return <img {...editorProps} src={src} alt={alt} />;
