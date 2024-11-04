@@ -6,7 +6,7 @@
         "component": "text-input",
         "name": "text",
         "value": "Default Text",
-        "label": "Custom Text",
+        "label": "text",
         "valueType": "string"
       }
     ]
@@ -18,7 +18,7 @@
         "component": "text-area",
         "name": "text",
         "value": "<p>Default Richtext</p>",
-        "label": "Custom Richtext",
+        "label": "text",
         "valueType": "string"
       }
     ]
@@ -30,7 +30,7 @@
         "component": "aem-content",
         "name": "fileReference",
         "value": "/content/dam/wknd/e2e/e2e_default.jpeg",
-        "label": "Custom Media",
+        "label": "fileReference",
         "valueType": "string"
       }
     ]
@@ -39,17 +39,17 @@
     "id": "teaser",
     "fields": [
       {
-        "component": "text-area",
-        "name": "text",
-        "value": "Default Richtext",
-        "label": "Custom Richtext",
+        "component": "aem-content",
+        "name": "fileReference",
+        "value": "/content/dam/wknd/e2e/e2e_default.jpeg",
+        "label": "fileReference",
         "valueType": "string"
       },
       {
-        "component": "aem-content",
-        "name": "media",
-        "value": "/content/dam/wknd/e2e/e2e_default.jpeg",
-        "label": "Custom Media",
+        "component": "text-area",
+        "name": "jcr:description",
+        "value": "<p>Default Richtext</p>",
+        "label": "jcr:description",
         "valueType": "string"
       }
     ]
