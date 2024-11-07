@@ -34,7 +34,7 @@ const Image = (props: ImageProps): ReactElement => {
     }
   }, [resource, prop, data]);
 
-  const path = (prop && data?.[prop]) ?? data?.dataLayer?.[data.id]?.image?.["repo:path"];
+  const path = (prop && data?.[prop]) ?? data?.src ?? data?.dataLayer?.[data.id]?.image?.["repo:path"];
   const src = path ? `${getHost()}${path}` : "";
   const alt = data?.alt;
 
