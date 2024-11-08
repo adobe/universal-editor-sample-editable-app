@@ -12,14 +12,13 @@
 import { type ReactElement, useEffect, useState } from "react";
 import { type EditableProps, type EditorProps, ITEM_TYPE } from "src/types";
 import { convertToEditorProps, fetchData } from "src/utils";
-import { Image, RichText } from "./base";
 
-type TeaserProps = Omit<EditableProps, "filter" | "type">;
+type TitleProps = Omit<EditableProps, "filter" | "type">;
 
-const Teaser = (props: TeaserProps): ReactElement => {
+const Title = (props: TitleProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const defaultProps: EditableProps = { type: ITEM_TYPE.COMPONENT, model: "teaser", label: "teaser" };
+  const defaultProps: EditableProps = { type: ITEM_TYPE.TEXT, prop: "jcr:title" };
   const editableProps: EditableProps = { ...defaultProps, ...props };
   const editorProps: EditorProps = convertToEditorProps(editableProps);
 
@@ -35,15 +34,10 @@ const Teaser = (props: TeaserProps): ReactElement => {
     }
   }, [resource, prop, data]);
 
-  const imageProps: EditableProps = { prop: "fileReference", data: { fileReference: data?.imagePath } };
-  const richTextProps: EditableProps = { prop: "jcr:description", data: { "jcr:description": data?.description } };
+  const TitleTag = data?.type ? `${data.type}` : "h1";
+  const content = prop ? data?.[prop] : null;
 
-  return (
-    <div {...editorProps} className="teaser">
-      <Image {...imageProps} />
-      <RichText {...richTextProps} />
-    </div>
-  );
+  return <TitleTag {...editorProps}>{content}</TitleTag>;
 };
 
-export { Teaser };
+export { Title };

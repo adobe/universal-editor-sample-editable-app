@@ -11,3 +11,4 @@
  */
 export * from "./base";
 export { Teaser } from "./Teaser";
+export { Title } from "./Title";

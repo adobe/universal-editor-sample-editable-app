@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 import { type FC, type ReactElement } from "react";
-import { Container, Image, RichText, Teaser, Text } from "src/components";
+import { Container, Image, RichText, Teaser, Text, Title } from "src/components";
 import { type EditableProps, ITEM_TYPE } from "src/types";
 
 const createChildComponents = (items: any, parentResource: string, isPageNode?: boolean): ReactElement[] => {
@@ -40,6 +40,10 @@ const createChildComponents = (items: any, parentResource: string, isPageNode?: 
       case "container":
         itemType = ITEM_TYPE.CONTAINER;
         Component = Container;
+        break;
+      case "title":
+        itemType = ITEM_TYPE.TEXT;
+        Component = Title;
         break;
       case "teaser":
         itemType = ITEM_TYPE.COMPONENT;
