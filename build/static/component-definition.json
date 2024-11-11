@@ -20,6 +20,20 @@
           }
         },
         {
+          "title": "Title",
+          "id": "title",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "core/wcm/components/title/v3/title",
+                "template": {
+                  "jcr:title": "Default Title"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Richtext",
           "id": "richtext",
           "plugins": {
