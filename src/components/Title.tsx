@@ -18,7 +18,7 @@ type TitleProps = Omit<EditableProps, "filter" | "type">;
 const Title = (props: TitleProps): ReactElement => {
   const [data, setData] = useState<any>(props.data);
 
-  const defaultProps: EditableProps = { type: ITEM_TYPE.TEXT, prop: "jcr:title" };
+  const defaultProps: EditableProps = { type: ITEM_TYPE.TEXT, prop: "jcr:title", model: "title", label: "title" };
   const editableProps: EditableProps = { ...defaultProps, ...props };
   const editorProps: EditorProps = convertToEditorProps(editableProps);
 
@@ -35,7 +35,7 @@ const Title = (props: TitleProps): ReactElement => {
   }, [resource, prop, data]);
 
   const TitleTag = data?.type ? `${data.type}` : "h1";
-  const content = prop ? data?.[prop] : null;
+  const content = prop ? data?.["text"] : null;
 
   return <TitleTag {...editorProps}>{content}</TitleTag>;
 };
