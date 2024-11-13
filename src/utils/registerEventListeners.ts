@@ -11,27 +11,42 @@
  */
 import { fetchData, getPath } from "./fetchData";
 
-const handleContentUpdate = () => {
+const changeTitleToPageTitle = (request: any): void => {
+  const pageContentPath = `urn:aemconnection:${getPath()}/jcr:content`;
+  const resourceSelector = `[data-aue-resource="${request?.target?.resource}"]`;
+  const element = document.querySelector(resourceSelector);
+  if (element) {
+    fetchData(pageContentPath).then((data) => {
+      if (data?.title) {
+        element.innerHTML = data.title;
+      }
+    });
+  }
+};
+
+const handleContentUpdate = (): void => {
   document.addEventListener("aue:content-update", (event: Event) => {
     const { request, value } = (event as CustomEvent)?.detail;
     // If Title component is updated to empty value, fetch and use the Page Title instead
     if (!value && request.target.prop === "jcr:title") {
-      const pageContentPath = `urn:aemconnection:${getPath()}/jcr:content`;
-      const resourceSelector = `[data-aue-resource="${request?.target?.resource}"]`;
-      const element = document.querySelector(resourceSelector);
-      if (element) {
-        fetchData(pageContentPath).then((data) => {
-          if (data?.title) {
-            element.innerHTML = data.title;
-          }
-        });
-      }
+      changeTitleToPageTitle(request);
+    }
+  });
+};
+
+const handleContentPatch = (): void => {
+  document.addEventListener("aue:content-patch", (event: Event) => {
+    const { request, patch } = (event as CustomEvent)?.detail;
+    // If Title component is patched to empty value, fetch and use the Page Title instead
+    if (!patch.value && request.target.prop === "jcr:title") {
+      changeTitleToPageTitle(request);
     }
   });
 };
 
 const registerEventListeners = (): void => {
   handleContentUpdate();
+  handleContentPatch();
 };
 
 export { registerEventListeners };
