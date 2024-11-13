@@ -13,6 +13,7 @@ import { type ReactElement, useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css";
 import { createChildComponents, fetchData, getHost, getPath } from "src/utils";
+import { registerEventListeners } from "./utils/registerEventListeners";
 
 const App = (): ReactElement => {
   const [items, setItems] = useState<Record<string, any>>({});
@@ -24,6 +25,8 @@ const App = (): ReactElement => {
       setItems(data[":items"]);
     });
   }, [resource]);
+
+  registerEventListeners();
 
   const components = createChildComponents(items, resource, true);
 

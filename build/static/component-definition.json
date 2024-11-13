@@ -27,7 +27,8 @@
               "page": {
                 "resourceType": "core/wcm/components/title/v3/title",
                 "template": {
-                  "jcr:title": "Default Title"
+                  "jcr:title": "Default Title",
+                  "type": "h3"
                 }
               }
             }
