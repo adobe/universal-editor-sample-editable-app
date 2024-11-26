@@ -16,6 +16,25 @@ export const getAuthorHost = () => {
 	}
 }
 
+export const getProtocol = () => {
+	const url = new URL(window.location.href);
+	const searchParams = new URLSearchParams(url.search);
+	if (searchParams.has("protocol")) {
+		return searchParams.get("protocol");
+	} else {
+		return "aem";
+	}
+}
+
+export const getService = () => {
+	const url = new URL(window.location.href);
+	const searchParams = new URLSearchParams(url.search);
+	if (searchParams.has("service")) {
+		return searchParams.get("service");
+	}
+	return null;
+}
+
 export const getPublishHost = () => {
 	const url = new URL(window.location.href);
 	const searchParams = new URLSearchParams(url.search);
