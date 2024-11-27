@@ -6,7 +6,7 @@ import AdventureDetail from "./components/AdventureDetail";
 import Articles from "./components/Articles";
 import ArticleDetail from "./components/ArticleDetail";
 import About from "./components/About";
-import {getAuthorHost} from "./utils/fetchData";
+import {getAuthorHost, getProtocol, getService} from "./utils/fetchData";
 import logo from "./images/wknd-logo-dk.svg";
 import "./App.scss";
 // import { useSparkleAppUrl } from "./hooks";
@@ -47,8 +47,9 @@ function App() {
     <HelmetProvider>
       <div className="App">
         <Helmet>
-          <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getAuthorHost()}`}/>
-          <meta name="urn:adobe:aue:config:extensions" content="https://47679-workflowextension.adobeio-static.net"/>
+          <meta name="urn:adobe:aue:system:aemconnection" content={`${getProtocol()}:${getAuthorHost()}`}/>
+          <meta name="urn:adobe:aue:config:extensions" content="https://47679-universaleditormsm-stage.adobeio-static.net"/>
+            { getService() && <meta name="urn:adobe:aue:config:service" content={getService()}/> }
         </Helmet>
         <Router>
           <Header />
