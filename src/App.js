@@ -48,7 +48,7 @@ function App() {
       <div className="App">
         <Helmet>
           <meta name="urn:adobe:aue:system:aemconnection" content={`${getProtocol()}:${getAuthorHost()}`}/>
-          <meta name="urn:adobe:aue:config:extensions" content="https://47679-universaleditormsm-stage.adobeio-static.net"/>
+          <meta name="urn:adobe:aue:config:extensions" content="https://47679-workflowextension.adobeio-static.net"/>
             { getService() && <meta name="urn:adobe:aue:config:service" content={getService()}/> }
         </Helmet>
         <Router>
