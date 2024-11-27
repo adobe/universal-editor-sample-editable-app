@@ -6,6 +6,8 @@ Per Default the content is retrieved and written back to our Production Demo Env
 ```
 authorHost=https://author-p7452-e12433.adobeaemcloud.com
 publishHost=https://publish-p7452-e12433.adobeaemcloud.com
+service=<null>          // using defualt built in Universal Editor
+protocol=aem            // protocol to work on AEMCS
 ```
 If you'd like to retrieve content from another environment add authorHost & publishHost as query parameters, e.g.
 
@@ -14,7 +16,6 @@ If you'd like to retrieve content from another environment add authorHost & publ
 respectively if run on local dev environment:
 
 [https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com](https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com)
-
 
 ## Prerequisites 
 
