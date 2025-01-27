@@ -11,7 +11,6 @@
     "deploy": "./deploy/script.sh"
   },
   "dependencies": {
-    "@adobe/universal-editor-cors": "^2.3.7",
     "buffer": "^6.0.3",
     "caniuse-lite": "1.0.30001632",
     "gulp": "^4.0.2",

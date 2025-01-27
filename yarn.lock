@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@adobe/universal-editor-cors@^2.3.7":
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/@adobe/universal-editor-cors/-/universal-editor-cors-2.3.7.tgz#2f3520427670a516caf16273c7fd6165f0cc023a"
-  integrity sha512-bZ36OyGp63hfOT9gPUDSn2iCzBdPXn8fg2iwpUEbektRM14Pkwoaxt518KQRblOj7w4i3UJUMGDsmQR+RSw2xQ==
-
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.3.0.tgz#ed441b6fa600072520ce18b43d2c8cc8caecc7f4"
