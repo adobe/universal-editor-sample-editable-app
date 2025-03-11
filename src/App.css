@@ -15,7 +15,7 @@ div [data-aue-type="container"] {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin: 20px;
+  margin: 30px;
   font-size: 20px;
 
   * {
