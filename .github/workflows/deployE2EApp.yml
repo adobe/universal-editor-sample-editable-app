@@ -3,7 +3,7 @@ name: Deploy to https://sample-app-ue-e2e-tests.netlify.app
 on:
   push:
     branches:
-      - prod
+      - e2e-app
     paths:
       - 'build/index.html'
 jobs:
