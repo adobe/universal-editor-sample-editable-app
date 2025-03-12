@@ -10,9 +10,8 @@
  * governing permissions and limitations under the License.
  */
 import { type ReactElement, useEffect, useState } from "react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css";
-import { createChildComponents, fetchData, getHost, getPath } from "src/utils";
+import { createChildComponents, fetchData, getPath } from "src/utils";
 import { registerEventListeners } from "./utils/registerEventListeners";
 
 const App = (): ReactElement => {
@@ -31,12 +30,7 @@ const App = (): ReactElement => {
   const components = createChildComponents(items, resource, true);
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <meta name="urn:adobe:aue:system:aemconnection" content={`aem:${getHost()}`} />
-      </Helmet>
       <main>{components}</main>
-    </HelmetProvider>
   );
 };
 export default App;

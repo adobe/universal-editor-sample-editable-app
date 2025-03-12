@@ -11,7 +11,7 @@
  */
 import { type ReactElement, useEffect, useState } from "react";
 import { type EditableProps, type EditorProps, ITEM_TYPE } from "src/types";
-import { convertToEditorProps, fetchData, getHost } from "src/utils";
+import { convertToEditorProps, fetchData } from "src/utils";
 
 type ImageProps = Omit<EditableProps, "filter" | "type">;
 
@@ -35,7 +35,7 @@ const Image = (props: ImageProps): ReactElement => {
   }, [resource, prop, data]);
 
   const path = (prop && data?.[prop]) ?? data?.src ?? data?.dataLayer?.[data.id]?.image?.["repo:path"];
-  const src = path ? `${getHost()}${path}` : "";
+  const src = path ? `${process.env.REACT_APP_DEFAULT_HOST}${path}` : "";
   const alt = data?.alt;
 
   return <img {...editorProps} src={src} alt={alt} />;

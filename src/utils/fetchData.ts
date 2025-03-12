@@ -12,7 +12,7 @@
 const { REACT_APP_DEFAULT_HOST } = process.env;
 
 const fetchData = async (path: string): Promise<any> => {
-  const url = `${getHost()}/${path.split(":/")[1]}.model.json`;
+  const url = `${process.env.REACT_APP_DEFAULT_HOST}/${path.split(":/")[1]}.model.json`;
   const data = await fetch(url, { headers: { "X-Aem-Affinity-Type": "api" }, credentials: "include" });
   const json = await data.json();
 
