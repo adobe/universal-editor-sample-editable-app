@@ -8,11 +8,10 @@ it.
 import React from 'react';
 import {Link} from 'react-router-dom';
 import useGraphQL from '../api/useGraphQL';
-// import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Adventures.scss";
 import Title from './base/Title';
-import {getPublishHost} from "../utils/fetchData";
+import {getImageURL} from "../utils/fetchData";
 
 function AdventureItem(props) {
     const editorProps = {
@@ -31,7 +30,7 @@ function AdventureItem(props) {
          <li className="adventure-item" {...editorProps}>
           <div className="adventure-image-card">
           <Link to={`/adventure/${props.slug}${window.location.search}`}>
-            <img className="adventure-item-image" src={`${getPublishHost()}${props.primaryImage._path}`}
+            <img className="adventure-item-image" src={`${getImageURL(props.primaryImage)}`}
                   alt={props.title} data-aue-prop="primaryImage" data-aue-type="media" />
           </Link>
           </div>
