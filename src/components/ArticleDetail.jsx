@@ -82,7 +82,7 @@ function ArticleDetailRender({
 function NoArticleFound() {
 	return (
 		<div className="adventure-detail">
-			<Link className="adventure-detail-close-button" to={` /${window.location.search}`}>
+			<Link className="adventure-detail-close-button" to={`/${window.location.search}`}>
 				<img className="Backbutton-icon" src={backIcon} alt="Return"/>
 			</Link>
 			<Error errorMessage="Missing data, article could not be rendered."/>
