@@ -41,7 +41,7 @@ const Title = (props) => {
   
   const TitleTag = data?.type ? `${data.type}` : "h1";
   return data ? (
-    <TitleTag {...editorProps} data-aue-model="title" data-aue-label={"title"} className={className}>{data["text"]}</TitleTag>
+    <TitleTag {...editorProps} data-aue-model="title" data-aue-label={"title"} className={className}>{data["jcr:title"] ?? "Default Title"}</TitleTag>
   ):<></>;
 };
 
