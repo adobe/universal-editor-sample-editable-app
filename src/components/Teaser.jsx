@@ -10,11 +10,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useGraphQL from '../api/useGraphQL';
 import { getArticle } from '../utils/commons';
-import { getPublishHost } from '../utils/fetchData';
 import { mapJsonRichText } from '../utils/renderRichText';
-// import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Teaser.scss";
+import {getImageURL} from "../utils/fetchData";
 
 const Teaser = () => {
   const persistentQuery = `wknd-shared/article-by-slug;slug=aloha-spirits-in-northern-norway`;
@@ -50,7 +49,7 @@ const Teaser = () => {
         <button>Read more</button>
       </Link>
     </article>
-    {featuredImage && <img src={`${getPublishHost()}${featuredImage._path}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />}
+    {featuredImage && <img src={`${getImageURL(featuredImage)}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />}
   </section>
 
 );
