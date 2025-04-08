@@ -24,9 +24,20 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <script type="application/vnd.adobe.aue.component+json" src="/static/component-definition.json"></script>
+  <script type="application/vnd.adobe.aue.filter+json" src="/static/filter-definition.json"></script>
   <script type="application/vnd.adobe.aue.model+json" src="/static/model-definition.json"></script>
   <title>React App</title>
-  <script src="https://universal-editor-service.adobe.io/cors.js" async></script>
+  <script>
+    (function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const corsUrl = urlParams.get('cors') === "stage" ? 'https://universal-editor-service-stage.adobe.io/cors.js' : 'https://universal-editor-service.adobe.io/cors.js';
+
+      const script = document.createElement('script');
+      script.src = corsUrl;
+      script.async = true;
+      document.head.appendChild(script);
+    })();
+  </script>
 </head>
 
 <body>
