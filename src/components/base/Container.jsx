@@ -20,7 +20,7 @@ const Container = ({ resource, type, isComponent = "" }) => {
           Component = Image;
           break;
         case "text": 
-          itemType = item.richText ? "richtext" : "text";
+          itemType = item.textIsRich ? "richtext" : "text";
           Component = item.type ? Title : Text;
           break;
         case "container": 
