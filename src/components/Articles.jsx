@@ -12,8 +12,8 @@ import {Link} from 'react-router-dom';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Articles.scss";
-import {getPublishHost} from "../utils/fetchData";
 import { mapJsonRichText } from '../utils/renderRichText';
+import {getImageURL} from "../utils/fetchData";
 
 const Article = ({_path, title, synopsis, authorFragment, slug}) => {
     const editorProps = {
@@ -25,7 +25,7 @@ const Article = ({_path, title, synopsis, authorFragment, slug}) => {
         <li className="article-item" {...editorProps}>
             <aside>
               <img className="article-item-image"
-                src={`${getPublishHost()}${authorFragment?.profilePicture._path}`}
+                src={`${getImageURL(authorFragment?.profilePicture)}`}
                 alt={title} data-aue-prop="profilePicture" data-aue-type="media"/>
             </aside>
             <article>

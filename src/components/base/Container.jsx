@@ -11,9 +11,12 @@ const Container = ({ resource, type, isComponent = "" }) => {
     const components = [];
     for(let key in items) {
       const item = items[key];
-      const type = item[":type"].split("/").pop();
+      const type = item["sling:resourceType"]?.split("/").pop();
+      if (type === undefined) {
+        continue;
+      }
+
       let itemType, Component;
-      
       switch(type) {
         case "image": 
           itemType = "media";
@@ -23,7 +26,11 @@ const Container = ({ resource, type, isComponent = "" }) => {
           itemType = item.textIsRich ? "richtext" : "text";
           Component = item.type ? Title : Text;
           break;
-        case "container": 
+        case "title":
+            itemType = "text";
+            Component = Title;
+            break;
+        case "container":
           itemType = "container";
           Component = Container;
           break;
@@ -47,7 +54,7 @@ const Container = ({ resource, type, isComponent = "" }) => {
   React.useEffect(() => {
     if(!resource) return;
     fetchData(resource).then((data) => {
-      setComponents(createChildComponents(data[":items"], resource));
+      setComponents(createChildComponents(data, resource));
     });
   }, [resource]);
   

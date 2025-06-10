@@ -13,7 +13,7 @@ import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
-import {getPublishHost} from "../utils/fetchData";
+import {getImageURL} from "../utils/fetchData";
 
 function AdventureDetail() {
 	// params hook from React router
@@ -78,7 +78,7 @@ function AdventureDetailRender({
 							   }) {
 	return (<div>
             <img className="adventure-detail-primaryimage"
-					 src={`${getPublishHost()}${primaryImage._path}`} alt={title} data-aue-prop="primaryImage" data-aue-type="media"/>			
+					 src={`${getImageURL(primaryImage)}`} alt={title} data-aue-prop="primaryImage" data-aue-type="media"/>
 			<div className="adventure-detail-content">
 				
 				<div data-aue-prop="description"

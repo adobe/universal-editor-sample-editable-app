@@ -13,64 +13,65 @@ import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import useGraphQL from '../api/useGraphQL';
-import { getArticle } from '../utils/commons';
-import {getPublishHost} from "../utils/fetchData";
+import {getArticle} from '../utils/commons';
+import {getImageURL} from "../utils/fetchData";
 
-function ArticleDetail({ article }) {
+function ArticleDetail({article}) {
 
-	// params hook from React router
-	const {slug} = useParams();
-	const navigate = useNavigate();
-	const articleSlug = slug || article;
+    // params hook from React router
+    const {slug} = useParams();
+    const navigate = useNavigate();
+    const articleSlug = slug || article;
 
-	const persistentQuery = `wknd-shared/article-by-slug;slug=${articleSlug}`;
+    const persistentQuery = `wknd-shared/article-by-slug;slug=${articleSlug}`;
 
-	//Use a custom React Hook to execute the GraphQL query
-	const {data, errorMessage} = useGraphQL(persistentQuery);
+    //Use a custom React Hook to execute the GraphQL query
+    const {data, errorMessage} = useGraphQL(persistentQuery);
 
-	//If there is an error with the GraphQL query
-	if (errorMessage) return <Error errorMessage={errorMessage}/>;
+    //If there is an error with the GraphQL query
+    if (errorMessage) return <Error errorMessage={errorMessage}/>;
 
-	//If query response is null then return a loading icon...
-	if (!data) return <Loading/>;
+    //If query response is null then return a loading icon...
+    if (!data) return <Loading/>;
 
-	//Set adventure properties variable based on graphQL response
-	const currentArticle = getArticle(data);
+    //Set adventure properties variable based on graphQL response
+    const currentArticle = getArticle(data);
 
-	//Must have title, path, and image
-	if (!currentArticle) {
-		return <NoArticleFound/>;
-	}
+    //Must have title, path, and image
+    if (!currentArticle) {
+        return <NoArticleFound/>;
+    }
 
-	const editorProps = {
-		"data-aue-resource": "urn:aemconnection:" + currentArticle._path + "/jcr:content/data/master",
-		"data-aue-type": "reference",
-		"data-aue-filter": "cf"
-	};
+    const editorProps = {
+        "data-aue-resource": "urn:aemconnection:" + currentArticle._path + "/jcr:content/data/master",
+        "data-aue-type": "reference",
+        "data-aue-filter": "cf"
+    };
 
-	return (<div {...editorProps} className="adventure-detail">
+    return (<div {...editorProps} className="adventure-detail">
         <div class="adventure-detail-header">
             <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
-            <img className="Backbutton-icon" src={backIcon} alt="Return"/> Back
+                <img className="Backbutton-icon" src={backIcon} alt="Return"/> Back
             </button>
-            <h1 className="adventure-detail-title" data-aue-prop="title" data-aue-type="text">{currentArticle.title}</h1>
+            <h1 className="adventure-detail-title" data-aue-prop="title"
+                data-aue-type="text">{currentArticle.title}</h1>
             {/* <span className="pill default" itemProp="title" itemType="text">{currentAdventure.activity}</span> */}
         </div>
-		<ArticleDetailRender {...currentArticle} slug={articleSlug}/>
-	</div>);
+        <ArticleDetailRender {...currentArticle} slug={articleSlug}/>
+    </div>);
 }
 
 function ArticleDetailRender({
-								 _path, title,
-								 featuredImage, slug,
-								 main,
-								 authorFragment
-							 }) {
+                                 _path, title,
+                                 featuredImage, slug,
+                                 main,
+                                 authorFragment
+                             }) {
 
 
-	return (<div>
-            <img className="adventure-detail-primaryimage" data-aue-type="media" data-aue-prop="featuredImage"
-					 src={`${getPublishHost()}${featuredImage._path}`} alt={title}/>
+    return (<div>
+        <img className="adventure-detail-primaryimage" data-aue-type="media" data-aue-prop="featuredImage"
+             src={`${getImageURL(featuredImage)}`} alt={title}/>
 			<div className="adventure-detail-content">			
 				<div data-aue-prop="main" data-aue-type="richtext">{mapJsonRichText(main.json)}</div>
 			</div>
@@ -87,25 +88,6 @@ function NoArticleFound() {
 			<Error errorMessage="Missing data, article could not be rendered."/>
 		</div>
 	);
-}
-
-function Contributer(props) {
-
-	if (!props) {
-		return null;
-	}
-	let profilePicture = null;
-	if (props.profilePicture) {
-		profilePicture =
-			<img className="contributor-image" src={`${getPublishHost()}${props.profilePicture._path}`}
-				 alt={props.firstName}/>
-	}
-
-	return (
-		<div className="contributor">
-			{profilePicture}
-			<h3 className="contributor-name">{props.firstName} {props.lastName}</h3>
-		</div>);
 }
 
 export default ArticleDetail;

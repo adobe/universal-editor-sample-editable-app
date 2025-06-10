@@ -7,7 +7,7 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React, {useEffect, useMemo} from 'react';
-import {fetchData, getPublishHost} from '../../utils/fetchData';
+import {fetchData, getImageURL} from '../../utils/fetchData';
 
 const Image = (props) => {
   const {resource, prop = "fileReference", type, className, data: initialData, isComponent = false} = props;
@@ -24,10 +24,10 @@ const Image = (props) => {
     if(!resource || !prop || initialData) return;
     fetchData(resource).then((data) => setData(data));
   }, [resource, prop, initialData]);
-  const path = data?.dataLayer?.[data.id]?.image?.["repo:path"];
+  const path = data?.["fileReference"];
 
   return (
-    <img {...editorProps} data-aue-model="image" data-aue-label={data.id} src={path ? `${getPublishHost()}${path}` : ""} className={className} alt={data.alt} />
+    <img {...editorProps} data-aue-model="image" data-aue-label={data.id} src={path ? `${getImageURL(path)}` : ""} className={className} alt={data.alt} />
   );
 };
 
