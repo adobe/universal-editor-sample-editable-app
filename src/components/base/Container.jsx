@@ -23,14 +23,14 @@ const Container = ({ resource, type, isComponent = "" }) => {
           Component = Image;
           break;
         case "text": 
-          itemType = item.richText ? "richtext" : "text";
-          Component = Text;
+          itemType = item.textIsRich ? "richtext" : "text";
+          Component = item.type ? Title : Text;
           break;
         case "title":
             itemType = "text";
             Component = Title;
             break;
-        case "container": 
+        case "container":
           itemType = "container";
           Component = Container;
           break;
