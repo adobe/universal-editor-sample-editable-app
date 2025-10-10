@@ -49,7 +49,9 @@ const Teaser = () => {
         <button>Read more</button>
       </Link>
     </article>
-    {featuredImage && <img src={`${getImageURL(featuredImage)}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />}
+    {featuredImage && <img src={`${getImageURL(featuredImage._path)}`}
+                           alt={title} data-aue-type="media"
+                           data-aue-prop="featuredImage" />}
   </section>
 
 );

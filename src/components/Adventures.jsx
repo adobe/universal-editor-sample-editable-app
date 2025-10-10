@@ -22,7 +22,7 @@ function AdventureItem(props) {
     };
 
   //Must have title, path, and image
-  if(!props || !props._path || !props.title || !props.primaryImage ) {
+  if(!props || !props._path || !props.title || !props.primaryImage._path ) {
     return null;
   }
 
@@ -30,8 +30,11 @@ function AdventureItem(props) {
          <li className="adventure-item" {...editorProps}>
           <div className="adventure-image-card">
           <Link to={`/adventure/${props.slug}${window.location.search}`}>
-            <img className="adventure-item-image" src={`${getImageURL(props.primaryImage)}`}
-                  alt={props.title} data-aue-prop="primaryImage" data-aue-type="media" />
+            <img className="adventure-item-image"
+                 src={`${getImageURL(props.primaryImage._path)}`}
+                 alt={props.title}
+                 data-aue-prop="primaryImage"
+                 data-aue-type="media" />
           </Link>
           </div>
           <h3 className="adventure-item-title" data-aue-prop="title" data-aue-type="text">{props.title}</h3>
