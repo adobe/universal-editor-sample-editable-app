@@ -22,7 +22,7 @@ function AdventureItem(props) {
     };
 
   //Must have title, path, and image
-  if(!props || !props._path || !props.title || !props.primaryImage._path ) {
+  if(!props || !props._path || !props.title || !props.primaryImage) {
     return null;
   }
 
