@@ -1,6 +1,6 @@
 [
   {
     "id": "container",
-     "components":null
+     "components": ["text","image"]
    }
 ]
