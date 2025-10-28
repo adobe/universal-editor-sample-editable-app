@@ -10,14 +10,13 @@ import React, {useEffect} from 'react';
 import {fetchData} from '../../utils/fetchData';
 
 const Text = (props) => {
-  const {resource, prop = "text", type, className, data: initialData, isComponent = false} = props;
+  const {resource, prop = "text", type, className, data: initialData} = props;
   const [data,setData] = React.useState(initialData);
   
   const editorProps = {
     "data-aue-resource": resource,
     "data-aue-prop":prop,
     "data-aue-type": type,
-    "data-aue-behavior": isComponent,
   };
 
   useEffect(() => {
@@ -28,10 +27,10 @@ const Text = (props) => {
   
   return data ? (
     type !== "richtext" ?(
-          <div {...editorProps} data-aue-model="text" className={className} data-aue-label={data?.id}>
+          <div {...editorProps} data-aue-component="text" className={className} data-aue-label={data?.id}>
             {data[prop]}
           </div>
-      ) : <div {...editorProps} data-aue-model="richtext" className={className}  data-aue-label={data?.id} dangerouslySetInnerHTML={{__html: data[prop]}}/>
+      ) : <div {...editorProps} data-aue-component="richtext" className={className}  data-aue-label={data?.id} dangerouslySetInnerHTML={{__html: data[prop]}}/>
   ): <></>;
 };
 
