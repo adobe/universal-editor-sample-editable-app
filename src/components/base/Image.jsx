@@ -26,7 +26,7 @@ const Image = (props) => {
   const path = data?.["fileReference"];
 
   return (
-    <img {...editorProps} data-aue-component="image" data-aue-label={data.id} src={path ? `${getImageURL(path)}` : ""} className={className} alt={data.alt} />
+    <img {...editorProps} data-aue-component="image" data-aue-label={"Image"} src={path ? `${getImageURL(path)}` : ""} className={className} alt={data.alt} />
   );
 };
 

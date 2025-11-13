@@ -1,28 +1,36 @@
-# Universal Editor Sample App
+# Adobe Universal Editor Sample App
 
 ## Using the Sample App
-This Sample App is hosted at https://ue-remote-app.adobe.net.
-Per Default the content is retrieved and written back to our Production Demo Environment:
-```
-authorHost=https://author-p7452-e12433.adobeaemcloud.com
-publishHost=https://publish-p7452-e12433.adobeaemcloud.com
-service=<null>          // using defualt built in Universal Editor
-protocol=aem            // protocol to work on AEMCS
-```
-If you'd like to retrieve content from another environment add authorHost & publishHost as query parameters, e.g.
+The Sample App is hosted at https://ue-remote-app.adobe.net.
+Per Default the content is retrieved and written back to the Adobe Experience Manager as a Cloud Service ( Production ) Demo Environment:
 
-[https://ue-remote-app.adobe.net?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com](https://ue-remote-app.adobe.net?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com)
+The default settings from [.env](.env) can be overwritten using Query parameters:
+* `authorHost`: host to retrieve data from and update content to; default=https://author-p7452-e12433.adobeaemcloud.com
+* `service`: Universal Editor Service endpoint; default Universal Editor default
+* `protocol`: protocol to use with backend, can be `aem`, `aem65`, `aemcsLegacy`; default: `aem`
+* `cors`: defining which cors.js - connection between Universal Editor and application shall be used. Can be `stage` or empty; default `null/empty`
 
-respectively if run on local dev environment:
+To retrieve content from another environment add `authorHost` as query parameters, e.g.
 
-[https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com](https://localhost:3000?authorHost=https://author-p15902-e145656-cmstg.adobeaemcloud.com&publishHost=https://publish-p15902-e145656-cmstg.adobeaemcloud.com)
+[https://ue-remote-app.adobe.net?authorHost=https://author-p7452-e12433.adobeaemcloud.com](https://ue-remote-app.adobe.net?authorHost=https://author-p7452-e12433.adobeaemcloud.com)
 
-## Prerequisites 
+Similarly, if running the Universal Editor App on local dev environment, add `authorHost` as query parameters like this:
 
-- AEMCS instance is available
-- WKND project is installed on the instance
-- CORS enabled on AEM instance for the app
-- For local development with editor, ensure app is using *https*
+[https://localhost:3000?authorHost=https://localhost:8443&service=https://localhost:8443/universal-editor](https://localhost:3000?authorHost=https://localhost:8443&service=https://localhost:8443/universal-editor)
+
+## Run locally 
+
+- AEM 6.5 or AEMCS instance
+- Latest WKND Content installed on the AEM instance[https://github.com/adobe/aem-guides-wknd/releases/latest](https://github.com/adobe/aem-guides-wknd/releases/latest)
+- AEM configured to run on HTTPS [https://experienceleague.adobe.com/en/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard](https://experienceleague.adobe.com/en/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
+- `Adobe Granite Token Authentication Handler` configured to set `token.samesite.cookie.attr=Partitioned`
+- Remove `X-FRAME-Options=SAMEORIGIN` from `Apache Sling Main Servlet`'s `sling.additional.response.headers` attribute if run locally
+- Add policy for `https://localhost:3000` to `Adobe Granite Cross-Origin Resource Sharing Policy`. The default `adobe` configuraiton can be used as blueprint if run local copy of the app
+- Follow configuration on [https://github.com/maximilianvoss/universal-editor-service-proxy](https://github.com/maximilianvoss/universal-editor-service-proxy) for local development set up
+- Open Universal Editor either 
+    - under AEM domain for AEMCS, e.g. [https://author-p7452-e12433.adobeaemcloud.com/ui#/aem/universal-editor/canvas/](https://author-p7452-e12433.adobeaemcloud.com/ui#/aem/universal-editor/canvas/) 
+    - or on [https://experience.adobe.com/#/aem/editor/canvas/](https://experience.adobe.com/#/aem/editor/canvas/)
+- For experience.adobe.com use the `Local Developer Login` to authenticate against your local AEM instance when using a local SDK or AEM 6.5
 
 ## Available Scripts
 
@@ -72,5 +80,3 @@ Run in project root:
 
 `npm run deploy prod` - deploy the app to the production link https://ue-remote-app.adobe.net (this is usually not needed, the application is automatically deployed on every PR merged to the `main` branch).
  
-If case of permission issues, run `chmod +x deploy/script.sh` at the root of the project.
-

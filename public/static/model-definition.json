@@ -3,10 +3,10 @@
     "id": "text",
     "fields": [
       {
-        "component": "text-input",
+        "component": "text",
         "name": "text",
         "value": "Text",
-        "label": "Custom Text",
+        "label": "Text",
         "valueType": "string"
       }
     ]
@@ -35,11 +35,24 @@
     "id": "richtext",
     "fields": [
       {
-        "component": "text-area",
+        "component": "richtext",
         "name": "text",
         "value": "Text",
-        "label": "Custom Richtext",
+        "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "cq:panelTitle",
+        "value": "",
+        "label": "Accordion Item Title",
+        "valueType": "string",
+        "required": true
       }
     ]
   }

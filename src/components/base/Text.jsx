@@ -27,10 +27,10 @@ const Text = (props) => {
   
   return data ? (
     type !== "richtext" ?(
-          <div {...editorProps} data-aue-component="text" className={className} data-aue-label={data?.id}>
+          <div {...editorProps} data-aue-component="text" className={className} data-aue-label={"Text"}>
             {data[prop]}
           </div>
-      ) : <div {...editorProps} data-aue-component="richtext" className={className}  data-aue-label={data?.id} dangerouslySetInnerHTML={{__html: data[prop]}}/>
+      ) : <div {...editorProps} data-aue-component="richtext" className={className}  data-aue-label={"Rich Text"} dangerouslySetInnerHTML={{__html: data[prop]}}/>
   ): <></>;
 };
 

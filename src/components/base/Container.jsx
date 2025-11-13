@@ -3,8 +3,9 @@ import {fetchData} from '../../utils/fetchData';
 import Text from './Text';
 import Title from './Title';
 import Image from './Image';
+import Accordion from './Accordion';
 
-const Container = ({ resource, type, isComponent = "" }) => {
+const Container = ({ resource, type, label = "Container"}) => {
   const [components, setComponents] = React.useState(null);
 
   const createChildComponents = (items, itemid) => {
@@ -30,6 +31,10 @@ const Container = ({ resource, type, isComponent = "" }) => {
             itemType = "text";
             Component = Title;
             break;
+        case "accordion":
+          itemType = "container";
+          Component = Accordion;
+          break;
         case "container":
           itemType = "container";
           Component = Container;
@@ -58,7 +63,7 @@ const Container = ({ resource, type, isComponent = "" }) => {
   }, [resource]);
   
   return (
-    <div className="container" data-aue-component="container" data-aue-resource={resource} data-aue-type={type}>
+    <div className="container" data-aue-component="container" data-aue-resource={resource} data-aue-type={type} data-aue-label={label}>
      {components}
     </div>
   )
