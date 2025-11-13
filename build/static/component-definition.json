@@ -59,6 +59,18 @@
               }
             }
           }
+        },
+        {
+          "title": "Accordion Item",
+          "id": "accordion-item",
+          "model": "accordion-item",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/container"
+              }
+            }
+          }
         }
       ]
     },
@@ -78,6 +90,19 @@
                   "textIsRich": true,
                   "text": "<p>Default Richtext</p>"
                 }
+              }
+            }
+          }
+        },
+        {
+          "title": "Accordion",
+          "id": "accordion",
+          "model": "accordion",
+          "filter": "accordion",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/accordion"
               }
             }
           }
