@@ -8,7 +8,7 @@ The default settings from [.env](.env) can be overwritten using Query parameters
 * `authorHost`: host to retrieve data from and update content to; default=https://author-p7452-e12433.adobeaemcloud.com
 * `service`: Universal Editor Service endpoint; default Universal Editor default
 * `protocol`: protocol to use with backend, can be `aem`, `aem65`, `aemcsLegacy`; default: `aem`
-* `cors`: defining which cors.js - connection between Universal Editor and application shall be used. Can be `stage` or empty; default `null/empty`
+* `cors`: defining which cors.js - connection between Universal Editor and application shall be used. Can be `stage` or empty; default `null/empty`. `stage` will use the cors library hosted on stage, else it will use the production version
 
 To retrieve content from another environment add `authorHost` as query parameters, e.g.
 
