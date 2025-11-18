@@ -7,16 +7,9 @@
         {
           "title": "Text",
           "id": "text",
+          "model": "text",
           "plugins": {
             "aem": {
-              "page": {
-                "resourceType": "wknd/components/text",
-                "template": {
-                  "text": "Default Text"
-                }
-              }
-            },
-            "aem65": {
               "page": {
                 "resourceType": "wknd/components/text",
                 "template": {
@@ -29,16 +22,9 @@
         {
           "title": "Title",
           "id": "title",
+          "model": "title",
           "plugins": {
             "aem": {
-              "page": {
-                "resourceType": "wknd/components/title",
-                "template": {
-                  "jcr:title": "Default Title"
-                }
-              }
-            },
-            "aem65": {
               "page": {
                 "resourceType": "wknd/components/title",
                 "template": {
@@ -59,36 +45,27 @@
                   "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
                 }
               }
-            },
-            "aem65": {
-              "page": {
-                "resourceType": "wknd/components/image",
-                "template": {
-                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
-                }
-              }
             }
-          }
-        },
-        {
-          "title": "List",
-          "id": "list",
-          "plugins": {},
-          "model": {
-            "uri": "",
-            "fields": []
           }
         },
         {
           "title": "Container",
           "id": "container",
+          "filter": "container",
           "plugins": {
             "aem": {
               "page": {
                 "resourceType": "wknd/components/container"
               }
-            },
-            "aem65": {
+            }
+          }
+        },
+        {
+          "title": "Accordion Item",
+          "id": "accordion-item",
+          "model": "accordion-item",
+          "plugins": {
+            "aem": {
               "page": {
                 "resourceType": "wknd/components/container"
               }
@@ -104,6 +81,7 @@
         {
           "title": "Rich Text",
           "id": "richtext",
+          "model": "richtext",
           "plugins": {
             "aem": {
               "page": {
@@ -113,14 +91,18 @@
                   "text": "<p>Default Richtext</p>"
                 }
               }
-            },
-            "aem65": {
+            }
+          }
+        },
+        {
+          "title": "Accordion",
+          "id": "accordion",
+          "model": "accordion",
+          "filter": "accordion",
+          "plugins": {
+            "aem": {
               "page": {
-                "resourceType": "wknd/components/text",
-                "template": {
-                  "textIsRich": true,
-                  "text": "<p>Default Richtext</p>"
-                }
+                "resourceType": "wknd/components/accordion"
               }
             }
           }
