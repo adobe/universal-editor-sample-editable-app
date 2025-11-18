@@ -1,1 +1,0 @@
-export { useSparkleAppUrl } from "./useSparkleAppUrl";

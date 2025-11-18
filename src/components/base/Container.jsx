@@ -3,8 +3,9 @@ import {fetchData} from '../../utils/fetchData';
 import Text from './Text';
 import Title from './Title';
 import Image from './Image';
+import Accordion from './Accordion';
 
-const Container = ({ resource, type, isComponent = "" }) => {
+const Container = ({ resource, type, label = "Container"}) => {
   const [components, setComponents] = React.useState(null);
 
   const createChildComponents = (items, itemid) => {
@@ -23,14 +24,18 @@ const Container = ({ resource, type, isComponent = "" }) => {
           Component = Image;
           break;
         case "text": 
-          itemType = item.richText ? "richtext" : "text";
-          Component = Text;
+          itemType = item.textIsRich ? "richtext" : "text";
+          Component = item.type ? Title : Text;
           break;
         case "title":
             itemType = "text";
             Component = Title;
             break;
-        case "container": 
+        case "accordion":
+          itemType = "container";
+          Component = Accordion;
+          break;
+        case "container":
           itemType = "container";
           Component = Container;
           break;
@@ -44,7 +49,6 @@ const Container = ({ resource, type, isComponent = "" }) => {
         resource: `${itemid}/${key}`,
         type: itemType,
         data: item,
-        isComponent: "component"
       };
       components.push(<Component key={key} {...props} />)
     }
@@ -59,7 +63,7 @@ const Container = ({ resource, type, isComponent = "" }) => {
   }, [resource]);
   
   return (
-    <div className="container" data-aue-filter="container" data-aue-model="container" data-aue-behavior={isComponent} data-aue-resource={resource} data-aue-type={type}>
+    <div className="container" data-aue-component="container" data-aue-resource={resource} data-aue-type={type} data-aue-label={label}>
      {components}
     </div>
   )
