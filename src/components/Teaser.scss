@@ -26,11 +26,6 @@ it.
 
     > div {
       margin: 50px 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .pill {

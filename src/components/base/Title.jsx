@@ -10,12 +10,13 @@ import React, {useEffect, useMemo} from 'react';
 import {fetchData} from '../../utils/fetchData';
 
 const Title = (props) => {
-  const {resource, prop = "jcr:title", type, className = "test", data: initialData} = props;
+  const {resource, prop = "jcr:title", type, className = "test", data: initialData, isComponent = false} = props;
   const editorProps = useMemo(() => true && {
     "data-aue-resource": resource,
     "data-aue-prop":prop,
     "data-aue-type": type,
-  }, [resource, prop, type]);
+    "data-aue-behavior": isComponent
+  }, [resource, prop, type, isComponent]);
 
   const [data,setData] = React.useState(initialData);
 
@@ -40,7 +41,7 @@ const Title = (props) => {
   
   const TitleTag = data?.type ? `${data.type}` : "h1";
   return data ? (
-    <TitleTag {...editorProps} data-aue-component="title" data-aue-label={"Title"} className={className}>{data["jcr:title"] ?? "Default Title"}</TitleTag>
+    <TitleTag {...editorProps} data-aue-model="title" data-aue-label={"title"} className={className}>{data["jcr:title"] ?? "Default Title"}</TitleTag>
   ):<></>;
 };
 

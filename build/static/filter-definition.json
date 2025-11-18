@@ -1,14 +1,6 @@
 [
-{
-    "id": "container",
-    "components": [
-        "text", "image", "title", "accordion", "container", "richtext"
-    ]
-    },
   {
-    "id": "accordion",
-    "components": [
-      "accordion-item"
-    ]
-  }
+    "id": "container",
+     "components":null
+   }
 ]
