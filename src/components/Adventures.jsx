@@ -18,7 +18,7 @@ function AdventureItem(props) {
       "data-aue-resource": "urn:aemconnection:" + props?._path + "/jcr:content/data/master",
       "data-aue-type": "reference",
       "data-aue-filter": "cf",
-      "data-aue-label": "Adventure: " + props.title
+      "data-aue-label": props.slug
     };
 
   //Must have title, path, and image
@@ -31,20 +31,20 @@ function AdventureItem(props) {
           <div className="adventure-image-card">
           <Link to={`/adventure/${props.slug}${window.location.search}`}>
             <img className="adventure-item-image" src={`${getImageURL(props.primaryImage)}`}
-                  alt={props.title} data-aue-prop="primaryImage" data-aue-type="media" data-aue-label="Image"/>
+                  alt={props.title} data-aue-prop="primaryImage" data-aue-type="media" />
           </Link>
           </div>
-          <h3 className="adventure-item-title" data-aue-prop="title" data-aue-type="text" data-aue-label="Title">{props.title}</h3>
+          <h3 className="adventure-item-title" data-aue-prop="title" data-aue-type="text">{props.title}</h3>
           <div className="adventure-item-details">
               <div className="adventure-item-length pill default">
                 <span 
-                data-aue-prop="tripLength" data-aue-type="text" data-aue-label="Length"
+                data-aue-prop="tripLength" data-aue-type="text"
                 >{props.tripLength?.toLowerCase()}
                 </span>
               </div>
               <div className="adventure-item-price pill">$
                 <span 
-                  data-aue-prop="price" data-aue-type="text" data-aue-label="Price"
+                  data-aue-prop="price" data-aue-type="text"
                   >{props.price}
                 </span>
               </div>

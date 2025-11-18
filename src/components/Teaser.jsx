@@ -26,13 +26,12 @@ const Teaser = () => {
   
   const article =  getArticle(data);
   if(!article) return <></>
-  const { title, _path, featuredImage, main } = article;
+  const { title, _path, featuredImage, synopsis } = article;
 
   const editorProps = {
 		"data-aue-resource": "urn:aemconnection:" + _path + "/jcr:content/data/master",
 		"data-aue-type": "reference",
-		"data-aue-filter": "cf",
-    "data-aue-label": "Hero Teaser"
+		"data-aue-filter": "cf"
 	};
 
   return (
@@ -40,13 +39,17 @@ const Teaser = () => {
   <section {...editorProps} className="Teaser">
     <article>
       <p>Latest article</p>
-      <h1 data-aue-prop="title" data-aue-type="text" data-aue-label="Title">{title}</h1>
-      {main && <div data-aue-prop="main" data-aue-type="richtext" data-aue-label="Description">{mapJsonRichText(main.json)}</div>}
+      <h1 data-aue-prop="title" data-aue-type="text">{title}</h1>
+      {synopsis && <div data-aue-prop="synopsis" data-aue-type="richtext">{mapJsonRichText(synopsis.json)}</div>}
+      <div>
+        <span className='pill'>Magazine</span>
+        <span className='pill'>Surfing</span>
+      </div>
       <Link to={`/articles/article/aloha-spirits-in-northern-norway${window.location.search}`}>
         <button>Read more</button>
       </Link>
     </article>
-    {featuredImage && <img src={`${getImageURL(featuredImage)}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" data-aue-label="Image"/>}
+    {featuredImage && <img src={`${getImageURL(featuredImage)}`} alt={title} data-aue-type="media" data-aue-prop="featuredImage" />}
   </section>
 
 );

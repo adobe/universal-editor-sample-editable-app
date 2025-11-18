@@ -10,13 +10,14 @@ import React, {useEffect, useMemo} from 'react';
 import {fetchData, getImageURL} from '../../utils/fetchData';
 
 const Image = (props) => {
-  const {resource, prop = "fileReference", type, className, data: initialData} = props;
+  const {resource, prop = "fileReference", type, className, data: initialData, isComponent = false} = props;
 
   const editorProps = useMemo(() => true && {
     "data-aue-resource": resource,
     "data-aue-prop":prop,
     "data-aue-type": type,
-  }, [resource, prop, type]);
+    "data-aue-behavior": isComponent
+  }, [resource, prop, type, isComponent]);
 
   const [data,setData] = React.useState(initialData || {});
   useEffect(() => {
@@ -26,7 +27,7 @@ const Image = (props) => {
   const path = data?.["fileReference"];
 
   return (
-    <img {...editorProps} data-aue-component="image" data-aue-label={"Image"} src={path ? `${getImageURL(path)}` : ""} className={className} alt={data.alt} />
+    <img {...editorProps} data-aue-model="image" data-aue-label={data.id} src={path ? `${getImageURL(path)}` : ""} className={className} alt={data.alt} />
   );
 };
 

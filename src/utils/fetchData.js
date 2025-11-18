@@ -35,11 +35,6 @@ export const getImageURL = (obj) => {
     if (obj.repositoryId !== undefined && obj.assetId !== undefined) {
         return `https://${obj.repositoryId}/adobe/assets/${obj.assetId}`;
     }
-
-    if (obj._path !== undefined) {
-        return `${getAuthorHost()}${obj._path}`;
-    }       
-    
     return undefined;
 }
 
