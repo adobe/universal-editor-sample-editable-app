@@ -39,7 +39,6 @@ const Footer = () => (
 );
 
 function App() {
-
   return (
     <HelmetProvider>
       <div className="App">
@@ -53,10 +52,10 @@ function App() {
           <main>
             <Routes>
               <Route path="/adventure/:slug" element={<AdventureDetail />} />
-              <Route path="/" element={<Home />} />
               <Route path="/articles" element={<Articles />} />
               <Route path="/articles/article/:slug" element={<ArticleDetail />} />
               <Route path="/aboutus" element={<About />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </main>
         </Router>

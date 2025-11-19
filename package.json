@@ -1,48 +1,43 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "universal-editor-sample-app",
+  "version": "1.0.0",
   "private": true,
+  "description": "Adobe Universal Editor Sample App",
+  "author": "Adobe",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/adobe/universal-editor-sample-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/universal-editor-sample-app.git"
+  },
+  "keywords": [
+    "adobe",
+    "universal-editor",
+    "sample-app"
+  ],
+  "type": "module",
   "scripts": {
-    "start": "PORT=3000 HTTPS=true react-scripts start",
-    "build": "react-scripts build && npx gulp",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "node server/index.js",
-    "deploy": "./deploy/script.sh",
-    "postinstall": "husky install"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
-    "@adobe/aem-headless-client-js": "^4.0.0",
-    "@adobe/aem-headless-client-nodejs": "^2.0.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "ajv":"8.17.1",
-    "buffer": "^6.0.3",
-    "express-session": "^1.17.3",
-    "gulp": "^4.0.2",
-    "gulp-inline-source": "^4.0.0",
-    "gulp-replace": "^1.1.3",
-    "http-proxy-middleware": "^3.0.5",
-    "miragejs": "^0.1.45",
-    "normalize-scss": "^7.0.1",
-    "penpal": "^6.2.2",
-    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet-async": "^2.0.4",
-    "react-penpal": "^1.0.4",
-    "react-router-dom": "^6.22.1",
-    "react-scripts": "5.0.1",
-    "sass": "^1.53.0",
-    "stream-browserify": "^3.0.0",
-    "util": "^0.12.4",
-    "web-vitals": "^2.1.4",
-    "zustand": "^4.1.1"
+    "react-router-dom": "^7.9.6",
+    "sass": "^1.94.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "husky": "^8.0.1"
+    "@adobe/aem-headless-client-js": "^4.0.0",
+    "@adobe/aem-headless-client-nodejs": "^2.0.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-basic-ssl": "^2.1.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "gh-pages": "^6.1.0",
+    "react-helmet-async": "^2.0.4",
+    "vite": "^5.0.8"
   },
   "eslintConfig": {
     "extends": [
