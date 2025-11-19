@@ -105,3 +105,21 @@
   }
 }
 
+/* Adobe Universal Editor: Open all accordion items in edit mode */
+html.adobe-ue-edit {
+  .accordion-item {
+    .accordion-item-content {
+      max-height: none !important;
+    }
+
+    .accordion-item-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-item-title {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}
+
