@@ -9,14 +9,7 @@
 /coverage
 
 # production
-/build/*.*
-/build/static/*
-!/build/manifest.json
-!/build/static/*.json
-!/build/fonts
-!/build/fonts.css
-!/build/static/media
-!/build/index.html
+/build
 
 #auth_credentials
 /src/auth
@@ -42,3 +35,5 @@ bin/
 lib/
 yalc.lock
 .idea/
+
+dist/

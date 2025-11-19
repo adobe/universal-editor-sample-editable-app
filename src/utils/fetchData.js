@@ -1,5 +1,3 @@
-const {REACT_APP_DEFAULT_AUTHOR_HOST} = process.env;
-
 export const fetchData = async (path) => {
     const url = `${getAuthorHost()}/${path.split(":/")[1]}.infinity.json`;
     const data = await fetch(url, {headers: {"X-Aem-Affinity-Type": "api"}, credentials: "include"});
@@ -12,7 +10,7 @@ export const getAuthorHost = () => {
     if (searchParams.has("authorHost")) {
         return searchParams.get("authorHost");
     } else {
-        return REACT_APP_DEFAULT_AUTHOR_HOST;
+        return "https://author-p7452-e12433.adobeaemcloud.com";
     }
 }
 

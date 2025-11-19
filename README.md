@@ -62,16 +62,6 @@ The flow is that we build the application locally and deploy the bundle through 
 
 ## Manual deployments
 
-### Prerequisites
-Install Netlify CLI
-
-`npm install netlify-cli -g`
-
-Set the following environment variables in your terminal settings (for https://ue-remote-app.adobe.net):
-
-`NETLIFY_AUTH_TOKEN = <authentication token>`
-
-`NETLIFY_SITE_ID = <site id where to deploy>`
 
  ### Deploy commands
 Run in project root:
