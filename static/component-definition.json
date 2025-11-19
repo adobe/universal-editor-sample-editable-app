@@ -1,0 +1,113 @@
+{
+  "groups": [
+    {
+      "title": "General Components",
+      "id": "general",
+      "components": [
+        {
+          "title": "Text",
+          "id": "text",
+          "model": "text",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/text",
+                "template": {
+                  "text": "Default Text"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Title",
+          "id": "title",
+          "model": "title",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/title",
+                "template": {
+                  "jcr:title": "Default Title"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image",
+          "id": "image",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/image",
+                "template": {
+                  "fileReference": "/content/dam/wknd-shared/en/magazine/arctic-surfing/camp-tent.jpg"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Container",
+          "id": "container",
+          "filter": "container",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/container"
+              }
+            }
+          }
+        },
+        {
+          "title": "Accordion Item",
+          "id": "accordion-item",
+          "model": "accordion-item",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/container"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Advanced Components",
+      "id": "advanced",
+      "components": [
+        {
+          "title": "Rich Text",
+          "id": "richtext",
+          "model": "richtext",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/text",
+                "template": {
+                  "textIsRich": true,
+                  "text": "<p>Default Richtext</p>"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Accordion",
+          "id": "accordion",
+          "model": "accordion",
+          "filter": "accordion",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/accordion"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
