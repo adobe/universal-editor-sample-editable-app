@@ -27,20 +27,6 @@ const Teaser = (props) => {
     }
   }, [resource, data]);
 
-  useEffect(() => {
-    const handleUpdate = (e) => {
-      const { itemids = [] } = e.detail;
-      if (itemids.indexOf(resource) >= 0) {
-        setData(null);
-      }
-      e.stopPropagation();
-    };
-    document.addEventListener("editor-update", handleUpdate);
-    return () => {
-      document.removeEventListener("editor-update", handleUpdate);
-    };
-  }, [resource]);
-
   if (!data) return <></>;
 
   const title = data["jcr:title"] || data.title || "";
@@ -108,16 +94,6 @@ const Teaser = (props) => {
                 {ctaText}
               </span>
             </a>
-            {ctaLink && (
-              <span
-                data-aue-prop="ctaLink"
-                data-aue-type="text"
-                data-aue-label="CTA Link"
-                style={{ display: 'none' }}
-              >
-                {ctaLink}
-              </span>
-            )}
           </div>
         )}
       </div>
