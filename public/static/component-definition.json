@@ -71,6 +71,18 @@
               }
             }
           }
+        },
+        {
+          "title": "Teaser",
+          "id": "teaser",
+          "model": "teaser",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/teaser"
+              }
+            }
+          }
         }
       ]
     },

@@ -2,7 +2,7 @@
 {
     "id": "container",
     "components": [
-        "text", "image", "title", "accordion", "container", "richtext"
+        "text", "image", "title", "accordion", "container", "richtext", "teaser"
     ]
     },
   {
