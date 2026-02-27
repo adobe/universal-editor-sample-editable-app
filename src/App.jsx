@@ -1,6 +1,6 @@
 import {React} from "react";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {HashRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./components/Home";
 import AdventureDetail from "./components/AdventureDetail";
 import Articles from "./components/Articles";
@@ -13,9 +13,9 @@ import "./App.scss";
 const NavMenu = () => (
   <nav>
     <ul className="menu">
-      <li><a href={`/${window.location.search}`}>Adventures</a></li>
-      <li><a href={`/articles${window.location.search}`}>Magazine</a></li>
-      <li><a href={`/aboutus${window.location.search}`}>About Us</a></li>
+      <li><a href={`#/${window.location.search}`}>Adventures</a></li>
+      <li><a href={`#/articles${window.location.search}`}>Magazine</a></li>
+      <li><a href={`#/aboutus${window.location.search}`}>About Us</a></li>
     </ul>
   </nav>
 );
