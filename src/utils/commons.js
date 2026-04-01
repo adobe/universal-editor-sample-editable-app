@@ -26,4 +26,12 @@ function getQueryStringForHashRouting() {
 	return window.location.search;
 }
 
-export { getArticle, getQueryStringForHashRouting };
+/**
+ * Same source of truth as {@link getQueryStringForHashRouting}: document search
+ * until params live in the hash (HashRouter), then parse the hash query.
+ */
+function getSearchParamsForHashRouting() {
+	return new URLSearchParams(getQueryStringForHashRouting());
+}
+
+export { getArticle, getQueryStringForHashRouting, getSearchParamsForHashRouting };

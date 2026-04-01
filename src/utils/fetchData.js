@@ -1,3 +1,5 @@
+import { getSearchParamsForHashRouting } from "./commons";
+
 export const fetchData = async (path) => {
     const url = `${getAuthorHost()}/${path.split(":/")[1]}.infinity.json`;
     const data = await fetch(url, {headers: {"X-Aem-Affinity-Type": "api"}, credentials: "include"});
@@ -5,8 +7,7 @@ export const fetchData = async (path) => {
     return json;
 };
 export const getAuthorHost = () => {
-    const url = new URL(window.location.href);
-    const searchParams = new URLSearchParams(url.search);
+    const searchParams = getSearchParamsForHashRouting();
     if (searchParams.has("authorHost")) {
         return searchParams.get("authorHost");
     } else {
@@ -42,8 +43,7 @@ export const getImageURL = (obj) => {
 }
 
 export const getProtocol = () => {
-    const url = new URL(window.location.href);
-    const searchParams = new URLSearchParams(url.search);
+    const searchParams = getSearchParamsForHashRouting();
     if (searchParams.has("protocol")) {
         return searchParams.get("protocol");
     } else {
@@ -52,8 +52,7 @@ export const getProtocol = () => {
 }
 
 export const getService = () => {
-    const url = new URL(window.location.href);
-    const searchParams = new URLSearchParams(url.search);
+    const searchParams = getSearchParamsForHashRouting();
     if (searchParams.has("service")) {
         return searchParams.get("service");
     }
