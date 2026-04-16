@@ -10,7 +10,18 @@ export default defineConfig(({ command, mode }) => {
     server: {
       https: true,
       port: 3000,
+      cors: {
+        origin: 'https://experience.adobe.com',
+        // This allows the private network access preflight
+        privateNetworkAccess: true 
+      },
+      // Alternative method if the above doesn't apply:
+      headers: {
+        'Access-Control-Allow-Origin': 'https://experience.adobe.com',
+        'Access-Control-Allow-Private-Network': 'true',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      }
     }
   }
 })
-

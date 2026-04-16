@@ -37,3 +37,4 @@ yalc.lock
 .idea/
 
 dist/
+/.env
