@@ -67,7 +67,7 @@ const Articles = async () => {
       <h2>Articles</h2>
       <ul>
         {
-            data.articleList.items.map((article, index) => {
+            data?.articleList?.items?.map((article, index) => {
               return (
                 <Article key={index} {...article} />
               );

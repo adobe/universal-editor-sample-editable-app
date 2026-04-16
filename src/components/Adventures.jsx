@@ -72,7 +72,7 @@ async function Adventures() {
         <ul className="adventure-items">
           {
               //Iterate over the returned data items from the query
-              data.adventureList.items.map((adventure, index) => {
+              data?.adventureList?.items?.map((adventure, index) => {
                 return (
                   <AdventureItem key={index} {...adventure} />
                 );

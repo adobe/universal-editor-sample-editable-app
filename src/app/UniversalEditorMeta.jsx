@@ -8,7 +8,8 @@ export default function UniversalEditorMeta() {
     // Add urn:adobe:aue:system:aemconnection
     const aemConnectionMeta = document.createElement("meta");
     aemConnectionMeta.name = "urn:adobe:aue:system:aemconnection";
-    aemConnectionMeta.content = `${getProtocol()}:${getAuthorHost()}`;
+    aemConnectionMeta.content = `${getProtocol()}:https://author-p117303-e1695777.adobeaemcloud.com}`;
+    aemConnectionMeta.dataRh ="true";
     document.head.appendChild(aemConnectionMeta);
 
     // Add urn:adobe:aue:config:service if it exists
