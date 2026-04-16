@@ -6,8 +6,8 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 /* Normalize */
-@import './styles/variables';
-@import './styles/fonts';
+@use './styles/variables' as *;
+@use './styles/fonts' as *;
 
 body {
     background-color: $black;

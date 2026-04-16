@@ -40,6 +40,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
           {/* Universal editor tags injected client-side via UniversalEditorMeta */}
+          <script src="https://universal-editor-service.adobe.io/cors.js" async />
       </head>
       <body>
         <UniversalEditorMeta />

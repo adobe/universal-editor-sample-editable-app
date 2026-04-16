@@ -7,7 +7,7 @@ it.
 */
 @use "sass:math";
 
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .adventure-detail {
   padding: 0 80px;
