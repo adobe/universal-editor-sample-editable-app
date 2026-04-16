@@ -6,27 +6,26 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
-import {Link, useNavigate, useParams} from "react-router-dom";
+import Link from 'next/link';
+import BackButton from './base/BackButton';
 import backIcon from '../images/Back.svg';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
-import useGraphQL from '../api/useGraphQL';
+import { fetchPersistedQuery } from '../api/graphqlServer';
 import {getArticle, getQueryStringForHashRouting} from '../utils/commons';
 import {getImageURL} from "../utils/fetchData";
 
-function ArticleDetail({article}) {
+async function ArticleDetail({article, slug}) {
 
-    // params hook from React router
-    const {slug} = useParams();
-    const navigate = useNavigate();
     const articleSlug = slug || article;
 
     const persistentQuery = `wknd-shared/article-by-slug;slug=${articleSlug}`;
 
     //Use a custom React Hook to execute the GraphQL query
-    const {data, errorMessage} = useGraphQL(persistentQuery);
+    const {data, errors} = await fetchPersistedQuery(persistentQuery);
+    const errorMessage = errors ? errors.map(e => e.message || e).join(', ') : null;
 
     //If there is an error with the GraphQL query
     if (errorMessage) return <Error errorMessage={errorMessage}/>;
@@ -50,9 +49,7 @@ function ArticleDetail({article}) {
 
     return (<div {...editorProps} className="adventure-detail">
         <div class="adventure-detail-header">
-            <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
-                <img className="Backbutton-icon" src={backIcon} alt="Return"/> Back
-            </button>
+            <BackButton label="Back" className="adventure-detail-back-nav dark" />
             <h1 className="adventure-detail-title" data-aue-prop="title"
                 data-aue-type="text">{currentArticle.title}</h1>
             {/* <span className="pill default" itemProp="title" itemType="text">{currentAdventure.activity}</span> */}
@@ -82,7 +79,7 @@ function ArticleDetailRender({
 function NoArticleFound() {
 	return (
 		<div className="adventure-detail">
-			<Link className="adventure-detail-close-button" to={`/${getQueryStringForHashRouting()}`}>
+			<Link className="adventure-detail-close-button" href={`/${getQueryStringForHashRouting()}`}>
 				<img className="Backbutton-icon" src={backIcon} alt="Return"/>
 			</Link>
 			<Error errorMessage="Missing data, article could not be rendered."/>

@@ -3,7 +3,7 @@ import { getSearchParamsForHashRouting } from "./commons";
 export const fetchData = async (path) => {
     const url = `${getAuthorHost()}/${path.split(":/")[1]}.infinity.json`;
     
-    const token = import.meta.env.VITE_AEM_ACCESS_TOKEN;
+    const token = process.env.NEXT_PUBLIC_AEM_ACCESS_TOKEN;
     const headers = {
         "X-Aem-Affinity-Type": "api"
     };
@@ -25,9 +25,7 @@ export const getAuthorHost = () => {
     if (searchParams.has("authorHost")) {
         return searchParams.get("authorHost");
     } else {
-        // return "https://localhost:8443";
-        return "https://author-p117303-e1695777.adobeaemcloud.com";
-        // return "https://author-p7452-e12433.adobeaemcloud.com";
+        return "/aem-proxy";
     }
 }
 

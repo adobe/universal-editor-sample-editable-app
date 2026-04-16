@@ -39,3 +39,7 @@ yalc.lock
 dist/
 /.env
 /package-lock.json
+
+certificates
+
+/.next

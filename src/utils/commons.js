@@ -18,6 +18,7 @@ function getArticle(data) {
  * are not duplicated when they also appear on the main URL.
  */
 function getQueryStringForHashRouting() {
+	if (typeof window === 'undefined') return "";
 	const hash = window.location.hash || "";
 	const qIndex = hash.indexOf("?");
 	if (qIndex >= 0) {

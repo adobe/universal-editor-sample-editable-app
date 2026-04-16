@@ -6,8 +6,8 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
-import {Link} from 'react-router-dom';
-import useGraphQL from '../api/useGraphQL';
+import Link from 'next/link';
+import { fetchPersistedQuery } from '../api/graphqlServer';
 import Loading from './base/Loading';
 import "./Adventures.scss";
 import Title from './base/Title';
@@ -30,7 +30,7 @@ function AdventureItem(props) {
   return (
          <li className="adventure-item" {...editorProps}>
           <div className="adventure-image-card">
-          <Link to={`/adventure/${props.slug}${getQueryStringForHashRouting()}`}>
+          <Link href={`/adventure/${props.slug}${getQueryStringForHashRouting()}`}>
             <img className="adventure-item-image" src={`${getImageURL(props.primaryImage)}`}
                   alt={props.title} data-aue-prop="primaryImage" data-aue-type="media" data-aue-label="Image"/>
           </Link>
@@ -54,10 +54,11 @@ function AdventureItem(props) {
   );
 }
 
-function Adventures() {
+async function Adventures() {
   const persistentQuery = 'wknd-shared/adventures-all';
   //Use a custom React Hook to execute the GraphQL query
-  const { data, errorMessage } = useGraphQL(persistentQuery);
+  const {data, errors} = await fetchPersistedQuery(persistentQuery);
+  const errorMessage = errors ? errors.map(e => e.message || e).join(', ') : null;
 
   //If there is an error with the GraphQL query
   if(errorMessage) return;

@@ -6,24 +6,23 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
-import {Link, useNavigate, useParams} from "react-router-dom";
+import Link from 'next/link';
+import BackButton from './base/BackButton';
 import backIcon from '../images/Back.svg';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import {mapJsonRichText} from '../utils/renderRichText';
 import './AdventureDetail.scss';
-import useGraphQL from '../api/useGraphQL';
+import { fetchPersistedQuery } from '../api/graphqlServer';
 import {getImageURL} from "../utils/fetchData";
 import {getQueryStringForHashRouting} from "../utils/commons";
 
-function AdventureDetail() {
-	// params hook from React router
-	const {slug} = useParams();
-	const navigate = useNavigate();
+async function AdventureDetail({ slug }) {
 	const persistentQuery = `wknd-shared/adventure-by-slug;slug=${slug}`;
 
 	//Use a custom React Hook to execute the GraphQL query
-	const {data, errorMessage} = useGraphQL(persistentQuery);
+	const {data, errors} = await fetchPersistedQuery(persistentQuery);
+	const errorMessage = errors ? errors.map(e => e.message || e).join(', ') : null;
 
 	//If there is an error with the GraphQL query
 	if (errorMessage) return <Error errorMessage={errorMessage}/>;
@@ -51,9 +50,7 @@ function AdventureDetail() {
 	return (
     <div  {...editorProps} className="adventure-detail">
         <div><div className="adventure-detail-header">
-            <button className="adventure-detail-back-nav dark" onClick={() => navigate(-1)}>
-                <img className="Backbutton-icon" src={backIcon} alt="Return"/> Adventures
-            </button>
+            <BackButton label="Adventures" className="adventure-detail-back-nav dark" />
             <h1 className="adventure-detail-title" data-aue-prop="title" data-aue-type="text">{currentAdventure.title}</h1>
             <div className="pill default">
 							<span 
@@ -123,7 +120,7 @@ function AdventureDetailRender({
 function NoAdventureFound() {
 	return (
 		<div className="adventure-detail">
-			<Link className="adventure-detail-close-button" to={`/${getQueryStringForHashRouting()}`}>
+			<Link className="adventure-detail-close-button" href={`/${getQueryStringForHashRouting()}`}>
 				<img className="Backbutton-icon" src={backIcon} alt="Return"/>
 			</Link>
 			<Error errorMessage="Missing data, adventure could not be rendered."/>
@@ -158,7 +155,7 @@ function customRenderOptions(references) {
 		},
 		'AdventureModel': (node) => {
 			// when __typename === AdventureModel
-			return <Link to={`/adventure:${node.slug}`}>{`${node.title}: ${node.price}`}</Link>;
+			return <Link href={`/adventure:${node.slug}`}>{`${node.title}: ${node.price}`}</Link>;
 		}
 	};
 

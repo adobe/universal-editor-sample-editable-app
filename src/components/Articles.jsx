@@ -7,8 +7,8 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
-import useGraphQL from '../api/useGraphQL';
-import {Link} from 'react-router-dom';
+import { fetchPersistedQuery } from '../api/graphqlServer';
+import Link from 'next/link';
 import Error from './base/Error';
 import Loading from './base/Loading';
 import "./Articles.scss";
@@ -30,7 +30,7 @@ const Article = ({_path, title, synopsis, authorFragment, slug}) => {
                 alt={title} data-aue-prop="profilePicture" data-aue-type="media"/>
             </aside>
             <article>
-              <Link to={`/articles/article/${slug}${getQueryStringForHashRouting()}`}>
+              <Link href={`/articles/article/${slug}${getQueryStringForHashRouting()}`}>
                   <h3 data-id="title" data-aue-prop="title" data-aue-type="text">{title}</h3>
               </Link>
 
@@ -40,7 +40,7 @@ const Article = ({_path, title, synopsis, authorFragment, slug}) => {
                   {mapJsonRichText(synopsis.json)}
                 </div>
               }
-              <Link to={`/articles/article/${slug}${getQueryStringForHashRouting()}`}>
+              <Link href={`/articles/article/${slug}${getQueryStringForHashRouting()}`}>
                 <button>Read more</button>
               </Link>
             </article>
@@ -49,11 +49,12 @@ const Article = ({_path, title, synopsis, authorFragment, slug}) => {
   );
 };
 
-const Articles = () => {
+const Articles = async () => {
   const persistentQuery = 'wknd-shared/articles-all';
 
   //Use a custom React Hook to execute the GraphQL query
-  const { data, errorMessage } = useGraphQL(persistentQuery);
+  const {data, errors} = await fetchPersistedQuery(persistentQuery);
+  const errorMessage = errors ? errors.map(e => e.message || e).join(', ') : null;
 
   //If there is an error with the GraphQL query
   if(errorMessage) return <Error errorMessage={errorMessage} />;
