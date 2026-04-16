@@ -38,3 +38,4 @@ yalc.lock
 
 dist/
 /.env
+/package-lock.json
