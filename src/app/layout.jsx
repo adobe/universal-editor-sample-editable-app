@@ -37,10 +37,24 @@ import UniversalEditorMeta from "./UniversalEditorMeta";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-          {/* Universal editor tags injected client-side via UniversalEditorMeta */}
-          <script src="https://universal-editor-service.adobe.io/cors.js" async />
+          <script type="application/vnd.adobe.aue.component+json" src="/static/component-definition.json" />
+          <script type="application/vnd.adobe.aue.filter+json" src="/static/filter-definition.json" />
+          <script type="application/vnd.adobe.aue.model+json" src="/static/model-definition.json" />
+          <script dangerouslySetInnerHTML={{
+            __html: `
+            (function () {
+              const urlParams = new URLSearchParams(window.location.search);
+              const corsUrl = urlParams.get('cors') === "stage" ? 'https://universal-editor-service-stage.adobe.io/cors.js' : 'https://universal-editor-service.adobe.io/cors.js';
+
+              const script = document.createElement('script');
+              script.src = corsUrl;
+              script.async = true;
+              document.head.appendChild(script);
+            })();
+            `
+          }} />
       </head>
       <body>
         <UniversalEditorMeta />
