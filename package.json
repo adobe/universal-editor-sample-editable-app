@@ -18,9 +18,10 @@
   "type": "module",
   "scripts": {
     "start": "next start",
-    "dev": "next dev --experimental-https",
+    "dev:sandbox": "env-cmd -f .env.sandbox next dev --experimental-https",
     "build": "next build",
-    "deploy": "next build && gh-pages -d out --cname ue-remote-app.adobe.net"
+    "deploy": "next build && gh-pages -d out --cname ue-remote-app.adobe.net",
+    "dev:local": "NODE_EXTRA_CA_CERTS=certificates/localhost.pem next dev --experimental-https"
   },
   "dependencies": {
     "@adobe/jwt-auth": "^2.0.0",
@@ -33,6 +34,7 @@
     "@adobe/aem-headless-client-nodejs": "^2.0.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
+    "env-cmd": "^11.0.0",
     "gh-pages": "^6.1.0"
   },
   "eslintConfig": {

@@ -48,7 +48,7 @@ async function ArticleDetail({article, slug}) {
     };
 
     return (<div {...editorProps} className="adventure-detail">
-        <div class="adventure-detail-header">
+        <div className="adventure-detail-header">
             <BackButton label="Back" className="adventure-detail-back-nav dark" />
             <h1 className="adventure-detail-title" data-aue-prop="title"
                 data-aue-type="text">{currentArticle.title}</h1>

@@ -8,7 +8,7 @@ const AEM_TOKEN = process.env.NEXT_PUBLIC_AEM_ACCESS_TOKEN;
 const sdk = new AEMHeadless({
   serviceURL: AEM_HOST,
   endpoint: "/content/graphql/global/endpoint.json",
-  auth: AEM_TOKEN ? AEM_TOKEN : undefined,
+  auth: AEM_TOKEN ? (AEM_TOKEN.includes(':') ? AEM_TOKEN.split(':') : AEM_TOKEN) : undefined,
   fetch: fetch
 });
 

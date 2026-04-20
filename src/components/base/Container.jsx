@@ -5,6 +5,7 @@ import Text from './Text';
 import Title from './Title';
 import Image from './Image';
 import Accordion from './Accordion';
+import Teaser from './Teaser';
 
 const Container = ({ resource, type, label = "Container"}) => {
   const [components, setComponents] = React.useState(null);
@@ -39,6 +40,10 @@ const Container = ({ resource, type, label = "Container"}) => {
         case "container":
           itemType = "container";
           Component = Container;
+          break;
+        case "teaser":
+          itemType = "component";
+          Component = Teaser;
           break;
         default: 
           itemType = "component";

@@ -9,7 +9,11 @@ export const fetchData = async (path) => {
     };
     
     if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
+        if (token.includes(':')) {
+            headers["Authorization"] = `Basic ${btoa(token)}`;
+        } else {
+            headers["Authorization"] = `Bearer ${token}`;
+        }
     }
 
     const data = await fetch(url, { 
@@ -70,6 +74,5 @@ export const getService = () => {
     if (searchParams.has("service")) {
         return searchParams.get("service");
     }
-    // return "https://localhost:8000";
-    return null;
+    return process.env.NEXT_PUBLIC_UE_SERVICE || process.env.NEXT_UE_SERVICE;
 }

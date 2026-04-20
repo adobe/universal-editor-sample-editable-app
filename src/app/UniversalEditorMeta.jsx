@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { getAuthorHost, getProtocol, getService } from "../utils/fetchData";
+import { getProtocol, getService } from "../utils/fetchData";
 
 export default function UniversalEditorMeta() {
   useEffect(() => {
