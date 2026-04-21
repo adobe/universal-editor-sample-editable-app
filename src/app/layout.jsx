@@ -47,7 +47,6 @@ export default function RootLayout({ children }) {
             (function () {
               const urlParams = new URLSearchParams(window.location.search);
               const corsUrl = urlParams.get('cors') === "stage" ? 'https://universal-editor-service-stage.adobe.io/cors.js' : 'https://universal-editor-service.adobe.io/cors.js';
-
               const script = document.createElement('script');
               script.src = corsUrl;
               script.async = true;

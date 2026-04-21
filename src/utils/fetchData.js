@@ -74,5 +74,5 @@ export const getService = () => {
     if (searchParams.has("service")) {
         return searchParams.get("service");
     }
-    return process.env.NEXT_PUBLIC_UE_SERVICE || process.env.NEXT_UE_SERVICE;
+    return process.env.NEXT_PUBLIC_UE_SERVICE;
 }
