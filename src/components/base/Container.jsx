@@ -1,9 +1,12 @@
+"use client";
 import React from 'react';
 import {fetchData} from '../../utils/fetchData';
 import Text from './Text';
 import Title from './Title';
 import Image from './Image';
 import Accordion from './Accordion';
+import Carousel from './Carousel';
+import Teaser from './Teaser';
 
 const Container = ({ resource, type, label = "Container"}) => {
   const [components, setComponents] = React.useState(null);
@@ -35,9 +38,17 @@ const Container = ({ resource, type, label = "Container"}) => {
           itemType = "container";
           Component = Accordion;
           break;
+        case "carousel":
+          itemType = "container";
+          Component = Carousel;
+          break;
         case "container":
           itemType = "container";
           Component = Container;
+          break;
+        case "teaser":
+          itemType = "component";
+          Component = Teaser;
           break;
         default: 
           itemType = "component";

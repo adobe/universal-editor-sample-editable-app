@@ -17,27 +17,25 @@
   ],
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist --cname ue-remote-app.adobe.net"
+    "start": "next start",
+    "dev:sandbox": "env-cmd -f .env.sandbox next dev --experimental-https",
+    "build": "next build",
+    "deploy": "next build && gh-pages -d out --cname ue-remote-app.adobe.net",
+    "dev:local": "NODE_EXTRA_CA_CERTS=certificates/localhost.pem next dev --experimental-https"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^7.9.6",
+    "@adobe/jwt-auth": "^2.0.0",
+    "next": "^16.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "sass": "^1.94.1"
   },
   "devDependencies": {
-    "@adobe/aem-headless-client-js": "^4.0.0",
     "@adobe/aem-headless-client-nodejs": "^2.0.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-basic-ssl": "^2.1.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "gh-pages": "^6.1.0",
-    "react-helmet-async": "^2.0.4",
-    "vite": "^5.0.8"
+    "env-cmd": "^11.0.0",
+    "gh-pages": "^6.1.0"
   },
   "eslintConfig": {
     "extends": [

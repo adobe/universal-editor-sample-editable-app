@@ -7,17 +7,18 @@ accordance with the terms of the Adobe license agreement accompanying
 it.
 */
 import React from 'react';
-import { Link } from 'react-router-dom';
-import useGraphQL from '../api/useGraphQL';
+import Link from 'next/link';
+import { fetchPersistedQuery } from '../api/graphqlServer';
 import { getArticle, getQueryStringForHashRouting } from '../utils/commons';
 import { mapJsonRichText } from '../utils/renderRichText';
 import Loading from './base/Loading';
 import "./Teaser.scss";
 import {getImageURL} from "../utils/fetchData";
 
-const Teaser = () => {
+const Teaser = async () => {
   const persistentQuery = `wknd-shared/article-by-slug;slug=aloha-spirits-in-northern-norway`;
-  const {data, errorMessage} = useGraphQL(persistentQuery);
+  const {data, errors} = await fetchPersistedQuery(persistentQuery);
+  const errorMessage = errors ? errors.map(e => e.message || e).join(', ') : null;
   	//If there is an error with the GraphQL query
 	if (errorMessage) return;
 
@@ -42,7 +43,7 @@ const Teaser = () => {
       <p>Latest article</p>
       <h1 data-aue-prop="title" data-aue-type="text" data-aue-label="Title">{title}</h1>
       {main && <div data-aue-prop="main" data-aue-type="richtext" data-aue-label="Description">{mapJsonRichText(main.json)}</div>}
-      <Link to={`/articles/article/aloha-spirits-in-northern-norway${getQueryStringForHashRouting()}`}>
+      <Link href={`/articles/article/aloha-spirits-in-northern-norway${getQueryStringForHashRouting()}`}>
         <button>Read more</button>
       </Link>
     </article>
