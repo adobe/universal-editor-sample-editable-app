@@ -1,0 +1,341 @@
+.carousel {
+  --carousel-accent: #1473e6;
+  --carousel-accent-soft: rgba(20, 115, 230, 0.14);
+  --carousel-surface: #ffffff;
+  --carousel-border: #e6e8ec;
+  --carousel-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.06);
+
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--carousel-surface);
+  border: 1px solid var(--carousel-border);
+  box-shadow: var(--carousel-shadow);
+}
+
+.carousel-viewport {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.99);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+  pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+    position: relative;
+  }
+}
+
+.carousel-slide-content {
+  padding: 28px 28px 64px; /* extra bottom space so indicators don't overlap content */
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #1f2937;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+
+  svg {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    background: var(--carousel-accent);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 10px 24px rgba(20, 115, 230, 0.35);
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.96);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(20, 115, 230, 0.35),
+      0 6px 16px rgba(15, 23, 42, 0.18);
+  }
+}
+
+.carousel-control-prev {
+  left: 14px;
+
+  &:hover svg {
+    transform: translateX(-2px);
+  }
+}
+
+.carousel-control-next {
+  right: 14px;
+
+  &:hover svg {
+    transform: translateX(2px);
+  }
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1);
+}
+
+.carousel-indicator {
+  width: 8px;
+  height: 8px;
+  min-width: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition:
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: rgba(15, 23, 42, 0.5);
+    transform: scale(1.15);
+  }
+
+  &.is-active {
+    width: 26px;
+    background: var(--carousel-accent);
+    box-shadow: 0 0 0 4px var(--carousel-accent-soft);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--carousel-accent-soft);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .carousel {
+    --carousel-surface: #1f2024;
+    --carousel-border: #34363c;
+    --carousel-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .carousel-control {
+    background: rgba(31, 32, 36, 0.85);
+    color: #e6e8ec;
+    border-color: rgba(255, 255, 255, 0.08);
+
+    &:hover {
+      background: #4d9bff;
+      color: #0b1220;
+      box-shadow: 0 10px 24px rgba(77, 155, 255, 0.45);
+    }
+  }
+
+  .carousel-indicators {
+    background: rgba(31, 32, 36, 0.7);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  }
+
+  .carousel-indicator {
+    background: rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    &.is-active {
+      background: #4d9bff;
+      box-shadow: 0 0 0 4px rgba(77, 155, 255, 0.2);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide,
+  .carousel-control,
+  .carousel-control svg,
+  .carousel-indicator {
+    transition: none;
+  }
+}
+
+/* Publish-mode-only: when a slide contains an <img>, render the image as a
+   full-bleed background and overlay any sibling content on top of it. */
+html:not(.adobe-ue-edit) {
+  /* Match height across all slides when at least one is image-based */
+  .carousel-viewport:has(.carousel-slide-content > .container > img) {
+    min-height: 440px;
+  }
+
+  .carousel-slide-content:has(> .container > img) {
+    padding: 0;
+    height: 100%;
+
+    > .container {
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 64px 56px 88px;
+      color: #fff;
+      overflow: hidden;
+
+      > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        max-width: none; /* override global `.container img { max-width: 50% }` */
+        height: 100%;
+        object-fit: cover;
+        margin: 0;
+        z-index: 0;
+      }
+
+      > *:not(img) {
+        position: relative;
+        z-index: 2;
+        max-width: 760px;
+        text-align: center;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          color: inherit;
+          margin: 0;
+        }
+      }
+
+      /* Readability gradient — only when there's something layered over the image.
+         This is the "medium" default; per-slide variants override it below. */
+      &:has(> *:not(img))::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.35) 45%,
+          rgba(0, 0, 0, 0.65) 100%
+        );
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+
+  /* Per-slide overlay strength (model field: carousel-item.overlayStrength).
+     "medium" is the default and uses the rule above — no class needed. */
+  .carousel-slide--overlay-none > .carousel-slide-content > .container::after {
+    background: none;
+  }
+
+  .carousel-slide--overlay-subtle > .carousel-slide-content > .container::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  }
+
+  .carousel-slide--overlay-strong > .carousel-slide-content > .container::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.6) 45%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+}
+
+/* Adobe Universal Editor: reveal every slide so authors can edit them all */
+html.adobe-ue-edit {
+  .carousel {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .carousel-viewport {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .carousel-slide {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    border: 1px dashed #b0b0b0;
+    border-radius: 6px;
+  }
+
+  .carousel-control,
+  .carousel-indicators {
+    display: none;
+  }
+}

@@ -55,5 +55,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "carousel",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "autoplay",
+        "label": "Auto-play slides",
+        "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
+        "name": "showIndicators",
+        "label": "Show slide indicators",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "name": "showNavigation",
+        "label": "Show navigation arrows",
+        "valueType": "boolean",
+        "value": true
+      }
+    ]
+  },
+  {
+    "id": "carousel-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "cq:panelTitle",
+        "value": "",
+        "label": "Slide Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "select",
+        "name": "overlayStrength",
+        "value": "medium",
+        "label": "Image Overlay Strength",
+        "description": "Darkens the image so text overlay is readable. Applies only when an image and other content share a slide.",
+        "valueType": "string",
+        "options": [
+          { "name": "None", "value": "none" },
+          { "name": "Subtle", "value": "subtle" },
+          { "name": "Medium (default)", "value": "medium" },
+          { "name": "Strong", "value": "strong" }
+        ]
+      }
+    ]
   }
 ]

@@ -71,6 +71,18 @@
               }
             }
           }
+        },
+        {
+          "title": "Carousel Slide",
+          "id": "carousel-item",
+          "model": "carousel-item",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/container"
+              }
+            }
+          }
         }
       ]
     },
@@ -103,6 +115,19 @@
             "aem": {
               "page": {
                 "resourceType": "wknd/components/accordion"
+              }
+            }
+          }
+        },
+        {
+          "title": "Carousel",
+          "id": "carousel",
+          "model": "carousel",
+          "filter": "carousel",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "wknd/components/carousel"
               }
             }
           }

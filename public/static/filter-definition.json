@@ -1,14 +1,20 @@
 [
-{
+  {
     "id": "container",
     "components": [
-        "text", "image", "title", "accordion", "container", "richtext"
+      "text", "image", "title", "accordion", "carousel", "container", "richtext"
     ]
-    },
+  },
   {
     "id": "accordion",
     "components": [
       "accordion-item"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
     ]
   }
 ]

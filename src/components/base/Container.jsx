@@ -5,6 +5,7 @@ import Text from './Text';
 import Title from './Title';
 import Image from './Image';
 import Accordion from './Accordion';
+import Carousel from './Carousel';
 import Teaser from './Teaser';
 
 const Container = ({ resource, type, label = "Container"}) => {
@@ -36,6 +37,10 @@ const Container = ({ resource, type, label = "Container"}) => {
         case "accordion":
           itemType = "container";
           Component = Accordion;
+          break;
+        case "carousel":
+          itemType = "container";
+          Component = Carousel;
           break;
         case "container":
           itemType = "container";
